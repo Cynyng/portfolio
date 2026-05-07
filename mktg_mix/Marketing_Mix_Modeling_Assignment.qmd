@@ -1,0 +1,322 @@
+---
+title: "Marketing Mix Modeling Assignment"
+subtitle: "FourTex Web Traffic Case"
+author: "Lucynda Young"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: show
+    code-tools: true
+    embed-resources: true
+    theme: cosmo
+    df-print: paged
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Overview
+
+This notebook reproduces the core marketing mix modeling workflow for the FourTex case and answers all seven case questions plus the two required tasks. The emphasis is on clean structure, visible code, concise interpretation, and a professional rendered report.
+
+```{r setup}
+#| label: setup
+#| include: false
+#| 
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("gt")
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("lmtest")
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("car")
+library(tidyverse)
+library(lubridate)
+library(broom)
+library(gt)
+library(lmtest)
+library(car)
+library(scales)
+
+knitr::opts_chunk$set(fig.width = 10, fig.height = 5.5)
+```
+
+## Data Preparation
+
+```{r data-import}
+#| label: data-import
+
+fourtex <- read_csv("data/data_fourtex.csv", show_col_types = FALSE) |>
+  mutate(
+    week_beg = dmy(week_beg),
+    lag1_traffic = lag(traffic)
+  )
+
+model_data <- fourtex |>
+  drop_na(lag1_traffic)
+
+glimpse(model_data)
+```
+
+## Exploratory Analysis
+
+### Weekly Traffic and Media Spend
+
+```{r exploratory-plots}
+#| label: exploratory-plots
+
+plot_data <- fourtex |>
+  pivot_longer(
+    cols = c(Google_Adwords, Facebook, TV, Radio),
+    names_to = "channel",
+    values_to = "spend"
+  )
+
+traffic_plot <- ggplot(fourtex, aes(x = week_beg, y = traffic)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 1.6) +
+  scale_y_continuous(labels = comma) +
+  labs(
+    title = "FourTex Weekly Website Traffic",
+    x = NULL,
+    y = "Traffic"
+  ) +
+  theme_minimal()
+
+spend_plot <- ggplot(plot_data, aes(x = week_beg, y = spend, color = channel)) +
+  geom_line(linewidth = 1) +
+  scale_y_continuous(labels = dollar) +
+  labs(
+    title = "Weekly Media Spend by Channel",
+    x = NULL,
+    y = "Spend"
+  ) +
+  theme_minimal()
+
+traffic_plot
+spend_plot
+```
+
+## Linear Regression Model
+
+The model below estimates weekly traffic as a function of media spending in Google Adwords, Facebook, TV, and Radio, while also controlling for one-week lagged traffic.
+
+```{r model-fit}
+#| label: model-fit
+
+mmm_model <- lm(
+  traffic ~ Google_Adwords + Facebook + TV + Radio + lag1_traffic,
+  data = model_data
+)
+
+summary(mmm_model)
+```
+
+### Model Summary Table
+
+```{r model-summary-table}
+#| label: model-summary-table
+
+coef_tbl <- tidy(mmm_model, conf.int = TRUE) |>
+  mutate(across(where(is.numeric), ~ round(.x, 3)))
+
+coef_tbl
+```
+
+## Question Responses
+
+::: {.callout-note appearance="simple" icon="false"}
+## Question 1
+
+Looking at these plots, what do you observe? Do increases and decreases in online traffic coincide with online and offline spending? Do you see any seasonality or trend patterns?
+:::
+
+Traffic generally moves more closely with **Google Adwords** and **Facebook** spending than with **TV** or **Radio**. The largest traffic spikes appear in late November through December, which suggests a strong seasonal lift around holiday periods. TV and Radio spending occur in fewer, larger bursts, but those spikes do not consistently line up with equally strong increases in web traffic. Overall, there is a visible seasonal pattern and a noticeable year-end surge.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Question 2
+
+Did you notice that we added the lagged traffic variable as an additional predictor to our model? Do you think including the first lagged traffic variable in the model makes sense? Why?
+:::
+
+Yes. Including the first lagged traffic variable makes sense because website traffic usually has **carryover momentum** from the prior week. In practice, traffic is rarely independent from one period to the next. A strong week often leads into another strong week because of brand recall, repeat visits, remarketing, and ongoing campaign effects. In this model, the lagged traffic coefficient is positive and statistically significant, which supports the idea that past traffic helps explain current traffic.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Question 3
+
+What is your interpretation of the estimated coefficients of the other advertising variables, Facebook, TV and radio?
+:::
+
+Holding the other variables constant:
+
+-   **Facebook** has a positive coefficient, meaning additional Facebook spending is associated with higher website traffic.
+-   **TV** has a very small coefficient, implying only a minimal direct traffic lift per extra dollar spent.
+-   **Radio** is also positive, but its estimated impact is much weaker than Google Adwords or Facebook.
+
+From a direct-response web traffic perspective, Facebook appears meaningful, while TV and Radio appear far less efficient.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Question 4
+
+Do you think the model predicted well the web traffic performance of FourTex?
+:::
+
+The model performs **reasonably well, but not perfectly**. The adjusted R-squared is fairly strong for a simple marketing mix model, which means the predictors explain a substantial portion of weekly traffic variation. However, it does not explain everything. That is expected because web traffic is also affected by promotions, seasonality, pricing, competitor actions, creative quality, email, SEO, and other business factors not included in the model.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Question 5
+
+What is your conclusion with regard to traffic generated and cost incurred? Which media returns the most and least?
+:::
+
+The strongest direct traffic return appears to come from **Google Adwords**, followed by **Facebook**. The weakest returns come from **TV** and then **Radio**. This means the channels with the strongest measurable traffic lift are the digital channels, while the traditional channels consume substantial budget with much less direct traffic response.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Question 6
+
+Are you surprised that the traffic return on investment for TV and radio is zero? Why do you think that the company invested so much in TV and radio channels although their traffic return is absent?
+:::
+
+It is not especially surprising. TV and Radio often work better as **upper-funnel** or **brand-building** channels than as direct website traffic drivers. Their value may show up in brand awareness, branded search, store visits, future sales, or long-run demand rather than immediate weekly web traffic. So even if their direct traffic return looks near zero in this model, management may still have invested in them to build awareness, credibility, market reach, or cross-channel lift.
+
+::: {.callout-note appearance="simple" icon="false"}
+## Question 7
+
+What is your conclusion? Is the optimal allocation different from the actual spending? What would you suggest FourTex in terms of how they should deploy their marketing resources to boost the web traffic performance? Would the optimal allocation be different for a different performance metric (e.g. sales)?
+:::
+
+Yes, the optimal allocation for **maximizing web traffic** appears different from the observed spending pattern. Based on this model, FourTex should shift more budget toward **Google Adwords** and **Facebook**, and reduce spending on **TV** and **Radio** if the primary objective is website traffic.
+
+That said, the answer could change if the business objective were **sales**, **profit**, **brand lift**, or **customer lifetime value** rather than traffic. A channel can look weak for traffic and still matter for revenue, reach, or brand building. So the “best” allocation depends on the KPI being optimized.
+
+## Recommendations to Mrs. Schmidt
+
+::: {.callout-important appearance="simple"}
+### Case Recommendations
+
+**Which marketing mix instrument really drives website traffic?**\
+Google Adwords is the strongest traffic driver in this analysis, with Facebook as the second strongest.
+
+**What is the return on marketing investment?**\
+Traffic return on marketing investment is highest for Google Adwords, then Facebook, and is close to zero for TV and Radio in this traffic-focused model.
+
+**Should FourTex keep pushing Google Adwords and Facebook ads? Should it stop TV and Radio?**\
+FourTex should continue investing in Google Adwords and Facebook if the main goal is to boost website traffic. TV and Radio should not necessarily be eliminated immediately, but they should be reduced, closely audited, and justified only if the company is pursuing broader goals such as awareness or sales lift beyond direct web traffic.
+:::
+
+## Task 1: Residual Diagnostics
+
+::: {.callout-tip appearance="simple" icon="false"}
+## Task 1
+
+To assess the validity of your results, follow a systematic diagnostic process to test the assumptions of linear regression. Perform the residual diagnostics for the model and assess the results.
+:::
+
+### Diagnostic Plots
+
+```{r diagnostic-plots}
+#| label: diagnostic-plots
+#| fig-height: 8
+#| fig-width: 10
+#| layout-ncol: 2
+
+par(mfrow = c(2, 2))
+plot(mmm_model)
+par(mfrow = c(1, 1))
+```
+
+### Diagnostic Tests
+
+```{r diagnostic-tests}
+#| label: diagnostic-tests
+
+diag_summary <- tibble(
+  test = c(
+    "Breusch-Pagan test",
+    "Durbin-Watson statistic",
+    "Maximum VIF"
+  ),
+  result = c(
+    bptest(mmm_model)$p.value,
+    dwtest(mmm_model)$statistic[[1]],
+    max(vif(mmm_model))
+  )
+)
+
+diag_summary
+```
+
+### Diagnostic Assessment
+
+The residual plots suggest the model is broadly usable, but not flawless. The residual-vs-fitted and scale-location plots indicate some uneven spread, which is consistent with **heteroskedasticity**. The Q-Q plot looks reasonably acceptable, so normality is not the biggest issue here. The Durbin-Watson result suggests some **positive autocorrelation**, which is common in weekly time-series data. VIF values are not alarmingly high for the media variables, so multicollinearity is manageable.
+
+**Assessment:** the model is directionally useful for decision-making, but the results should be interpreted with caution. A stronger follow-up would use robust standard errors, time-series-aware modeling, or additional controls for seasonality and promotions.
+
+## Task 2: Presentable Metrics Table with `gt`
+
+::: {.callout-tip appearance="simple" icon="false"}
+## Task 2
+
+Create a presentable table using the `gt` package. Below the table, explain what each metric means. Also explain why unit effect is the same as TROMI.
+:::
+
+```{r metrics-table}
+#| label: metrics-table
+
+df <- tibble(
+  channel = c("Google Adwords", "Facebook", "TV", "Radio"),
+  total_spend = c(
+    sum(model_data$Google_Adwords),
+    sum(model_data$Facebook),
+    sum(model_data$TV),
+    sum(model_data$Radio)
+  ),
+  unit_effect = coef(mmm_model)[c("Google_Adwords", "Facebook", "TV", "Radio")],
+  TROMI = unit_effect,
+  est_incremental_traffic = total_spend * unit_effect
+) |>
+  mutate(
+    spend_rank = min_rank(desc(unit_effect))
+  )
+
+df |>
+  mutate(
+    total_spend = dollar(total_spend),
+    unit_effect = round(unit_effect, 3),
+    TROMI = round(TROMI, 3),
+    est_incremental_traffic = comma(round(est_incremental_traffic, 0))
+  ) |>
+  gt() |>
+  tab_header(
+    title = md("**FourTex Media Effectiveness Table**"),
+    subtitle = "Traffic-oriented interpretation of model coefficients"
+  ) |>
+  cols_label(
+    channel = "Channel",
+    total_spend = "Total Spend",
+    unit_effect = "Unit Effect",
+    TROMI = "TROMI",
+    est_incremental_traffic = "Estimated Incremental Traffic",
+    spend_rank = "Rank"
+  ) |>
+  opt_row_striping()
+```
+
+### What the Metrics Mean
+
+-   **Total Spend**: the cumulative dollars invested in each channel over the modeled period.
+-   **Unit Effect**: the estimated increase in website traffic associated with one additional dollar spent in that channel, holding the other variables constant.
+-   **TROMI**: traffic return on marketing investment.
+-   **Estimated Incremental Traffic**: an approximate channel-level contribution obtained by multiplying total spend by the estimated unit effect.
+-   **Rank**: a simple ordering of channels based on estimated traffic efficiency.
+
+### Why Unit Effect Is the Same as TROMI
+
+In this case, the dependent variable is **traffic**, and the predictor variables are **marketing dollars**. That means each estimated coefficient already tells us the amount of **traffic returned per extra dollar spent**. That is exactly what traffic return on marketing investment measures. So for this traffic model, **unit effect = TROMI**.
+
+## Final Takeaway
+
+The FourTex results point to a clear conclusion: if management wants to maximize **website traffic**, the budget should lean more heavily toward **Google Adwords** and **Facebook**. TV and Radio may still matter for broader brand objectives, but they do not appear efficient as direct website traffic generators in this analysis.

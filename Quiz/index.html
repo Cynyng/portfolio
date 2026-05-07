@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trauma Model Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-image: url('/Users/lucyndaponce/Desktop/school/IBM6010/HW/quiz/pexels-andiravsanjani-804410.jpg'); /* Replace with correct path */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .quiz-container {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .question {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .buttons, .form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    button {
+      background-color: #00574d;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #009987;
+    }
+
+    input, label {
+      width: 80%;
+      max-width: 400px;
+      margin: 5px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .result {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .form button {
+      width: 80%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="question" class="question">Will this model be implemented on an individual basis or used to support communities as a whole?</div>
+    <div class="buttons">
+      <button onclick="answerQuestion('Individual')">Individual</button>
+      <button onclick="answerQuestion('Community')">Community</button>
+    </div>
+  </div>
+
+  <script>
+    const individualQuestions = [
+      "Have you ever experienced a traumatic event (e.g., physical, emotional, an accident, natural disaster, combat, etc.)?",
+      "Do you feel ready to process your trauma and work through your emotional pain?",
+      "Would you be open to take TRM and CRM training?",
+      "Do you feel ready to take the next step in seeking help or support?"
+    ];
+
+    const communityQuestions = [
+      "Have you had past experience assisting with traumatic events and providing relief?",
+      "Are you open to taking a class on TRM and CRM training?",
+      "Will the training involve collaboration with other professionals (e.g., social workers, mental health counselors, medical providers) to promote a holistic approach to trauma care?",
+      "Do you feel ready to take the next step in seeking help or support?"
+    ];
+
+    const definitions = {
+      TRM: "TRM: The Trauma Resiliency Model (TRM)® Training is designed to teach skills to individuals and clinicians helping children and adults with traumatic stress reactions.",
+      CRM: "CRM: The Community Resiliency Model (CRM)® trains community members to not only help themselves but to help others within their wider social network."
+    };
+
+    const learnMoreLinks = {
+      TRM: "https://www.traumaresourceinstitute.com/tri-models",
+      CRM: "https://www.traumaresourceinstitute.com/crm"
+    };
+
+    let currentQuestionIndex = 0;
+    let yesCount = 0;
+    let quizType = null;
+
+    function answerQuestion(answer) {
+      if (currentQuestionIndex === 0) {
+        quizType = answer;
+        nextQuestion();
+        return;
+      }
+
+      if (answer === 'Yes') yesCount++;
+
+      if (currentQuestionIndex < 4) {
+        nextQuestion();
+      } else {
+        displayResult();
+      }
+    }
+
+    function nextQuestion() {
+      const questions = quizType === 'Individual' ? individualQuestions : communityQuestions;
+      document.getElementById('question').textContent = questions[currentQuestionIndex];
+      currentQuestionIndex++;
+
+      if (currentQuestionIndex === 4) {
+        const buttonContainer = document.querySelector('.buttons');
+        buttonContainer.innerHTML = `
+          <button onclick="answerQuestion('Yes')">Yes</button>
+          <button onclick="answerQuestion('No')">No</button>
+        `;
+      } else {
+        const buttonContainer = document.querySelector('.buttons');
+        buttonContainer.innerHTML = `
+          <button onclick="answerQuestion('Yes')">Yes</button>
+          <button onclick="answerQuestion('No')">No</button>
+        `;
+      }
+    }
+
+    function displayResult() {
+      let model = null;
+      if (yesCount >= 3) {
+        model = quizType === 'Individual' ? 'TRM' : 'CRM';
+      } else {
+        model = quizType === 'Individual' ? 'CRM' : 'TRM';
+      }
+
+      const definition = definitions[model];
+      const learnMoreLink = learnMoreLinks[model];
+      document.querySelector('.quiz-container').innerHTML = `
+        <div class="result">${definition}</div>
+        <button onclick="window.open('${learnMoreLink}', '_blank')">Learn More</button>
+        <form class="form">
+          <input type="email" placeholder="Email" required>
+          <input type="text" placeholder="Name" required>
+          <input type="tel" placeholder="Phone Number (optional)">
+          <label>
+            <input type="checkbox"> Would you like more information on how to sign up sent to you?
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+      `;
+    }
+  </script>
+</body>
+</html>

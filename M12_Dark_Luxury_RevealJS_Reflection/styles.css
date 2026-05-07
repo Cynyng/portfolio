@@ -1,0 +1,119 @@
+/* Dark luxury RevealJS theme for M12 reflection */
+
+:root {
+  --gold: #d4af37;
+  --champagne: #f4e7bd;
+  --soft-gold: #b8892d;
+  --black: #050505;
+  --charcoal: #111111;
+  --cream: #f6f0df;
+}
+
+.reveal {
+  font-family: "Aptos", "Helvetica Neue", Arial, sans-serif;
+  color: var(--cream);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  font-family: "Georgia", "Times New Roman", serif;
+  color: var(--champagne);
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+.reveal h1 {
+  font-size: 2.45em;
+  text-shadow: 0 8px 28px rgba(0,0,0,.55);
+}
+
+.reveal h2 {
+  font-size: 1.45em;
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: .18em;
+  margin-bottom: .7em;
+}
+
+.reveal h3 {
+  color: var(--gold);
+  font-size: .9em;
+  letter-spacing: .02em;
+}
+
+.reveal p,
+.reveal li {
+  font-size: .78em;
+  line-height: 1.36;
+}
+
+.reveal strong {
+  color: var(--gold);
+}
+
+.reveal .title-slide h1,
+.reveal .title-slide h2 {
+  border: none;
+  text-align: center;
+}
+
+.reveal .big-quote {
+  font-size: 1.08em;
+  line-height: 1.25;
+  border-left: 8px solid var(--gold);
+  padding: .75em 1em;
+  background: rgba(212, 175, 55, .10);
+  border-radius: 18px;
+  box-shadow: 0 16px 42px rgba(0,0,0,.28);
+  margin: .75em 0;
+}
+
+.reveal .columns {
+  gap: 1.2em;
+}
+
+.reveal .column {
+  background: rgba(255,255,255,.055);
+  border: 1px solid rgba(212,175,55,.36);
+  border-radius: 22px;
+  padding: .65em .8em;
+  box-shadow: 0 18px 42px rgba(0,0,0,.24);
+}
+
+.reveal pre {
+  width: 100%;
+  box-shadow: 0 16px 42px rgba(0,0,0,.3);
+}
+
+.reveal pre code {
+  border-radius: 18px;
+  padding: 1em;
+  max-height: 440px;
+  background: #0b0b0b;
+  border: 1px solid rgba(212,175,55,.35);
+}
+
+.reveal .slide-number {
+  color: var(--gold);
+}
+
+.reveal .footer {
+  color: rgba(244,231,189,.78);
+}
+
+.reveal .progress span {
+  background: var(--gold);
+}
+
+.reveal a {
+  color: var(--gold);
+}
+
+.reveal .fragment.fade-up.visible,
+.reveal .fragment.fade-in.visible {
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.25));
+}

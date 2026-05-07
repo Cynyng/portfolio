@@ -1,0 +1,1 @@
+# testing GitHub after copying a local drive to another location. Can we I connect it to the GitHub?

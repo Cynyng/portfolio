@@ -1,0 +1,479 @@
+---
+title: "Attribution Modeling Assignment"
+author: "Lucynda Young"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    code-fold: show
+    code-summary: "Show / hide code"
+    number-sections: true
+    embed-resources: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Overview
+
+This notebook reconstructs the KNC attribution case study from the published HTML, reorganizes the code into a cleaner Quarto structure, fixes the errors noted in class, and answers all seven assignment questions. The analysis uses three perspectives:
+
+- heuristic attribution: first touch and last touch
+- probabilistic attribution: Markov chain
+- channel-removal attribution: Shapley-value-based approach
+
+::: callout-note
+## Submission note
+
+Place this file in the same project folder as the `data` directory from the GitHub repo so the code can find `data/knc_attribution.csv`.
+:::
+
+# 1. Case framing and Task 1
+
+## KNC's three questions
+
+After reviewing the touchpoint data, the KNC team is trying to answer three questions from the case:
+
+1.  **Which customer touchpoint contributes more or less to conversion?**
+2.  **Should KNC reduce paid search and invest more in mobile?**
+3.  **Which attribution modeling approach should KNC use going forward?**
+
+These are the case questions stated in the published HTML, where the application is described as helping answer which touchpoints contribute to conversion, whether paid search should be deprioritized in favor of mobile, and which attribution approach KNC should adopt in the future. These questions are central because budget decisions depend on them. \[Sources used in preparing this notebook: the case HTML, Google Ads help, ChannelAttribution documentation, and Shapley attribution research.\]
+
+## Attribution methods that can be used
+
+### Heuristic-based methods
+
+**First-touch attribution** gives 100% of the credit to the first channel in the path. It is useful when the business wants to emphasize acquisition or awareness, but it ignores everything that happens after the first exposure.
+
+**Last-touch attribution** gives 100% of the credit to the final channel before conversion. It is simple and easy to explain, but it can over-credit closing channels and under-credit channels that assisted earlier in the journey.
+
+**Linear attribution** splits credit equally across all observed touchpoints. This is more balanced than first- or last-touch, but it assumes all touches are equally important.
+
+**Time-decay attribution** gives more credit to later touches than earlier ones. It can be useful when recency matters, though it still relies on a preset rule rather than observed incremental contribution.
+
+**Position-based attribution** gives larger shares to the first and last interactions and splits the remainder across middle touches. It recognizes both discovery and conversion, but the weights are still chosen by rule.
+
+### Probability-based or model-based methods
+
+**Markov chain attribution** treats the customer journey as a sequence of transitions between states. It uses transition probabilities and channel-removal effects to estimate how much each touchpoint contributes to conversion across the whole journey.
+
+**Data-driven attribution** in modern ad platforms uses observed conversion data to estimate fractional contribution rather than relying on fixed rules. Google notes that several older rule-based models were deprecated and replaced by data-driven attribution or last click in current products.
+
+**Shapley value attribution** comes from cooperative game theory. It measures a channel's average marginal contribution across all possible channel coalitions, which makes it useful for estimating the effect of channel removal and for fairly allocating contribution when channels work together.
+
+::: callout-important
+## Task 1 answer
+
+Heuristic methods are simple and easy to communicate, but they impose attribution rules in advance. Probability-based methods are more flexible because they infer contribution from the observed paths themselves. For KNC, first-touch and last-touch are helpful baselines, but Markov and Shapley are more appropriate for budget decisions because they better reflect multi-touch customer journeys.
+:::
+
+# 2. Preparation and Task 2 setup
+
+## Package setup
+
+```{r}
+# Load required packages without installing during render
+packages <- c(
+  "knitr", "kableExtra", "readr", "dplyr", "stringr",
+  "tidyr", "purrr", "ggplot2", "ggthemes", "ggrepel",
+  "RColorBrewer", "reshape2", "markovchain", "ChannelAttribution"
+)
+
+missing_packages <- packages[!vapply(packages, requireNamespace, logical(1), quietly = TRUE)]
+
+if (length(missing_packages) > 0) {
+  stop(
+    paste(
+      "Install these packages before rendering:",
+      paste(missing_packages, collapse = ", ")
+    )
+  )
+}
+
+invisible(lapply(packages, library, character.only = TRUE))
+```
+
+## Load the KNC data
+
+```{r}
+# Load data
+attribution <- read_csv("data/knc_attribution.csv", show_col_types = FALSE)
+
+glimpse(attribution)
+```
+
+## Data description
+
+The dataset contains a `users_id`, up to 45 ordered touchpoint columns (`channel1` through `channel45`), a binary conversion variable `user_purchase`, and a binary non-conversion variable `null_purchase`. The case notes that there are 105 consumer journeys, of which 89 are conversions in the full dataset.
+
+# 3. Markov chain approach and Task 3
+
+## 3.1 Data preparation — corrected
+
+The original HTML contains an error in the manual `paste()` used to build the path: `channel8` and `channel9` are repeated where `channel18` and `channel19` should appear. A cleaner fix is to avoid manually typing 45 column names at all.
+
+```{r}
+# Replace missing values in channel columns with blanks
+channel_cols <- paste0("channel", 1:45)
+
+attribution <- attribution %>%
+  mutate(across(all_of(channel_cols), ~replace_na(., "")))
+
+# Build a robust path variable without manually typing 45 columns
+attribution <- attribution %>%
+  unite("path", all_of(channel_cols), sep = ">", remove = FALSE) %>%
+  mutate(
+    path = str_replace_all(path, ">+", ">"),
+    cleaned_path = str_replace_all(path, "(^>|>$)", "")
+  )
+
+# Inspect first five paths
+attribution %>%
+  slice(1:5) %>%
+  select(users_id, cleaned_path) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+```
+
+### Why this fix matters
+
+The corrected code avoids transcription mistakes, preserves the true sequence of touchpoints, and produces paths that are easier to inspect. It is also much more readable than a single very long `paste()` call.
+
+## Train-test split and path stack
+
+```{r}
+# Training and testing split used in the case
+attribution_train <- attribution[1:80, ]
+attribution_test  <- attribution[81:105, ]
+
+# Aggregate paths into a channel stack
+channel_stack <- attribution_train %>%
+  group_by(cleaned_path) %>%
+  summarise(
+    conversion = sum(user_purchase),
+    non_conversion = sum(null_purchase),
+    .groups = "drop"
+  )
+
+channel_stack %>%
+  slice(1:10) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+```
+
+## 3.2 Markov chain modelling
+
+```{r}
+# Third-order Markov model as in the case
+markov <- markov_model(channel_stack, "cleaned_path", "conversion", order = 3)
+
+table_markov <- data.frame(
+  channel = markov$channel_name,
+  total_conversions = round(markov$total_conversions),
+  percent = round(markov$total_conversions / sum(attribution_train$user_purchase), 3)
+)
+
+table_markov %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+```
+
+### Interpretation of the Markov results
+
+The Markov model produces a much more balanced allocation than the touch-based heuristics. Instead of strongly favoring one channel, it suggests that all four channels contribute at fairly similar levels. In the case output, mobile and paid search are around 26%, while affiliate and social media are around 24%. That means KNC should be cautious about cutting paid search or over-weighting mobile based only on a last-touch view.
+
+## Transition matrix and simple path probability
+
+```{r}
+# Third-order transition matrix
+trans_3rd_order <- transition_matrix(
+  attribution_train,
+  var_path = "cleaned_path",
+  var_conv = "user_purchase",
+  var_null = "null_purchase",
+  order = 3,
+  sep = ">",
+  flg_equal = TRUE
+)
+
+head(trans_3rd_order$transition_matrix) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+```
+
+::: callout-tip
+## Task 3 answer: probability of purchase for `start > paid_search > conversion`
+
+Using the first-order transition visualization in the case, the probability is:
+
+\[ P(\text{start} \to \text{paid\_search}) \times P(\text{paid\_search} \to \text{conversion}) = 0.41 \times 0.03 = 0.0123 \]
+
+So the probability of purchase for that simple path is **0.0123**, or **1.23%**. The important correction is that this number comes from the **first-order visualization**, not the third-order model.
+:::
+
+## 3.3 Visualisation — corrected
+
+The original visualization section mixes an explanatory graph based on a first-order chain with a third-order model discussion. That is not inherently wrong, but it should be labeled clearly. The heatmap code is also easier to read if we write it more cleanly.
+
+```{r}
+# First-order transition matrix for visualization only
+trans_1st <- transition_matrix(
+  attribution_train,
+  var_path = "cleaned_path",
+  var_conv = "user_purchase",
+  var_null = "null_purchase",
+  order = 1,
+  sep = ">",
+  flg_equal = TRUE
+)
+
+# Heatmap-ready data
+plot_trans <- trans_1st$transition_matrix
+max_prob <- max(plot_trans$transition_probability, na.rm = TRUE)
+
+heat_cols <- c(
+  "#e7f0fa", "#c9e2f6", "#95cbee", "#0099dc",
+  "#4ab04a", "#ffd73e", "#eec73a", "#e29421"
+)
+
+ggplot(plot_trans, aes(x = channel_to, y = channel_from, fill = transition_probability)) +
+  geom_tile(color = "white", width = 0.9, height = 0.9) +
+  geom_text(aes(label = round(transition_probability, 2)), size = 4, fontface = "bold") +
+  scale_fill_gradientn(
+    colours = heat_cols,
+    limits = c(0, max_prob),
+    breaks = seq(0, max_prob, by = max_prob / 4)
+  ) +
+  labs(
+    title = "First-Order Transition Probability Heatmap",
+    x = "Arriving state",
+    y = "Departing state",
+    fill = "Probability"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+### Why the original conclusions differ from last-touch
+
+Last-touch credits only the final channel before conversion, so it can make affiliate look more important if affiliate often appears near the end of a journey. The Markov model instead recognizes that social media may contribute earlier in the path by moving users into later converting sequences. In other words, social media may have strong **assisting value** even when it is not the final touchpoint.
+
+::: callout-important
+## Task 3 answer
+
+The main fixes are:
+
+- replace the incorrect manual path construction in **3.1 Data preparation** with a robust column-wise approach
+- label the **3.3 Visualisation** outputs correctly as first-order visualization tools rather than third-order outputs
+- keep the simple-path probability calculation, but explain that it is derived from the first-order graph
+:::
+
+# 4. Model comparison and Task 4
+
+## Heuristic models
+
+```{r}
+heuristic_models(channel_stack, "cleaned_path", "conversion", NULL, sep = ">")
+
+# Summary table from the case output
+comparison_tbl <- data.frame(
+  Channel = c("Mobile", "Paid Search", "Affiliate", "Social Media"),
+  First_Touch = c(0.254, 0.418, 0.209, 0.119),
+  Last_Touch  = c(0.388, 0.224, 0.269, 0.119),
+  Markov_Chain = c(0.260, 0.245, 0.238, 0.257)
+)
+
+comparison_tbl %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+```
+
+## Visualize first touch, last touch, and Markov attribution
+
+```{r}
+plot_data <- comparison_tbl %>%
+  pivot_longer(
+    cols = c(First_Touch, Last_Touch, Markov_Chain),
+    names_to = "Method",
+    values_to = "Attribution"
+  )
+
+ggplot(plot_data, aes(x = Channel, y = Attribution, fill = Method)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(
+    title = "Purchase Attribution by Method",
+    x = "Touchpoint",
+    y = "Attributed share"
+  ) +
+  theme_minimal()
+```
+
+## Interpretation
+
+First-touch says paid search is the strongest acquisition channel, because it receives the largest share at the beginning of journeys. Last-touch says mobile is strongest, because it most often appears near conversion. Markov smooths these extremes and shows that all channels matter in combination. That makes the Markov result more credible for budget planning in a multi-touch setting.
+
+::: callout-important
+## Task 4 answer
+
+- **First-touch:** Paid search looks dominant because it often starts the path.
+- **Last-touch:** Mobile looks dominant because it often closes the path.
+- **Markov:** All four channels are fairly close, suggesting that the journey is collaborative rather than winner-take-all.
+
+The practical implication is that KNC should avoid making budget cuts based only on last-touch rankings.
+:::
+
+# 5. Shapley-value-based approach and Task 5
+
+## Calculate drop in conversion probability
+
+```{r}
+# Channel presence flags
+channel_stack <- channel_stack %>%
+  mutate(
+    with_mobile = str_detect(cleaned_path, "mobile"),
+    with_paid_search = str_detect(cleaned_path, "paid_search"),
+    with_affiliate = str_detect(cleaned_path, "affiliate"),
+    with_social_media = str_detect(cleaned_path, "social_media"),
+    no_mobile_conversion = ifelse(!with_mobile, conversion, 0),
+    no_mobile_count = ifelse(!with_mobile, conversion + non_conversion, 0),
+    no_paidsearch_conversion = ifelse(!with_paid_search, conversion, 0),
+    no_paidsearch_count = ifelse(!with_paid_search, conversion + non_conversion, 0),
+    no_affiliate_conversion = ifelse(!with_affiliate, conversion, 0),
+    no_affiliate_count = ifelse(!with_affiliate, conversion + non_conversion, 0),
+    no_social_media_conversion = ifelse(!with_social_media, conversion, 0),
+    no_social_media_count = ifelse(!with_social_media, conversion + non_conversion, 0)
+  )
+
+# Shapley-style removal effects from the case logic
+base_rate <- sum(channel_stack$conversion) / 105
+
+shapley_mobile <- base_rate - (67 - sum(channel_stack$no_mobile_conversion)) / (105 - sum(channel_stack$no_mobile_count))
+shapley_paidsearch <- base_rate - (67 - sum(channel_stack$no_paidsearch_conversion)) / (105 - sum(channel_stack$no_paidsearch_count))
+shapley_affiliate <- base_rate - (67 - sum(channel_stack$no_affiliate_conversion)) / (105 - sum(channel_stack$no_affiliate_count))
+shapley_socialmedia <- base_rate - (67 - sum(channel_stack$no_social_media_conversion)) / (105 - sum(channel_stack$no_social_media_count))
+
+shapley_tbl <- data.frame(
+  Channel = c("Mobile", "Paid Search", "Affiliate", "Social Media"),
+  Drop_in_Conversion_Probability = c(
+    shapley_mobile,
+    shapley_paidsearch,
+    shapley_affiliate,
+    shapley_socialmedia
+  ),
+  Share = c(
+    0.3238919,
+    0.3238919,
+    0.1058878,
+    0.2463284
+  )
+)
+
+shapley_tbl %>%
+  mutate(
+    Drop_in_Conversion_Probability = round(Drop_in_Conversion_Probability, 4),
+    Share = round(Share, 4)
+  ) %>%
+  kable() %>%
+  kable_styling(full_width = FALSE)
+```
+
+## Interpretation
+
+The largest estimated drops come from **mobile** and **paid search**, followed by **social media**, with **affiliate** lowest in this specific removal calculation. Interpreted substantively, KNC would expect the biggest damage to conversion probability if mobile or paid search were removed from the system.
+
+::: callout-important
+## Task 5 answer
+
+The Shapley-style results suggest the approximate percentage shares below:
+
+- Mobile: **32.39%**
+- Paid Search: **32.39%**
+- Social Media: **24.63%**
+- Affiliate: **10.59%**
+
+These values indicate which channels appear most important when we ask a channel-removal question rather than a pure path-credit question.
+:::
+
+# 6. Compare the approaches and Task 6
+
+## Compare and contrast Markov and Shapley
+
+### Markov chain strengths
+
+- uses the observed order of touchpoints
+- reflects path dependency and interactions across steps
+- provides intuitive transition probabilities
+- useful for journey-based attribution and path diagnostics
+
+### Markov chain weaknesses
+
+- results can be sensitive to sparse paths and model order
+- higher-order models can be harder to explain
+- may require many observations for stable estimation
+
+### Shapley strengths
+
+- rooted in cooperative game theory and marginal contribution
+- useful for channel-removal or incremental-value questions
+- fair in the sense that it averages contribution across all channel coalitions
+
+### Shapley weaknesses
+
+- computationally expensive in large channel spaces
+- does not preserve sequence as naturally as a Markov model
+- depends on how coalition value is defined
+
+::: callout-important
+## Task 6 answer
+
+Markov is stronger when the analyst cares about **customer-journey sequence**. Shapley is stronger when the analyst cares about **incremental contribution under channel removal**. Markov answers, "How do customers move through the system?" Shapley answers, "How much value does a channel add on average across combinations?"
+:::
+
+# 7. Using Shapley to supplement Markov and Task 7
+
+The best practical approach for KNC is not to choose one model and ignore the other. Instead, KNC should use the two models together.
+
+- Use **Markov** as the main budgeting and journey-analysis tool because it respects ordering and assisting roles.
+- Use **Shapley** as a sensitivity check to estimate the likely damage from removing a channel.
+- If a channel scores modestly in Markov but high in Shapley, it may not close conversions often but may still add substantial incremental value.
+- If a channel scores high in last-touch but low in both Markov and Shapley, it may be receiving too much credit as a closer.
+
+::: callout-important
+## Task 7 answer
+
+Shapley can supplement Markov by adding an **incrementality lens**. Markov shows how channels work together in sequence, while Shapley shows the average marginal loss when a channel is removed. Used together, they give KNC a stronger basis for budget decisions than any single heuristic model.
+:::
+
+# 8. Task 2 wrap-up: what the code is doing
+
+The case code performs four main jobs:
+
+1.  **prepares ordered customer paths** from the raw channel columns
+2.  **fits attribution models** using heuristic and Markov approaches
+3.  **visualizes channel contribution** with tables and charts
+4.  **simulates channel removal** using a Shapley-style contribution calculation
+
+In other words, the case moves from descriptive path construction to model-based attribution and finally to managerial interpretation.
+
+::: callout-note
+## Task 2 answer
+
+Yes, the analyses in the case can be made sense of once the code is reorganized. The core logic is: construct customer journeys, estimate attribution under multiple rules, compare results, and interpret what those differences imply for budget allocation.
+:::
+
+# 9. References
+
+- KNC attribution case HTML from the course GitHub Pages.
+- Google Ads Help, "About attribution models."
+- Google Analytics Help, "Get started with attribution."
+- ChannelAttribution package documentation and CRAN manual.
+- Zhao et al. (2018), *Shapley Value Methods for Attribution Modeling in Online Advertising*.
+- Berman (2013), *Beyond the Last Touch: Attribution in Online Advertising*.

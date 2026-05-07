@@ -1,0 +1,509 @@
+---
+title: "Marketing Automation with Quarto"
+subtitle: "Reflection on Dashboards, Automation, and Reproducible Reporting"
+author: "Lucynda Young"
+institute: "Cal Poly Pomona"
+date: "`r Sys.Date()`"
+format:
+  revealjs:
+    theme: dark
+    width: 1600
+    height: 900
+    footer: "M12 Reflection · Marketing Automation with Quarto"
+    transition: zoom
+    transition-speed: default
+    background-transition: fade
+    incremental: false
+    toc: true
+    toc-depth: 1
+    slide-number: true
+    scrollable: true
+    smaller: true
+    code-fold: false
+    code-overflow: wrap
+    number-sections: false
+    embed-resources: true
+    css: styles.css
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+---
+
+# Marketing Automation with Quarto {.title-slide data-transition="zoom" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 55%, #6f4e16 100%)"}
+
+## Reflection Presentation
+
+**Audience-centered reflection on dashboards, automation, dynamic reporting, and reproducible analytics.**
+
+::: notes
+Open by explaining that this presentation is designed as a true slide deck, not a written report. The prompts are included so the audience understands the purpose of each reflection.
+:::
+
+# Presentation Roadmap {data-transition="fade"}
+
+::: {.fragment .fade-in}
+**1.** Quarto-based interactive dashboards
+:::
+
+::: {.fragment .fade-in}
+**2.** Parameterized reporting
+:::
+
+::: {.fragment .fade-in}
+**3.** Avoiding dashboard fatigue
+:::
+
+::: {.fragment .fade-in}
+**4.** Challenges learning the tools
+:::
+
+::: {.fragment .fade-in}
+**5.** Quarto, reproducibility, and AI
+:::
+
+# 1 · Interactive Dashboards {data-transition="convex" data-background-gradient="linear-gradient(135deg, #090909 0%, #17120a 70%, #49340e 100%)"}
+
+## Prompt
+
+**In Step 1, Dr. Albert Rapp showed you how to create an interactive dashboard with Quarto. What did you like about the Quarto-based interactive dashboard compared with other options introduced in this class previously?**
+
+## What I Liked Most {data-transition="slide"}
+
+::: {.big-quote}
+Quarto turns a dashboard from a collection of charts into a reproducible communication product.
+:::
+
+::: {.fragment .fade-up}
+It combines **code, visuals, explanation, and publishing** in one workflow.
+:::
+
+::: {.fragment .fade-up}
+That makes it stronger than a dashboard that only displays metrics without context.
+:::
+
+## Quarto vs. Traditional Dashboards {data-transition="fade"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Traditional Dashboard
+
+::: {.fragment .fade-in}
+- Good for monitoring
+- Often KPI-heavy
+- Can feel disconnected from the “why”
+- Usually requires the viewer to interpret the story
+:::
+:::
+
+::: {.column width="50%"}
+### Quarto Dashboard
+
+::: {.fragment .fade-in}
+- Good for explaining
+- Combines narrative with analysis
+- Easier to reproduce and update
+- Helps the viewer understand the business meaning
+:::
+:::
+
+::::
+
+## Why It Matters in Marketing {data-transition="zoom"}
+
+::: {.fragment .fade-up}
+Marketing data changes constantly: campaigns, channels, customers, costs, conversions, and engagement.
+:::
+
+::: {.fragment .fade-up}
+A Quarto dashboard can be re-rendered when the data changes, instead of manually rebuilt.
+:::
+
+::: {.fragment .fade-up}
+That supports better decision-making because the report is both **current** and **traceable**.
+:::
+
+## Example: KPI Workflow {data-transition="fade"}
+
+```{r}
+library(tidyverse)
+
+marketing_kpis <- tibble(
+  channel = c("Paid Search", "Email", "Organic Social", "Referral"),
+  conversions = c(420, 310, 185, 125),
+  cost = c(12500, 3200, 2100, 900)
+) |>
+  mutate(cpa = round(cost / conversions, 2))
+
+marketing_kpis
+```
+
+::: notes
+Emphasize that Quarto is not just about the table or chart. The value is that the calculation, explanation, and output are connected.
+:::
+
+# 2 · Parameterized Reporting {data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #181410 60%, #4d1f13 100%)"}
+
+## Prompt
+
+**In Step 2, you learned how to set parameterized reporting in Quarto. Explain what parameterized reporting is and how it works. Do you see the application of it in your workflow in your current or past jobs, or future jobs?**
+
+## What Parameterized Reporting Means {data-transition="slide"}
+
+::: {.big-quote}
+Parameterized reporting means one report template can generate many customized reports.
+:::
+
+::: {.fragment .fade-up}
+Instead of copying the same report over and over, the analyst changes inputs such as:
+:::
+
+::: {.fragment .fade-up}
+**Region · Channel · Campaign · Date range · Product category · Marketplace**
+:::
+
+## How It Works {data-transition="fade"}
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### Report Template
+
+- Fixed structure
+- Reusable code
+- Consistent visual design
+- Standard business questions
+:::
+
+::: {.column width="55%"}
+### Parameter Values
+
+- Filter the data
+- Update charts
+- Change labels
+- Customize the final message
+:::
+
+::::
+
+## Example Parameter Logic {data-transition="zoom"}
+
+```{r}
+params <- list(
+  region = "West",
+  channel = "Email"
+)
+
+campaign_data <- tibble(
+  region = c("West", "West", "East", "East"),
+  channel = c("Email", "Paid Search", "Email", "Paid Search"),
+  conversions = c(310, 420, 260, 390)
+)
+
+campaign_data |>
+  filter(region == params$region, channel == params$channel)
+```
+
+## Workflow Application {data-transition="slide"}
+
+For a digital marketing or eCommerce workflow, parameterized reporting could support recurring reports across:
+
+::: {.fragment .fade-in}
+**Amazon**
+:::
+
+::: {.fragment .fade-in}
+**Walmart**
+:::
+
+::: {.fragment .fade-in}
+**eBay**
+:::
+
+::: {.fragment .fade-in}
+**Houzz**
+:::
+
+::: {.fragment .fade-in}
+**Wayfair**
+:::
+
+::: {.fragment .fade-in}
+**Brand website**
+:::
+
+## Why It Saves Time {data-transition="fade"}
+
+::: {.fragment .fade-up}
+A single report template can produce multiple versions for different audiences.
+:::
+
+::: {.fragment .fade-up}
+This reduces manual editing and improves consistency.
+:::
+
+::: {.fragment .fade-up}
+It also lowers the risk of mistakes caused by copying, pasting, and reformatting old reports.
+:::
+
+# 3 · Avoiding Dashboard Fatigue {data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 65%, #3d2c10 100%)"}
+
+## Prompt
+
+**In Step 3, Sean Nguyen talks about how to avoid dashboard fatigue for users in his talk, "Beyond Dashboards: Dynamic Data Storytelling with Python, R, and Quarto Emails." What are his suggestions for ways in which you can make your dashboard effective and help your colleagues pay attention to your report?**
+
+## The Problem {data-transition="zoom"}
+
+::: {.big-quote}
+Dashboard fatigue happens when users see too much data and not enough meaning.
+:::
+
+::: {.fragment .fade-up}
+Too many charts can make people stop paying attention.
+:::
+
+::: {.fragment .fade-up}
+The audience should not have to hunt for the insight.
+:::
+
+## Better Approach: Dynamic Data Storytelling {data-transition="fade"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Less Effective
+
+::: {.fragment .fade-in}
+- Many metrics at once
+- No clear priority
+- Charts without interpretation
+- Users must search for meaning
+:::
+:::
+
+::: {.column width="50%"}
+### More Effective
+
+::: {.fragment .fade-in}
+- Clear headline insight
+- Focused visuals
+- Explanation of what changed
+- Suggested action or next step
+:::
+:::
+
+::::
+
+## How to Help Colleagues Pay Attention {data-transition="slide"}
+
+::: {.fragment .fade-up}
+Lead with the most important takeaway.
+:::
+
+::: {.fragment .fade-up}
+Use plain business language, not just technical metrics.
+:::
+
+::: {.fragment .fade-up}
+Deliver focused updates instead of expecting people to check dashboards constantly.
+:::
+
+::: {.fragment .fade-up}
+Use automation to send the right information at the right time.
+:::
+
+## Dashboard Design Rule {data-transition="zoom"}
+
+::: {.big-quote}
+A good dashboard does not simply answer, “What happened?”  
+It helps the audience decide, “What should we do next?”
+:::
+
+::: notes
+This is a strong transition point. Connect it to marketing teams where colleagues may not have time to explore dashboards but still need fast, confident decisions.
+:::
+
+# 4 · Challenges Learning the Tools {data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #111111 60%, #5a3b11 100%)"}
+
+## Prompt
+
+**Programming is all about increasing efficiency and reducing repetition. Share some of the challenges you might have in learning the various tools in the Module.**
+
+## Main Challenge {data-transition="fade"}
+
+::: {.big-quote}
+The tools are powerful because they connect many skills, but that also makes the learning curve steep.
+:::
+
+::: {.fragment .fade-up}
+Quarto requires attention to **YAML, markdown, R code, file structure, rendering, HTML output, and design**.
+:::
+
+## Specific Challenges {data-transition="slide"}
+
+::: {.fragment .fade-in}
+YAML indentation and formatting errors
+:::
+
+::: {.fragment .fade-in}
+Package installation and library conflicts
+:::
+
+::: {.fragment .fade-in}
+Working directory and file path issues
+:::
+
+::: {.fragment .fade-in}
+Choosing the right output format
+:::
+
+::: {.fragment .fade-in}
+Balancing code, design, and written explanation
+:::
+
+## How I Can Improve {data-transition="zoom"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Technical Habits
+
+::: {.fragment .fade-in}
+- Use organized project folders
+- Render early and often
+- Save reusable templates
+- Comment code clearly
+:::
+:::
+
+::: {.column width="50%"}
+### Communication Habits
+
+::: {.fragment .fade-in}
+- Start with the audience
+- Reduce clutter
+- Explain the “so what”
+- Match format to purpose
+:::
+:::
+
+::::
+
+# 5 · Reproducibility and AI {data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 70%, #6f4e16 100%)"}
+
+## Prompt
+
+**Share your thoughts about the learning experience you have had about Quarto, literate programming, and reproducible reports. Also, share your plan, if any, for using the knowledge in the era of AI.**
+
+## What I Learned {data-transition="fade"}
+
+::: {.fragment .fade-up}
+Literate programming connects the analysis and the explanation.
+:::
+
+::: {.fragment .fade-up}
+This makes the report easier to understand, check, and update.
+:::
+
+::: {.fragment .fade-up}
+For analytics work, reproducibility builds trust.
+:::
+
+## Why Reproducible Reports Matter {data-transition="slide"}
+
+::: {.big-quote}
+If a report cannot be recreated, it is harder to trust.
+:::
+
+::: {.fragment .fade-up}
+Quarto documents the path from data to decision.
+:::
+
+::: {.fragment .fade-up}
+That is valuable when teams need to explain results to managers, clients, or stakeholders.
+:::
+
+## Quarto in the Era of AI {data-transition="zoom"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### AI Can Help With
+
+::: {.fragment .fade-in}
+- Drafting code
+- Explaining errors
+- Summarizing results
+- Improving wording
+:::
+:::
+
+::: {.column width="50%"}
+### Quarto Helps With
+
+::: {.fragment .fade-in}
+- Verification
+- Transparency
+- Reproducibility
+- Professional delivery
+:::
+:::
+
+::::
+
+## My Plan {data-transition="fade"}
+
+::: {.fragment .fade-up}
+Use Quarto templates for recurring marketing reports.
+:::
+
+::: {.fragment .fade-up}
+Use AI for support, but verify outputs through reproducible workflows.
+:::
+
+::: {.fragment .fade-up}
+Build reports that connect data, insight, and action.
+:::
+
+# Final Reflection {data-transition="zoom" data-background-gradient="linear-gradient(135deg, #050505 0%, #17120a 55%, #6f4e16 100%)"}
+
+## Key Takeaways
+
+:::: {.columns}
+
+::: {.column width="33%"}
+### Quarto
+
+Combines code, visuals, and narrative in one professional workflow.
+:::
+
+::: {.column width="33%"}
+### Automation
+
+Reduces repetition through reusable templates and parameterized reports.
+:::
+
+::: {.column width="33%"}
+### Storytelling
+
+Helps people understand what changed and what action should come next.
+:::
+
+::::
+
+## Closing Statement {data-transition="fade"}
+
+::: {.big-quote}
+Quarto helps turn raw data into communication that is easier to update, easier to trust, and easier to act on.
+:::
+
+## References {data-transition="slide"}
+
+- Rapp, A. Interactive dashboard instruction in the Quarto module.
+- Nguyen, S. *Beyond Dashboards: Dynamic Data Storytelling with Python, R, and Quarto Emails*.
+- Course module materials: Marketing Automation with Quarto.
+
+::: notes
+End by emphasizing that the strongest reports are both technical and human-centered: accurate, reproducible, and easy for the audience to use.
+:::
