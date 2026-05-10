@@ -1,0 +1,242 @@
+---
+title: "Marketing Mix Modeling: Turning Media Spend Into Measurable Traffic Growth"
+author: "Lucynda Young"
+format:
+  revealjs:
+    theme: black
+    slide-number: true
+    chalkboard: false
+    transition: fade
+    background-transition: fade
+    incremental: true
+    toc: false
+    controls: true
+    progress: true
+    center: true
+    smaller: false
+    preview-links: auto
+    code-fold: false
+    embed-resources: true
+execute:
+  warning: false
+  message: false
+---
+
+# Marketing Mix Modeling
+## Turning Media Spend Into Measurable Traffic Growth
+
+### Lucynda Young
+Master of Science in Business Administration  
+Digital Marketing Analytics
+
+---
+
+# Business Problem
+
+## The Challenge
+
+Companies often struggle to determine:
+
+- Which marketing channels drive the most traffic
+- Whether media budgets are being allocated efficiently
+- How to justify marketing investments using data
+- Which channels should receive increased or reduced funding
+
+### Goal
+Use marketing analytics to identify the strongest-performing channels and support better budget allocation decisions.
+
+---
+
+# Project Objective
+
+## Research Objectives
+
+- Evaluate the effectiveness of different marketing channels
+- Measure the relationship between ad spend and website traffic
+- Identify high-performing marketing investments
+- Provide data-driven recommendations for media allocation
+
+---
+
+# Data Overview
+
+## Dataset Components
+
+The project analyzed:
+
+- Google Adwords spend
+- Facebook advertising spend
+- TV advertising spend
+- Radio advertising spend
+- Website traffic performance
+
+## Key KPI
+
+### Website Traffic
+Used as the primary dependent variable to evaluate marketing channel performance.
+
+---
+
+# Analytical Approach
+
+## Methods Used
+
+### Quantitative Techniques
+
+- Exploratory Data Analysis (EDA)
+- Correlation Analysis
+- Linear Regression Modeling
+- Channel Performance Comparison
+- ROI-Oriented Interpretation
+
+## Tools Used
+
+- R Programming
+- Quarto
+- RevealJS
+- Data Visualization Techniques
+
+---
+
+# Marketing Mix Modeling
+
+## Why Marketing Mix Modeling?
+
+Marketing Mix Modeling helps organizations:
+
+- Quantify channel contribution
+- Measure marketing effectiveness
+- Improve budget efficiency
+- Support strategic decision-making
+- Reduce reliance on assumptions
+
+### Key Benefit
+Transforms marketing performance into measurable business insights.
+
+---
+
+# Key Findings
+
+## Channel Performance Results
+
+### Strongest Drivers of Website Traffic
+
+1. Google Adwords
+2. Facebook Advertising
+
+### Lower Impact Channels
+
+- TV Advertising
+- Radio Advertising
+
+## Strategic Insight
+
+Digital channels demonstrated stronger relationships with website traffic compared to traditional advertising channels.
+
+---
+
+# Regression Insights
+
+## Model Interpretation
+
+The regression model revealed:
+
+- Positive relationships between digital ad spend and traffic
+- Higher predictive value from paid digital channels
+- Evidence that some channels generated diminishing returns
+
+## Business Implication
+
+Not all marketing spend contributes equally to performance.
+
+---
+
+# Strategic Recommendations
+
+## Recommended Actions
+
+### Increase Investment In:
+
+- Google Adwords
+- Facebook Advertising
+
+### Reevaluate:
+
+- TV Advertising
+- Radio Advertising
+
+## Important Consideration
+
+Optimal budget allocation may change depending on business goals such as:
+
+- Traffic growth
+- Sales generation
+- Profitability
+- Brand awareness
+- Customer retention
+
+---
+
+# Expected Business Impact
+
+## Potential Outcomes
+
+- Improved marketing ROI
+- Better visibility into channel effectiveness
+- More efficient media allocation
+- Stronger data-driven decision-making
+- Increased accountability for marketing investments
+
+---
+
+# Why This Project Matters
+
+## Marketing Analytics Value
+
+This project demonstrates the ability to:
+
+- Translate raw marketing data into actionable insights
+- Use quantitative analysis to support business decisions
+- Communicate analytics findings to stakeholders
+- Connect marketing strategy with measurable outcomes
+
+---
+
+# Technical Skills Demonstrated
+
+## Analytics Skills
+
+- Marketing Mix Modeling
+- Regression Analysis
+- Data Visualization
+- Marketing Performance Measurement
+- Business Interpretation
+- Executive Communication
+
+## Technical Tools
+
+- R
+- Quarto
+- RevealJS
+- Statistical Analysis
+
+---
+
+# Final Takeaway
+
+## Key Insight
+
+Data-driven marketing decisions allow organizations to allocate budgets more effectively and improve overall campaign performance.
+
+### Final Recommendation
+
+Organizations should continuously evaluate marketing channel effectiveness using analytics rather than relying solely on assumptions or historical spending habits.
+
+---
+
+# Thank You
+
+## Questions?
+
+### Lucynda Young
+Marketing Analytics Portfolio

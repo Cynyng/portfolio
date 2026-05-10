@@ -1,0 +1,468 @@
+---
+title: "Portfolio Proposal"
+author: "Lucynda Young"
+institute: "IBM 6350, Cal Poly Pomona"
+date: "now"
+format: 
+  revealjs:
+    theme: serif
+    width: 1600
+    height: 900
+    footer: Growth Marketing Career Path
+    transition: slide
+    transition-speed: default
+    incremental: true
+    toc: true
+    toc-depth: 1
+    slide-number: true
+    scrollable: true
+    smaller: true
+    code-fold: false
+    code-overflow: wrap
+    number-sections: false
+    embed-resources: true
+editor: visual
+execute: 
+  echo: true
+  freeze: auto
+---
+
+# Portfolio Website Project Proposal
+
+## Career Objective
+
+I am currently an eCommerce Growth Marketing Manager pursuing a Master of Science in Business Administration with a concentration in Digital Marketing Analytics. My career goal is to become a Director of Growth Marketing, leading data-driven strategies that optimize customer acquisition, engagement, and revenue growth.
+
+This portfolio demonstrates my ability to apply digital marketing and analytics techniques to solve real business problems and support strategic decision-making.
+
+#### Home Page
+
+The Home Page will introduce my professional background, career goals, and technical skill set.
+
+**Purpose:**\
+To position myself as a data-driven marketing professional capable of driving business growth through analytics and strategy.
+
+**Key Components:** - Professional summary\
+- Career objective\
+- Overview of portfolio projects\
+- Core skills in marketing analytics and growth strategy
+
+# Digital Marketing Projects Page
+
+This page includes projects focused on marketing strategy, campaign performance, and growth initiatives.
+
+------------------------------------------------------------------------
+
+## **Project 1**
+
+**Project Title**
+
+TRI Project - Behind the scenes with Google Analytics
+
+**Data and Source**
+
+This project is based on a combination of:
+
+- Secondary research on emerging information technology trends (2025)
+
+- Industry reports and case-based observations
+
+- Qualitative insights from technology adoption in digital platforms
+
+The dataset includes:
+
+- Technology trend categories (AI, automation, data systems)
+
+- Marketing applications of these technologies
+
+- Observed impacts on customer engagement and digital experiences
+
+**Managerial Problem**
+
+Marketing leaders must continuously adapt to rapidly evolving technologies but often lack clarity on how emerging technologies directly impact marketing performance, customer engagement, and competitive advantage.
+
+Without a clear understanding of these trends, organizations risk falling behind in digital transformation and losing market share.
+
+Target Audience
+
+- Chief Marketing Officer (CMO)
+
+- Director of Growth Marketing
+
+- Digital Strategy Teams
+
+**Research Questions / Objectives**
+
+- How do emerging technology trends influence digital marketing strategies?
+
+- Which technologies provide the greatest opportunity for improving customer engagement?
+
+- How can businesses integrate new technologies into their marketing efforts to drive growth?
+
+**Expected Impact**
+
+This project provides strategic insights that help marketing leaders:
+
+- Identify high-impact technologies to adopt
+
+- Improve customer engagement through innovation
+
+- Strengthen competitive positioning in digital markets
+
+**Methods**
+
+- Qualitative analysis of technology trends
+
+- Case study evaluation
+
+- Comparative analysis of technology applications in marketing
+
+- Strategic framework development
+
+------------------------------------------------------------------------
+
+## Project 2
+
+**Project Title**
+
+Digital Marketing Strategy and Growth Plan for a Nonprofit Organization (TRI)
+
+**Data and Source**
+
+This project is based on a comprehensive strategic analysis of the Trauma Resource Institute (TRI), utilizing:
+
+- Organizational information (mission, services, target markets)
+
+- Competitive analysis of similar organizations
+
+- Observed digital marketing channels (website, social media, partnerships)
+
+- Industry best practices in nonprofit and digital marketing
+
+The project incorporates qualitative data and strategic evaluation rather than raw quantitative datasets.
+
+**Managerial Problem**
+
+TRI aims to expand its reach, increase engagement, and grow participation in its training programs but lacks a fully optimized digital marketing strategy to effectively scale its impact.
+
+Without a structured growth strategy, TRI may experience limited visibility, inefficient marketing efforts, and missed opportunities for audience engagement and conversion.
+
+**Target Audience**
+
+- Director of Growth Marketing
+
+- Marketing Strategy Teams
+
+- Nonprofit Leadership / Executive Team
+
+**Research Questions / Objectives**
+
+- How can TRI improve its digital presence to increase engagement and reach?
+
+- What marketing strategies can drive higher conversions and program participation?
+
+- How can TRI differentiate itself from competitors in the trauma-informed care space?
+
+**Expected Impact**
+
+This project provides actionable recommendations that enable TRI to:
+
+- Increase website traffic and user engagement
+
+- Improve conversion rates through optimized user experience
+
+- Expand brand awareness through innovative marketing strategies
+
+- Strengthen its competitive positioning in the nonprofit sector
+
+**Methods**
+
+- SWOT analysis
+
+- Competitive analysis
+
+- Target audience segmentation
+
+- Digital marketing strategy development
+
+- Conversion optimization planning
+
+  ------------------------------------------------------------------------
+
+  ## Project 3
+
+  **Project Title**
+
+  Customer Persona Development and Targeting Strategy for Beauty Retail (Ulta)
+
+  **Data and Source**
+
+  This project utilizes a combination of secondary and primary data sources to develop a data-informed customer persona:
+
+  - Ulta Consumer Insights Report (2025) – demographic trends, purchase frequency, and loyalty behavior
+
+  - Statista Beauty & Personal Care Data – U.S. consumer demographics, income levels, and purchasing patterns
+
+  - Primary survey data (n = 150 respondents) – insights on shopping behavior, social media influence, and brand preferences
+
+  Additional behavioral and lifestyle attributes were synthesized using AI-assisted tools to enhance segmentation depth and create a realistic, actionable persona.
+
+  **Managerial Problem**
+
+  Beauty retailers operate in a highly competitive and saturated market where generic marketing strategies fail to effectively engage diverse customer segments.
+
+  Without clearly defined customer personas, marketing teams struggle to:
+
+  - Personalize messaging
+
+  - Select effective marketing channels
+
+  - Optimize campaigns for conversion and retention
+
+  **Target Audience**
+
+  - Director of Growth Marketing
+
+  - Brand and Marketing Strategy Teams
+
+  - CRM and Personalization Teams
+
+  **Research Questions / Objectives**
+
+  - What are the key demographic and behavioral characteristics of a core Ulta customer segment?
+
+  - What motivates purchasing decisions in the beauty and skincare category?
+
+  - Which marketing channels and strategies are most effective for engaging this target audience?
+
+  **Expected Impact**
+
+  This project enables marketing teams to:
+
+  - Develop more targeted and personalized marketing campaigns
+
+  - Improve customer acquisition and retention strategies
+
+  - Increase engagement through channel-specific content
+
+  - Enhance conversion rates through better alignment with customer needs and preferences
+
+  Methods
+
+  - Customer segmentation analysis
+
+  - Persona development using multi-source data synthesis
+
+  - Behavioral and psychographic profiling
+
+  - Application of marketing strategy frameworks for targeting and positioning
+
+  ------------------------------------------------------------------------
+
+# Marketing Analytics Projects Page
+
+------------------------------------------------------------------------
+
+## Project 1
+
+**Project Title**
+
+Website Traffic and User Behavior Analysis Using Google Analytics 4 using Google Demo Data
+
+**Data and Source**
+
+Google Analytics 4 dataset including users, sessions, traffic sources, engagement metrics, and conversion events.
+
+**Managerial Problem**
+
+Lack of clarity on which channels drive high-quality traffic and conversions.
+
+**Target Audience**
+
+Marketing Director and Growth Marketing Manager.
+
+**Research Questions / Objectives**
+
+- Which channels generate the highest engagement and conversions?
+- What user behaviors are linked to higher conversion rates?
+
+**Expected Impact**
+
+Improves marketing ROI by optimizing channel performance.
+
+**Methods**
+
+- Descriptive analytics
+- Traffic segmentation
+- Engagement analysis
+
+------------------------------------------------------------------------
+
+## Project 2
+
+**Project Title**
+
+Predictive Modeling and Revenue Optimization for eCommerce Product Performance
+
+**Data and Source**
+
+This project utilizes a structured dataset of eCommerce product performance, including variables related to product characteristics and sales outcomes.
+
+The dataset includes:
+
+- Product attributes (price, category, ratings, reviews)
+
+- Sales performance metrics (revenue, units sold)
+
+- Customer engagement indicators
+
+**Sample Size:** Approximately 1,000+ product-level observations (based on dataset structure)
+
+**Data Preparation:**
+
+- Missing values were identified and handled through filtering and imputation where appropriate
+
+- Inconsistent variable naming was standardized to ensure accurate analysis
+
+- Outliers in pricing and revenue were assessed and treated using statistical thresholds
+
+**Managerial Problem**
+
+eCommerce businesses often struggle to understand which product attributes drive revenue performance. Without predictive insights, marketing and product teams cannot effectively prioritize products, optimize pricing, or allocate promotional resources.
+
+This leads to inefficient decision-making and missed revenue opportunities.
+
+**Target Audience**
+
+- Director of Growth Marketing
+
+- eCommerce Strategy Teams
+
+- Product and Merchandising Managers
+
+**Research Questions / Objectives**
+
+- Which product features have the greatest impact on revenue?
+
+- How accurately can revenue be predicted based on product attributes?
+
+- How can predictive insights be used to optimize marketing and pricing strategies?
+
+**Expected Impact**
+
+This project provides data-driven insights that enable businesses to:
+
+- Identify high-performing product characteristics
+
+- Improve pricing and promotional strategies
+
+- Optimize product positioning and marketing focus
+
+- Increase overall revenue through predictive decision-making
+
+**Methods**
+
+- Linear regression modeling
+
+- Data cleaning and preprocessing
+
+- Feature selection and variable analysis
+
+- Model evaluation (R², error metrics)
+
+- Data visualization for insight communication
+
+------------------------------------------------------------------------
+
+## Project 3
+
+**Project Title**
+
+G4A Baseline Project
+
+**Data and Source**
+
+The dataset includes:
+
+- **User metrics:** 1,000+ active users and \~850+ new users
+
+- **Traffic acquisition:** Organic search, direct, referral, social, and paid channels
+
+- **Engagement metrics:** Sessions, engagement rate, average engagement time
+
+- **Cohort data:** Day 1 and Day 7 retention rates
+
+- **Event tracking:** Page views (3,300+), sessions (1,400+), clicks, and form submissions
+
+- **SEO performance:** Keyword clicks, impressions, CTR, and average search position
+
+**Managerial Problem**
+
+The organization is experiencing **strong user acquisition but weak retention and zero measurable conversions**, making it difficult to evaluate marketing effectiveness and ROI.
+
+Without clear visibility into user behavior, engagement drivers, and conversion pathways, marketing teams cannot:
+
+- Optimize acquisition channels
+
+- Improve user retention
+
+- Drive meaningful business outcomes (registrations, purchases, or sign-ups)
+
+**Target Audience**
+
+- Director of Growth Marketing
+
+- Digital Marketing and Analytics Teams
+
+- Executive Leadership / Stakeholders
+
+**Research Questions / Objectives**
+
+- What channels are driving the most user acquisition and engagement?
+
+- Where are users dropping off in the engagement and conversion funnel?
+
+- How effective is the current SEO strategy in attracting and converting users?
+
+- What factors contribute to low retention and engagement across user cohorts?
+
+**Expected Impact**
+
+This analysis provides data-driven recommendations to:
+
+- Improve user retention through lifecycle marketing strategies
+
+- Optimize high-performing acquisition channels (e.g., organic search)
+
+- Increase conversion rates through better funnel design and CTA placement
+
+- Strengthen SEO strategy to capture and convert high-intent users
+
+- Enable accurate tracking of revenue and key conversion events
+
+**Methods**
+
+- **Descriptive analytics** (user trends, traffic patterns, engagement metrics)
+
+- **Cohort analysis** (Day 1 and Day 7 retention tracking)
+
+- **Channel performance analysis** (traffic source comparison)
+
+- **SEO analysis** (CTR, impressions, keyword performance)
+
+- **Funnel and event analysis** (user journey, form completion rates)
+
+- **Segmentation analysis** (geographic, demographic, and behavioral patterns)
+
+------------------------------------------------------------------------
+
+# Resume
+
+The Resume page will include: Professional experience\
+- Education\
+- Technical skills\
+- Certifications and achievements
+
+It will highlight my qualifications for leadership roles in growth marketing.
+
+------------------------------------------------------------------------
