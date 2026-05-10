@@ -1,0 +1,43 @@
+---
+title: "Website Analytics"
+subtitle: "GA4 measurement plan for this portfolio website"
+---
+
+::: {.section}
+## GA4 Analytics Page Plan
+
+This page will analyze the traffic data collected from the portfolio website once GA4 is connected. It will show how visitors find the site, what pages they view, and which project sections generate the most engagement.
+
+<div class="card-grid">
+<div class="card">
+<h3>Acquisition</h3>
+<p>Evaluate traffic sources such as direct, organic search, referral, LinkedIn, and GitHub traffic.</p>
+<div class="tag-row"><span class="tag">Source / Medium</span><span class="tag">Channels</span></div>
+</div>
+
+<div class="card">
+<h3>Engagement</h3>
+<p>Measure page views, engagement time, scrolls, outbound clicks, and project page interest.</p>
+<div class="tag-row"><span class="tag">Engagement Rate</span><span class="tag">Events</span></div>
+</div>
+
+<div class="card">
+<h3>Optimization</h3>
+<p>Use website behavior data to improve navigation, project placement, calls to action, and recruiter experience.</p>
+<div class="tag-row"><span class="tag">UX Insights</span><span class="tag">Conversion Paths</span></div>
+</div>
+</div>
+:::
+
+::: {.section .callout}
+## Recommended KPIs
+
+- Total users  
+- New users  
+- Engagement rate  
+- Average engagement time  
+- Most viewed project pages  
+- Resume clicks  
+- LinkedIn / GitHub outbound clicks  
+- RevealJS presentation views
+:::

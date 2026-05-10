@@ -1,0 +1,70 @@
+---
+title: "Lucynda Young"
+subtitle: "Growth Marketing Manager | Digital Marketing Analytics | Data-Driven Strategy"
+---
+
+::: {.hero}
+::: {.hero-copy}
+<div class="eyebrow">Marketing Analytics Portfolio</div>
+
+# Turning marketing data into <span class="gradient-text">growth decisions</span>
+
+I’m Lucynda Young, a Growth Marketing Manager and Digital Marketing Analytics graduate student focused on connecting campaign performance, customer behavior, and business strategy through analytics.
+
+<div class="button-row">
+<a class="btn-luxe btn-primary" href="marketing-analytics.html">View Analytics Projects</a>
+<a class="btn-luxe" href="digital-marketing.html">Explore Digital Marketing Work</a>
+<a class="btn-luxe" href="resume.html">View Resume</a>
+</div>
+:::
+
+::: {.headshot-wrap}
+![](headshot.png)
+:::
+:::
+
+::: {.section}
+## Portfolio Focus
+
+This website showcases applied projects across digital marketing, marketing analytics, web analytics, and executive presentation design. Each project is structured around a business problem, data source, analytical method, insight, and recommended business action.
+
+<div class="stat-strip">
+<div class="stat"><strong>R + Quarto</strong><span>Reproducible analytics reporting</span></div>
+<div class="stat"><strong>GA4</strong><span>Website traffic and behavior analysis</span></div>
+<div class="stat"><strong>SQL</strong><span>Data querying and KPI development</span></div>
+<div class="stat"><strong>MMM</strong><span>Marketing mix and budget insights</span></div>
+</div>
+:::
+
+::: {.section}
+## Featured Work
+
+<div class="card-grid">
+<div class="card">
+<h3>Marketing Mix Modeling</h3>
+<p>Evaluates how media channels influence website traffic and supports smarter budget allocation decisions.</p>
+<div class="tag-row"><span class="tag">Regression</span><span class="tag">MMM</span><span class="tag">ROI</span></div>
+<p><a class="project-link" href="marketing-analytics.html">View project →</a></p>
+</div>
+
+<div class="card">
+<h3>Attribution Modeling</h3>
+<p>Analyzes customer touchpoints and conversion paths to improve channel credit and performance measurement.</p>
+<div class="tag-row"><span class="tag">Attribution</span><span class="tag">Funnel</span><span class="tag">Conversion</span></div>
+<p><a class="project-link" href="marketing-analytics.html">View project →</a></p>
+</div>
+
+<div class="card">
+<h3>Interactive RevealJS Presentation</h3>
+<p>Executive-style presentation that turns marketing mix analysis into a clear stakeholder narrative.</p>
+<div class="tag-row"><span class="tag">RevealJS</span><span class="tag">Storytelling</span><span class="tag">Quarto</span></div>
+<p><a class="project-link" href="presentation.html">View presentation page →</a></p>
+</div>
+</div>
+:::
+
+::: {.section .callout}
+## Professional Positioning
+
+My portfolio is designed for marketing analytics, growth marketing, performance marketing, and digital strategy roles. It demonstrates my ability to translate data into decisions that support campaign optimization, customer insight, and business growth.
+:::

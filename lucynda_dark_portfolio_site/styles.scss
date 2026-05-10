@@ -1,0 +1,17 @@
+/*-- scss:defaults --*/
+$body-bg: #05050a;
+$body-color: #f7f4ff;
+$link-color: #c8a8ff;
+$navbar-bg: #05050a;
+$navbar-fg: #f7f4ff;
+$navbar-hl: #d8b4fe;
+$footer-bg: #080810;
+$footer-fg: #cfc7df;
+$font-family-sans-serif: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$headings-font-weight: 700;
+$border-radius: 1.25rem;
+
+/*-- scss:rules --*/
+.navbar { border-bottom: 1px solid rgba(216, 180, 254, .24); }
+.navbar-logo { border-radius: 999px; object-fit: cover; }
+.quarto-title-banner { background: radial-gradient(circle at top left, rgba(168, 85, 247, .24), transparent 36%), #05050a; }

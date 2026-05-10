@@ -1,0 +1,48 @@
+---
+title: "Marketing Analytics Projects"
+subtitle: "Quantitative analysis, customer journey measurement, and performance strategy"
+---
+
+::: {.section}
+## Analytics Projects
+
+These projects demonstrate my ability to apply quantitative methods to marketing problems and communicate insights in a business-ready format.
+
+<div class="card-grid">
+<div class="card">
+<h3>Marketing Mix Modeling & Media Performance Optimization</h3>
+<p><strong>Managerial problem:</strong> Determine which marketing channels are driving website traffic and how media budget should be allocated more efficiently.</p>
+<p><strong>Methods:</strong> Exploratory analysis, correlation review, linear regression, channel comparison, and ROI-focused interpretation.</p>
+<p><strong>Business impact:</strong> Supports smarter budget allocation by identifying high-performing channels and areas of inefficient spend.</p>
+<div class="tag-row"><span class="tag">Marketing Mix Modeling</span><span class="tag">Regression</span><span class="tag">Budget Allocation</span></div>
+<p><a class="project-link" href="Marketing_analytics_Projects/Project%202_mktg_mix/">Open project folder →</a></p>
+</div>
+
+<div class="card">
+<h3>Customer Journey Attribution & Conversion Path Analysis</h3>
+<p><strong>Managerial problem:</strong> Understand how different marketing touchpoints contribute to customer conversion behavior.</p>
+<p><strong>Methods:</strong> Attribution modeling, conversion path analysis, funnel interpretation, and channel contribution review.</p>
+<p><strong>Business impact:</strong> Improves channel credit allocation and supports more accurate campaign performance measurement.</p>
+<div class="tag-row"><span class="tag">Attribution</span><span class="tag">Customer Journey</span><span class="tag">Conversion</span></div>
+<p><a class="project-link" href="Marketing_analytics_Projects/Project%203_attribution-modeling/">Open project folder →</a></p>
+</div>
+
+<div class="card">
+<h3>Capstone Analytics Project</h3>
+<p><strong>Note:</strong> This project can be listed carefully as a private or summarized project if NDA restrictions apply. Avoid publishing restricted data, dashboards, names, screenshots, or proprietary details.</p>
+<p><strong>Portfolio positioning:</strong> Executive analytics framework, KPI development, and stakeholder reporting.</p>
+<div class="tag-row"><span class="tag">KPI Framework</span><span class="tag">Executive Reporting</span><span class="tag">Private Project</span></div>
+<p><a class="project-link" href="Marketing_analytics_Projects/Project%201_Capstone/">Open project folder →</a></p>
+</div>
+</div>
+:::
+
+::: {.section .callout}
+## Core Skills Demonstrated
+
+- Marketing performance measurement  
+- Regression and statistical interpretation  
+- Funnel and attribution analysis  
+- KPI design and business storytelling  
+- R, Quarto, GA4, and SQL-based analytics workflows
+:::

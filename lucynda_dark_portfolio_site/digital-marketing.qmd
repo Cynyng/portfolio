@@ -1,0 +1,33 @@
+---
+title: "Digital Marketing Projects"
+subtitle: "Strategy, campaign evaluation, content performance, and customer engagement"
+---
+
+::: {.section}
+## Digital Marketing Work
+
+This page highlights projects that connect marketing strategy with measurable execution. These projects are positioned for growth marketing, digital strategy, and performance marketing roles.
+
+<div class="card-grid two">
+<div class="card">
+<h3>Digital Marketing Project Collection</h3>
+<p>Projects focused on campaign strategy, performance evaluation, content effectiveness, and customer engagement.</p>
+<p><strong>Business value:</strong> Demonstrates the ability to evaluate marketing channels and translate insights into tactical recommendations.</p>
+<div class="tag-row"><span class="tag">Campaign Strategy</span><span class="tag">Digital Channels</span><span class="tag">Performance</span></div>
+<p><a class="project-link" href="Digital_marketing_Projects/">Open project folder →</a></p>
+</div>
+
+<div class="card">
+<h3>Portfolio Proposal</h3>
+<p>A planning document outlining the website structure, target audience, data sources, methods, and expected business impact of the portfolio.</p>
+<div class="tag-row"><span class="tag">Portfolio Planning</span><span class="tag">Analytics Report Structure</span></div>
+<p><a class="project-link" href="Portolio_proposal.html">Open proposal →</a></p>
+</div>
+</div>
+:::
+
+::: {.section}
+## Page Objective
+
+The Digital Marketing Projects page is designed to show how I approach marketing from a strategic and execution-focused perspective: identifying a business problem, selecting the right data, evaluating performance, and recommending action.
+:::
