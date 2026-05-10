@@ -14,6 +14,8 @@ These projects demonstrate my ability to apply quantitative methods to marketing
 <p><strong>Managerial problem:</strong> Determine which marketing channels are driving website traffic and how media budget should be allocated more efficiently.</p>
 <p><strong>Methods:</strong> Exploratory analysis, correlation review, linear regression, channel comparison, and ROI-focused interpretation.</p>
 <p><strong>Business impact:</strong> Supports smarter budget allocation by identifying high-performing channels and areas of inefficient spend.</p>
+
+
 <div class="tag-row"><span class="tag">Marketing Mix Modeling</span><span class="tag">Regression</span><span class="tag">Budget Allocation</span></div>
 <p><a class="project-link" href="Marketing_analytics_Projects/Project%202_mktg_mix/">Open project folder →</a></p>
 </div>

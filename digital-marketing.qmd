@@ -1,33 +1,123 @@
 ---
 title: "Digital Marketing Projects"
-subtitle: "Strategy, campaign evaluation, content performance, and customer engagement"
+subtitle: "Campaign strategy, customer personas, nonprofit marketing, and digital transformation"
 ---
 
 ::: {.section}
-## Digital Marketing Work
+## Digital Marketing Project Portfolio
 
-This page highlights projects that connect marketing strategy with measurable execution. These projects are positioned for growth marketing, digital strategy, and performance marketing roles.
+This page keeps the digital marketing work in one place so visitors can review each project without opening separate folders. Each project is summarized through the same business-focused structure: problem, audience, objective, methods, and expected marketing impact.
+:::
 
-<div class="card-grid two">
-<div class="card">
-<h3>Digital Marketing Project Collection</h3>
-<p>Projects focused on campaign strategy, performance evaluation, content effectiveness, and customer engagement.</p>
-<p><strong>Business value:</strong> Demonstrates the ability to evaluate marketing channels and translate insights into tactical recommendations.</p>
-<div class="tag-row"><span class="tag">Campaign Strategy</span><span class="tag">Digital Channels</span><span class="tag">Performance</span></div>
-<p><a class="project-link" href="Digital_marketing_Projects/">Open project folder →</a></p>
-</div>
+::: {.section}
+## Project 1 — Information Technology & Digital Transformation
 
-<div class="card">
-<h3>Portfolio Proposal</h3>
-<p>A planning document outlining the website structure, target audience, data sources, methods, and expected business impact of the portfolio.</p>
-<div class="tag-row"><span class="tag">Portfolio Planning</span><span class="tag">Analytics Report Structure</span></div>
-<p><a class="project-link" href="Portolio_proposal.html">Open proposal →</a></p>
-</div>
+<div class="project-panel">
+<div class="project-kicker">Digital Strategy • Technology Adoption • Marketing Operations</div>
+
+### Project Focus
+This project explores how information technology supports modern business operations, customer experience, and digital marketing execution. It shows how technology can improve visibility, efficiency, communication, and data-informed decision-making.
+
+### Managerial Problem
+Organizations need to understand how technology investments can improve marketing workflows, customer engagement, and operational performance. Without the right digital systems, marketing teams may struggle to track performance, communicate consistently, and make timely decisions.
+
+### Target Audience
+Business managers, marketing leaders, and operations teams evaluating how technology can support growth and improve customer-facing processes.
+
+### Research Objectives
+- Explain the role of information technology in business and marketing operations
+- Identify how digital tools support customer communication and performance tracking
+- Connect technology adoption to stronger marketing decision-making
+- Present technology as a strategic business asset rather than only an operational tool
+
+### Methods Used
+- Secondary research
+- Business case analysis
+- Strategic evaluation
+- Digital transformation framework
+
+### Expected Marketing Impact
+The project demonstrates how digital systems can help organizations improve campaign visibility, support better customer experiences, and create a stronger foundation for data-driven marketing.
+
+<div class="tag-row"><span class="tag">Digital Transformation</span><span class="tag">Marketing Operations</span><span class="tag">Technology Strategy</span></div>
 </div>
 :::
 
 ::: {.section}
-## Page Objective
+## Project 2 — Trauma Resource Institute Marketing Strategy
 
-The Digital Marketing Projects page is designed to show how I approach marketing from a strategic and execution-focused perspective: identifying a business problem, selecting the right data, evaluating performance, and recommending action.
+<div class="project-panel">
+<div class="project-kicker">Nonprofit Marketing • Audience Engagement • Strategic Communications</div>
+
+### Project Focus
+This project focuses on marketing strategy for the Trauma Resource Institute, with emphasis on audience awareness, engagement, communication planning, and nonprofit positioning.
+
+### Managerial Problem
+Nonprofit organizations often need to increase awareness and engagement while working with limited budgets and mission-driven messaging. The challenge is to communicate value clearly, reach the right audiences, and support program growth through focused marketing tactics.
+
+### Target Audience
+Nonprofit leadership, program managers, community partners, donors, and audiences interested in resilience, trauma-informed education, and training resources.
+
+### Research Objectives
+- Assess how TRI can strengthen awareness and audience engagement
+- Identify marketing tactics that support mission-based growth
+- Develop communication strategies for community and stakeholder outreach
+- Recommend ways to make messaging clearer, more accessible, and more action-oriented
+
+### Methods Used
+- Market and audience review
+- Strategic communications planning
+- Content and messaging analysis
+- Presentation-based marketing recommendations
+
+### Expected Marketing Impact
+The project shows how digital marketing and communication strategy can help a nonprofit clarify its value proposition, strengthen audience trust, and improve outreach effectiveness.
+
+<div class="tag-row"><span class="tag">Nonprofit Marketing</span><span class="tag">Audience Engagement</span><span class="tag">Messaging Strategy</span></div>
+</div>
+:::
+
+::: {.section}
+## Project 3 — Customer Persona Development
+
+<div class="project-panel">
+<div class="project-kicker">Consumer Insights • Segmentation • Persona Strategy</div>
+
+### Project Focus
+This project develops a customer persona to better understand a target audience’s needs, motivations, behaviors, and decision-making patterns.
+
+### Managerial Problem
+Marketing campaigns are less effective when they are built for a broad audience instead of a specific customer segment. A clear persona helps teams design stronger messaging, choose better channels, and align content with customer needs.
+
+### Target Audience
+Marketing managers, brand strategists, content creators, and campaign teams building customer-centered marketing strategies.
+
+### Research Objectives
+- Define a realistic target customer segment
+- Identify customer motivations, pain points, and behaviors
+- Connect persona insights to channel, messaging, and content strategy
+- Support more targeted marketing decisions
+
+### Methods Used
+- Persona development
+- Audience segmentation
+- Customer journey thinking
+- Qualitative marketing insight synthesis
+
+### Expected Marketing Impact
+The project demonstrates the ability to translate customer understanding into actionable marketing direction, helping campaigns become more targeted, relevant, and persuasive.
+
+<div class="tag-row"><span class="tag">Customer Persona</span><span class="tag">Segmentation</span><span class="tag">Consumer Insights</span></div>
+</div>
+:::
+
+::: {.section .callout}
+## Digital Marketing Skills Demonstrated
+
+- Digital marketing strategy  
+- Customer persona development  
+- Nonprofit marketing and audience engagement  
+- Strategic communications  
+- Digital transformation and marketing operations  
+- Business-focused recommendation writing  
 :::
