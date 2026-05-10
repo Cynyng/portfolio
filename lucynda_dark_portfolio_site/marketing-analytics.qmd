@@ -2,10 +2,6 @@
 title: "Marketing Analytics Projects"
 subtitle: "Quantitative analysis, customer journey measurement, and performance strategy"
 ---
-
-
-## Marketing Analytics Projects
-
 <style>
 .project-grid {
   display: grid;

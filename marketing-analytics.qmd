@@ -3,39 +3,192 @@ title: "Marketing Analytics Projects"
 subtitle: "Quantitative analysis, customer journey measurement, and performance strategy"
 ---
 
-::: {.section}
-## Analytics Projects
 
-These projects demonstrate my ability to apply quantitative methods to marketing problems and communicate insights in a business-ready format.
+## Marketing Analytics Projects
 
-<div class="card-grid">
-<div class="card">
-<h3>Marketing Mix Modeling & Media Performance Optimization</h3>
-<p><strong>Managerial problem:</strong> Determine which marketing channels are driving website traffic and how media budget should be allocated more efficiently.</p>
-<p><strong>Methods:</strong> Exploratory analysis, correlation review, linear regression, channel comparison, and ROI-focused interpretation.</p>
-<p><strong>Business impact:</strong> Supports smarter budget allocation by identifying high-performing channels and areas of inefficient spend.</p>
-<div class="tag-row"><span class="tag">Marketing Mix Modeling</span><span class="tag">Regression</span><span class="tag">Budget Allocation</span></div>
-<p><a class="project-link" href="Marketing_analytics_Projects/Project%202_mktg_mix/">Open project folder →</a></p>
+<style>
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0,0,0,0.25);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #8b5cf6;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.project-short {
+  color: #cfcfcf;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+summary {
+  cursor: pointer;
+  color: #a78bfa;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.project-content {
+  color: #d4d4d4;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+.project-link {
+  margin-top: 18px;
+}
+
+.project-link a {
+  color: #c4b5fd;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.project-link a:hover {
+  color: white;
+}
+</style>
+
+<div class="project-grid">
+
+<div class="project-card">
+
+<div class="project-title">
+Marketing Mix Modeling
 </div>
 
-<div class="card">
-<h3>Customer Journey Attribution & Conversion Path Analysis</h3>
-<p><strong>Managerial problem:</strong> Understand how different marketing touchpoints contribute to customer conversion behavior.</p>
-<p><strong>Methods:</strong> Attribution modeling, conversion path analysis, funnel interpretation, and channel contribution review.</p>
-<p><strong>Business impact:</strong> Improves channel credit allocation and supports more accurate campaign performance measurement.</p>
-<div class="tag-row"><span class="tag">Attribution</span><span class="tag">Customer Journey</span><span class="tag">Conversion</span></div>
-<p><a class="project-link" href="Marketing_analytics_Projects/Project%203_attribution-modeling/">Open project folder →</a></p>
+<div class="project-short">
+Using regression modeling and media performance analysis to optimize marketing budget allocation decisions.
 </div>
 
-<div class="card">
-<h3>Capstone Analytics Project</h3>
-<p><strong>Note:</strong> This project can be listed carefully as a private or summarized project if NDA restrictions apply. Avoid publishing restricted data, dashboards, names, screenshots, or proprietary details.</p>
-<p><strong>Portfolio positioning:</strong> Executive analytics framework, KPI development, and stakeholder reporting.</p>
-<div class="tag-row"><span class="tag">KPI Framework</span><span class="tag">Executive Reporting</span><span class="tag">Private Project</span></div>
-<p><a class="project-link" href="Marketing_analytics_Projects/Project%201_Capstone/">Open project folder →</a></p>
+<details>
+<summary>Read More</summary>
+
+<div class="project-content">
+
+### Managerial Problem
+Determine which marketing channels are driving website traffic and how media budget should be allocated more efficiently.
+
+### Methods
+Exploratory analysis, correlation review, linear regression, channel comparison, and ROI-focused interpretation.
+
+### Business Impact
+Supports smarter budget allocation by identifying high-performing channels and areas of inefficient spend.
+
+<div class="project-link">
+
+<a href="https://github.com/Cynyng/portfolio/blob/main/Marketing_Mix_Modeling_Assignment.html" target="_blank">
+View HTML Report
+</a>
+
+<br><br>
+
+<a href="https://github.com/Cynyng/portfolio/blob/main/marketing_mix_modeling_revealjs_presentation.qmd" target="_blank">
+View RevealJS Presentation
+</a>
+
 </div>
+
 </div>
-:::
+</details>
+
+</div>
+
+<div class="project-card">
+
+<div class="project-title">
+Attribution Modeling Analysis
+</div>
+
+<div class="project-short">
+Evaluating customer conversion paths and marketing touchpoints to better understand channel contribution and campaign effectiveness.
+</div>
+
+<details>
+<summary>Read More</summary>
+
+<div class="project-content">
+
+### Managerial Problem
+Understand how different marketing channels contribute to conversions and determine which touchpoints have the greatest influence on customer decision-making.
+
+### Methods
+Attribution modeling, customer journey analysis, conversion path evaluation, channel contribution comparison, and marketing performance interpretation.
+
+### Business Impact
+Supports more accurate marketing measurement, improves budget allocation decisions, and helps identify the channels contributing most effectively to conversions.
+
+<div class="project-link">
+
+<a href="https://github.com/Cynyng/portfolio/blob/main/attribution_modeling_assignment(1).qmd" target="_blank">
+View Project File
+</a>
+
+</div>
+
+</div>
+</details>
+
+</div>
+
+<div class="project-card">
+
+<div class="project-title">
+Website Traffic & Engagement Analytics
+</div>
+
+<div class="project-short">
+Analyzing traffic behavior, engagement metrics, and audience interaction patterns using marketing analytics techniques.
+</div>
+
+<details>
+<summary>Read More</summary>
+
+<div class="project-content">
+
+### Managerial Problem
+Determine how users interact with digital platforms and identify engagement patterns that can improve marketing performance and audience retention.
+
+### Methods
+Traffic analysis, engagement KPI review, exploratory data analysis, trend analysis, and behavioral interpretation.
+
+### Business Impact
+Supports stronger decision-making by identifying engagement opportunities, improving website performance understanding, and helping optimize digital experiences.
+
+<div class="project-link">
+
+<a href="https://github.com/Cynyng/portfolio" target="_blank">
+View Project
+</a>
+
+</div>
+
+</div>
+</details>
+
+</div>
+
+</div>
 
 ::: {.section .callout}
 ## Core Skills Demonstrated

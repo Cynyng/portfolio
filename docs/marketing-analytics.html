@@ -101,7 +101,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./digital-marketing.html"> 
+    <a class="nav-link" href="./digital-marketing.qmd"> 
 <span class="menu-text">Digital Marketing</span></a>
   </li>  
   <li class="nav-item">
@@ -167,69 +167,164 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="analytics-projects" class="level2">
-<h2 class="anchored" data-anchor-id="analytics-projects">Analytics Projects</h2>
-<p>These projects demonstrate my ability to apply quantitative methods to marketing problems and communicate insights in a business-ready format.</p>
-<div class="card-grid">
-<div class="card">
-<h3 class="anchored">
-Marketing Mix Modeling &amp; Media Performance Optimization
-</h3>
-<p>
-<strong>Managerial problem:</strong> Determine which marketing channels are driving website traffic and how media budget should be allocated more efficiently.
-</p>
-<p>
-<strong>Methods:</strong> Exploratory analysis, correlation review, linear regression, channel comparison, and ROI-focused interpretation.
-</p>
-<p>
-<strong>Business impact:</strong> Supports smarter budget allocation by identifying high-performing channels and areas of inefficient spend.
-</p>
-<div class="tag-row">
-<span class="tag">Marketing Mix Modeling</span><span class="tag">Regression</span><span class="tag">Budget Allocation</span>
+<section id="marketing-analytics-projects" class="level2">
+<h2 class="anchored" data-anchor-id="marketing-analytics-projects">Marketing Analytics Projects</h2>
+<style>
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0,0,0,0.25);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #8b5cf6;
+}
+
+.project-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.project-short {
+  color: #cfcfcf;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+summary {
+  cursor: pointer;
+  color: #a78bfa;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.project-content {
+  color: #d4d4d4;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+.project-link {
+  margin-top: 18px;
+}
+
+.project-link a {
+  color: #c4b5fd;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.project-link a:hover {
+  color: white;
+}
+</style>
+<div class="project-grid">
+<div class="project-card">
+<div class="project-title">
+<p>Marketing Mix Modeling</p>
 </div>
-<p>
-<a class="project-link" href="Marketing_analytics_Projects/Project 2_mktg_mix/">Open project folder →</a>
-</p>
+<div class="project-short">
+<p>Using regression modeling and media performance analysis to optimize marketing budget allocation decisions.</p>
 </div>
-<div class="card">
-<h3 class="anchored">
-Customer Journey Attribution &amp; Conversion Path Analysis
-</h3>
-<p>
-<strong>Managerial problem:</strong> Understand how different marketing touchpoints contribute to customer conversion behavior.
-</p>
-<p>
-<strong>Methods:</strong> Attribution modeling, conversion path analysis, funnel interpretation, and channel contribution review.
-</p>
-<p>
-<strong>Business impact:</strong> Improves channel credit allocation and supports more accurate campaign performance measurement.
-</p>
-<div class="tag-row">
-<span class="tag">Attribution</span><span class="tag">Customer Journey</span><span class="tag">Conversion</span>
-</div>
-<p>
-<a class="project-link" href="Marketing_analytics_Projects/Project 3_attribution-modeling/">Open project folder →</a>
-</p>
-</div>
-<div class="card">
-<h3 class="anchored">
-Capstone Analytics Project
-</h3>
-<p>
-<strong>Note:</strong> This project can be listed carefully as a private or summarized project if NDA restrictions apply. Avoid publishing restricted data, dashboards, names, screenshots, or proprietary details.
-</p>
-<p>
-<strong>Portfolio positioning:</strong> Executive analytics framework, KPI development, and stakeholder reporting.
-</p>
-<div class="tag-row">
-<span class="tag">KPI Framework</span><span class="tag">Executive Reporting</span><span class="tag">Private Project</span>
-</div>
-<p>
-<a class="project-link" href="Marketing_analytics_Projects/Project 1_Capstone/">Open project folder →</a>
-</p>
-</div>
+<details>
+<summary>
+Read More
+</summary>
+<div class="project-content">
+<section id="managerial-problem" class="level3">
+<h3 class="anchored" data-anchor-id="managerial-problem">Managerial Problem</h3>
+<p>Determine which marketing channels are driving website traffic and how media budget should be allocated more efficiently.</p>
+</section>
+<section id="methods" class="level3">
+<h3 class="anchored" data-anchor-id="methods">Methods</h3>
+<p>Exploratory analysis, correlation review, linear regression, channel comparison, and ROI-focused interpretation.</p>
+</section>
+<section id="business-impact" class="level3">
+<h3 class="anchored" data-anchor-id="business-impact">Business Impact</h3>
+<p>Supports smarter budget allocation by identifying high-performing channels and areas of inefficient spend.</p>
+<div class="project-link">
+<p><a href="https://github.com/Cynyng/portfolio/blob/main/Marketing_Mix_Modeling_Assignment.html" target="_blank"> View HTML Report </a></p>
+<p><br><br></p>
+<p><a href="https://github.com/Cynyng/portfolio/blob/main/marketing_mix_modeling_revealjs_presentation.qmd" target="_blank"> View RevealJS Presentation </a></p>
 </div>
 </section>
+</div>
+</details>
+</div>
+<div class="project-card">
+<div class="project-title">
+<p>Attribution Modeling Analysis</p>
+</div>
+<div class="project-short">
+<p>Evaluating customer conversion paths and marketing touchpoints to better understand channel contribution and campaign effectiveness.</p>
+</div>
+<details>
+<summary>
+Read More
+</summary>
+<div class="project-content">
+<section id="managerial-problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="managerial-problem-1">Managerial Problem</h3>
+<p>Understand how different marketing channels contribute to conversions and determine which touchpoints have the greatest influence on customer decision-making.</p>
+</section>
+<section id="methods-1" class="level3">
+<h3 class="anchored" data-anchor-id="methods-1">Methods</h3>
+<p>Attribution modeling, customer journey analysis, conversion path evaluation, channel contribution comparison, and marketing performance interpretation.</p>
+</section>
+<section id="business-impact-1" class="level3">
+<h3 class="anchored" data-anchor-id="business-impact-1">Business Impact</h3>
+<p>Supports more accurate marketing measurement, improves budget allocation decisions, and helps identify the channels contributing most effectively to conversions.</p>
+<div class="project-link">
+<p><a href="https://github.com/Cynyng/portfolio/blob/main/attribution_modeling_assignment(1).qmd" target="_blank"> View Project File </a></p>
+</div>
+</section>
+</div>
+</details>
+</div>
+<div class="project-card">
+<div class="project-title">
+<p>Website Traffic &amp; Engagement Analytics</p>
+</div>
+<div class="project-short">
+<p>Analyzing traffic behavior, engagement metrics, and audience interaction patterns using marketing analytics techniques.</p>
+</div>
+<details>
+<summary>
+Read More
+</summary>
+<div class="project-content">
+<section id="managerial-problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="managerial-problem-2">Managerial Problem</h3>
+<p>Determine how users interact with digital platforms and identify engagement patterns that can improve marketing performance and audience retention.</p>
+</section>
+<section id="methods-2" class="level3">
+<h3 class="anchored" data-anchor-id="methods-2">Methods</h3>
+<p>Traffic analysis, engagement KPI review, exploratory data analysis, trend analysis, and behavioral interpretation.</p>
+</section>
+<section id="business-impact-2" class="level3">
+<h3 class="anchored" data-anchor-id="business-impact-2">Business Impact</h3>
+<p>Supports stronger decision-making by identifying engagement opportunities, improving website performance understanding, and helping optimize digital experiences.</p>
+<div class="project-link">
+<p><a href="https://github.com/Cynyng/portfolio" target="_blank"> View Project </a></p>
+</div>
+</section>
+</div>
+</details>
+</div>
+</div>
 <section class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -255,6 +350,7 @@ Capstone Analytics Project
 </section>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
