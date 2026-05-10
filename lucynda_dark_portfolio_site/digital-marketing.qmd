@@ -122,7 +122,7 @@ Engagement metric review, audience behavior analysis, content performance compar
 Helps improve customer communication by identifying what types of content and digital touchpoints create stronger engagement and more meaningful audience interaction.
 
 <div class="project-link">
-[View Project Full Report](https://github.com/Cynyng/portfolio/blob/main/Digital_marketing_Projects/Project_2_TRI/TRI-Written%20Report-Group%203.docx)
+[View Project Full Report](https://github.com/Cynyng/portfolio/blob/main/Digital_marketing_Projects/Project_2_TRI/TRI-Written%20Report-Group%203.pdf)
 [View interactive Quiz](https://github.com/Cynyng/portfolio/blob/main/docs/Quiz/index.html)
 
 </div>
