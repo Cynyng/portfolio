@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Lucynda Young",
     "section": "",
-    "text": "Marketing Analytics Portfolio\n\n\n\nI’m Lucynda Young, a Growth Marketing Manager and Digital Marketing Analytics graduate student focused on connecting campaign performance, customer behavior, and business strategy through analytics.\n\nView Analytics Projects Explore Digital Marketing Work View Resume"
+    "text": "Digital Marketing + Growth Portfolio\n\n\n\nI’m Lucynda Young, a Growth Marketing Manager with experience across eCommerce marketplaces, brand websites, paid media, CRM/email marketing, and performance reporting. My work connects digital strategy with analytics so marketing decisions are creative, measurable, and tied to business growth.\n\nExplore Digital Marketing Work View Analytics Projects View Resume"
   },
   {
     "objectID": "index.html#portfolio-focus",
@@ -145,5 +145,187 @@
     "title": "Website Analytics",
     "section": "",
     "text": "This page will analyze the traffic data collected from the portfolio website once GA4 is connected. It will show how visitors find the site, what pages they view, and which project sections generate the most engagement.\n\n\n\n\nEvaluate traffic sources such as direct, organic search, referral, LinkedIn, and GitHub traffic.\n\n\nSource / MediumChannels\n\n\n\n\n\nMeasure page views, engagement time, scrolls, outbound clicks, and project page interest.\n\n\nEngagement RateEvents\n\n\n\n\n\nUse website behavior data to improve navigation, project placement, calls to action, and recruiter experience.\n\n\nUX InsightsConversion Paths"
+  },
+  {
+    "objectID": "index.html#what-this-portfolio-shows",
+    "href": "index.html#what-this-portfolio-shows",
+    "title": "Lucynda Young",
+    "section": "What This Portfolio Shows",
+    "text": "What This Portfolio Shows\nThis portfolio highlights my ability to plan, execute, measure, and optimize digital marketing initiatives across the customer journey. It includes digital marketing strategy, marketplace growth, campaign performance, customer engagement, web analytics, and executive-ready storytelling.\n\n\neCommerce GrowthAmazon, Walmart, eBay, Houzz, Wayfair, and brand websites\n\n\nDigital CampaignsPaid media, CRM/email, content, and channel optimization\n\n\nMarketing AnalyticsGA4, attribution, marketing mix modeling, and KPI reporting\n\n\nBusiness StrategyTurning performance insights into practical growth recommendations"
+  },
+  {
+    "objectID": "index.html#featured-portfolio-areas",
+    "href": "index.html#featured-portfolio-areas",
+    "title": "Lucynda Young",
+    "section": "Featured Portfolio Areas",
+    "text": "Featured Portfolio Areas\n\n\n\nDigital Marketing Projects\n\n\nCampaign strategy, marketplace growth, customer engagement, SEO/content thinking, and channel optimization projects that show how marketing ideas become measurable business actions.\n\n\nGrowth MarketingeCommerceCampaign Strategy\n\n\nView digital marketing work →\n\n\n\n\nMarketing Analytics Projects\n\n\nAnalytics projects using attribution modeling, marketing mix modeling, regression, funnel analysis, and KPI interpretation to support smarter marketing decisions.\n\n\nMMMAttributionGA4\n\n\nView analytics projects →\n\n\n\n\nInteractive Presentation\n\n\nA RevealJS executive presentation that translates marketing mix modeling findings into a clear story about media effectiveness and budget allocation.\n\n\nRevealJSStorytellingExecutive Insights\n\n\nView presentation page →"
+  },
+  {
+    "objectID": "index.html#digital-marketing-strengths",
+    "href": "index.html#digital-marketing-strengths",
+    "title": "Lucynda Young",
+    "section": "Digital Marketing Strengths",
+    "text": "Digital Marketing Strengths\n\n\n\nChannel Growth\n\n\nExperience supporting growth across marketplace channels and owned brand websites, with a focus on traffic, conversion, product visibility, and revenue performance.\n\n\n\n\nCampaign Optimization\n\n\nAbility to evaluate campaign performance, identify what is working, and recommend changes to budget, targeting, content, and channel mix.\n\n\n\n\nCustomer-Focused Strategy\n\n\nProjects connect customer behavior, digital touchpoints, and engagement patterns to practical marketing recommendations."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "",
+    "text": "This notebook reproduces the core marketing mix modeling workflow for the FourTex case and answers all seven case questions plus the two required tasks. The emphasis is on clean structure, visible code, concise interpretation, and a professional rendered report."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#overview",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#overview",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "",
+    "text": "This notebook reproduces the core marketing mix modeling workflow for the FourTex case and answers all seven case questions plus the two required tasks. The emphasis is on clean structure, visible code, concise interpretation, and a professional rendered report."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#data-preparation",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#data-preparation",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "2 Data Preparation",
+    "text": "2 Data Preparation\n\n\nCode\nfourtex &lt;- read_csv(\"data/data_fourtex.csv\", show_col_types = FALSE) |&gt;\n  mutate(\n    week_beg = dmy(week_beg),\n    lag1_traffic = lag(traffic)\n  )\n\nmodel_data &lt;- fourtex |&gt;\n  drop_na(lag1_traffic)\n\nglimpse(model_data)\n\n\nRows: 56\nColumns: 7\n$ week_beg       &lt;date&gt; 2020-07-13, 2020-07-20, 2020-07-27, 2020-08-03, 2020-0…\n$ Google_Adwords &lt;dbl&gt; 93634.5, 112239.4, 121250.3, 130470.9, 131955.3, 129812…\n$ Facebook       &lt;dbl&gt; 66150, 94650, 96450, 114600, 119550, 106350, 116550, 90…\n$ TV             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4341824, 0, 0, 0…\n$ Radio          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1298507, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ traffic        &lt;dbl&gt; 6186229, 6790416, 7146957, 7815741, 8444791, 8267982, 7…\n$ lag1_traffic   &lt;dbl&gt; 6719812, 6186229, 6790416, 7146957, 7815741, 8444791, 8…"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#exploratory-analysis",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#exploratory-analysis",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "3 Exploratory Analysis",
+    "text": "3 Exploratory Analysis\n\n3.1 Weekly Traffic and Media Spend\n\n\nCode\nplot_data &lt;- fourtex |&gt;\n  pivot_longer(\n    cols = c(Google_Adwords, Facebook, TV, Radio),\n    names_to = \"channel\",\n    values_to = \"spend\"\n  )\n\ntraffic_plot &lt;- ggplot(fourtex, aes(x = week_beg, y = traffic)) +\n  geom_line(linewidth = 1) +\n  geom_point(size = 1.6) +\n  scale_y_continuous(labels = comma) +\n  labs(\n    title = \"FourTex Weekly Website Traffic\",\n    x = NULL,\n    y = \"Traffic\"\n  ) +\n  theme_minimal()\n\nspend_plot &lt;- ggplot(plot_data, aes(x = week_beg, y = spend, color = channel)) +\n  geom_line(linewidth = 1) +\n  scale_y_continuous(labels = dollar) +\n  labs(\n    title = \"Weekly Media Spend by Channel\",\n    x = NULL,\n    y = \"Spend\"\n  ) +\n  theme_minimal()\n\ntraffic_plot\n\n\n\n\n\n\n\n\n\nCode\nspend_plot"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#linear-regression-model",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#linear-regression-model",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "4 Linear Regression Model",
+    "text": "4 Linear Regression Model\nThe model below estimates weekly traffic as a function of media spending in Google Adwords, Facebook, TV, and Radio, while also controlling for one-week lagged traffic.\n\n\nCode\nmmm_model &lt;- lm(\n  traffic ~ Google_Adwords + Facebook + TV + Radio + lag1_traffic,\n  data = model_data\n)\n\nsummary(mmm_model)\n\n\n\nCall:\nlm(formula = traffic ~ Google_Adwords + Facebook + TV + Radio + \n    lag1_traffic, data = model_data)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2970491  -554600   -68849   493053  1797342 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)    6.428e+05  7.472e+05   0.860  0.39373    \nGoogle_Adwords 1.237e+01  4.396e+00   2.815  0.00696 ** \nFacebook       6.469e+00  2.534e+00   2.553  0.01378 *  \nTV             9.315e-02  1.177e-01   0.791  0.43241    \nRadio          6.096e-01  3.399e-01   1.793  0.07900 .  \nlag1_traffic   4.604e-01  7.739e-02   5.949 2.63e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 959300 on 50 degrees of freedom\nMultiple R-squared:  0.7377,    Adjusted R-squared:  0.7115 \nF-statistic: 28.13 on 5 and 50 DF,  p-value: 1.922e-13\n\n\n\n4.1 Model Summary Table\n\n\nCode\ncoef_tbl &lt;- tidy(mmm_model, conf.int = TRUE) |&gt;\n  mutate(across(where(is.numeric), ~ round(.x, 3)))\n\ncoef_tbl"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#question-responses",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#question-responses",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "5 Question Responses",
+    "text": "5 Question Responses\n\n\n\n\n\n\nNoteQuestion 1\n\n\n\nLooking at these plots, what do you observe? Do increases and decreases in online traffic coincide with online and offline spending? Do you see any seasonality or trend patterns?\n\n\nTraffic generally moves more closely with Google Adwords and Facebook spending than with TV or Radio. The largest traffic spikes appear in late November through December, which suggests a strong seasonal lift around holiday periods. TV and Radio spending occur in fewer, larger bursts, but those spikes do not consistently line up with equally strong increases in web traffic. Overall, there is a visible seasonal pattern and a noticeable year-end surge.\n\n\n\n\n\n\nNoteQuestion 2\n\n\n\nDid you notice that we added the lagged traffic variable as an additional predictor to our model? Do you think including the first lagged traffic variable in the model makes sense? Why?\n\n\nYes. Including the first lagged traffic variable makes sense because website traffic usually has carryover momentum from the prior week. In practice, traffic is rarely independent from one period to the next. A strong week often leads into another strong week because of brand recall, repeat visits, remarketing, and ongoing campaign effects. In this model, the lagged traffic coefficient is positive and statistically significant, which supports the idea that past traffic helps explain current traffic.\n\n\n\n\n\n\nNoteQuestion 3\n\n\n\nWhat is your interpretation of the estimated coefficients of the other advertising variables, Facebook, TV and radio?\n\n\nHolding the other variables constant:\n\nFacebook has a positive coefficient, meaning additional Facebook spending is associated with higher website traffic.\nTV has a very small coefficient, implying only a minimal direct traffic lift per extra dollar spent.\nRadio is also positive, but its estimated impact is much weaker than Google Adwords or Facebook.\n\nFrom a direct-response web traffic perspective, Facebook appears meaningful, while TV and Radio appear far less efficient.\n\n\n\n\n\n\nNoteQuestion 4\n\n\n\nDo you think the model predicted well the web traffic performance of FourTex?\n\n\nThe model performs reasonably well, but not perfectly. The adjusted R-squared is fairly strong for a simple marketing mix model, which means the predictors explain a substantial portion of weekly traffic variation. However, it does not explain everything. That is expected because web traffic is also affected by promotions, seasonality, pricing, competitor actions, creative quality, email, SEO, and other business factors not included in the model.\n\n\n\n\n\n\nNoteQuestion 5\n\n\n\nWhat is your conclusion with regard to traffic generated and cost incurred? Which media returns the most and least?\n\n\nThe strongest direct traffic return appears to come from Google Adwords, followed by Facebook. The weakest returns come from TV and then Radio. This means the channels with the strongest measurable traffic lift are the digital channels, while the traditional channels consume substantial budget with much less direct traffic response.\n\n\n\n\n\n\nNoteQuestion 6\n\n\n\nAre you surprised that the traffic return on investment for TV and radio is zero? Why do you think that the company invested so much in TV and radio channels although their traffic return is absent?\n\n\nIt is not especially surprising. TV and Radio often work better as upper-funnel or brand-building channels than as direct website traffic drivers. Their value may show up in brand awareness, branded search, store visits, future sales, or long-run demand rather than immediate weekly web traffic. So even if their direct traffic return looks near zero in this model, management may still have invested in them to build awareness, credibility, market reach, or cross-channel lift.\n\n\n\n\n\n\nNoteQuestion 7\n\n\n\nWhat is your conclusion? Is the optimal allocation different from the actual spending? What would you suggest FourTex in terms of how they should deploy their marketing resources to boost the web traffic performance? Would the optimal allocation be different for a different performance metric (e.g. sales)?\n\n\nYes, the optimal allocation for maximizing web traffic appears different from the observed spending pattern. Based on this model, FourTex should shift more budget toward Google Adwords and Facebook, and reduce spending on TV and Radio if the primary objective is website traffic.\nThat said, the answer could change if the business objective were sales, profit, brand lift, or customer lifetime value rather than traffic. A channel can look weak for traffic and still matter for revenue, reach, or brand building. So the “best” allocation depends on the KPI being optimized."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#recommendations-to-mrs.-schmidt",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#recommendations-to-mrs.-schmidt",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "6 Recommendations to Mrs. Schmidt",
+    "text": "6 Recommendations to Mrs. Schmidt\n\n\n\n\n\n\nImportantCase Recommendations\n\n\n\nWhich marketing mix instrument really drives website traffic?\nGoogle Adwords is the strongest traffic driver in this analysis, with Facebook as the second strongest.\nWhat is the return on marketing investment?\nTraffic return on marketing investment is highest for Google Adwords, then Facebook, and is close to zero for TV and Radio in this traffic-focused model.\nShould FourTex keep pushing Google Adwords and Facebook ads? Should it stop TV and Radio?\nFourTex should continue investing in Google Adwords and Facebook if the main goal is to boost website traffic. TV and Radio should not necessarily be eliminated immediately, but they should be reduced, closely audited, and justified only if the company is pursuing broader goals such as awareness or sales lift beyond direct web traffic."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-1-residual-diagnostics",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-1-residual-diagnostics",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "7 Task 1: Residual Diagnostics",
+    "text": "7 Task 1: Residual Diagnostics\n\n\n\n\n\n\nTipTask 1\n\n\n\nTo assess the validity of your results, follow a systematic diagnostic process to test the assumptions of linear regression. Perform the residual diagnostics for the model and assess the results.\n\n\n\n7.1 Diagnostic Plots\n\nCode\npar(mfrow = c(2, 2))\nplot(mmm_model)\npar(mfrow = c(1, 1))\n\n\n\n\n\n\n\n\n\n\n7.2 Diagnostic Tests\n\n\nCode\ndiag_summary &lt;- tibble(\n  test = c(\n    \"Breusch-Pagan test\",\n    \"Durbin-Watson statistic\",\n    \"Maximum VIF\"\n  ),\n  result = c(\n    bptest(mmm_model)$p.value,\n    dwtest(mmm_model)$statistic[[1]],\n    max(vif(mmm_model))\n  )\n)\n\ndiag_summary\n\n\n\n  \n\n\n\n\n\n7.3 Diagnostic Assessment\nThe residual plots suggest the model is broadly usable, but not flawless. The residual-vs-fitted and scale-location plots indicate some uneven spread, which is consistent with heteroskedasticity. The Q-Q plot looks reasonably acceptable, so normality is not the biggest issue here. The Durbin-Watson result suggests some positive autocorrelation, which is common in weekly time-series data. VIF values are not alarmingly high for the media variables, so multicollinearity is manageable.\nAssessment: the model is directionally useful for decision-making, but the results should be interpreted with caution. A stronger follow-up would use robust standard errors, time-series-aware modeling, or additional controls for seasonality and promotions."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-2-presentable-metrics-table-with-gt",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-2-presentable-metrics-table-with-gt",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "8 Task 2: Presentable Metrics Table with gt",
+    "text": "8 Task 2: Presentable Metrics Table with gt\n\n\n\n\n\n\nTipTask 2\n\n\n\nCreate a presentable table using the gt package. Below the table, explain what each metric means. Also explain why unit effect is the same as TROMI.\n\n\n\n\nCode\ndf &lt;- tibble(\n  channel = c(\"Google Adwords\", \"Facebook\", \"TV\", \"Radio\"),\n  total_spend = c(\n    sum(model_data$Google_Adwords),\n    sum(model_data$Facebook),\n    sum(model_data$TV),\n    sum(model_data$Radio)\n  ),\n  unit_effect = coef(mmm_model)[c(\"Google_Adwords\", \"Facebook\", \"TV\", \"Radio\")],\n  TROMI = unit_effect,\n  est_incremental_traffic = total_spend * unit_effect\n) |&gt;\n  mutate(\n    spend_rank = min_rank(desc(unit_effect))\n  )\n\ndf |&gt;\n  mutate(\n    total_spend = dollar(total_spend),\n    unit_effect = round(unit_effect, 3),\n    TROMI = round(TROMI, 3),\n    est_incremental_traffic = comma(round(est_incremental_traffic, 0))\n  ) |&gt;\n  gt() |&gt;\n  tab_header(\n    title = md(\"**FourTex Media Effectiveness Table**\"),\n    subtitle = \"Traffic-oriented interpretation of model coefficients\"\n  ) |&gt;\n  cols_label(\n    channel = \"Channel\",\n    total_spend = \"Total Spend\",\n    unit_effect = \"Unit Effect\",\n    TROMI = \"TROMI\",\n    est_incremental_traffic = \"Estimated Incremental Traffic\",\n    spend_rank = \"Rank\"\n  ) |&gt;\n  opt_row_striping()\n\n\n\n\n\n\n\n\nFourTex Media Effectiveness Table\n\n\nTraffic-oriented interpretation of model coefficients\n\n\nChannel\nTotal Spend\nUnit Effect\nTROMI\nEstimated Incremental Traffic\nRank\n\n\n\n\nGoogle Adwords\n$8,905,540\n12.374\n12.374\n110,196,722\n1\n\n\nFacebook\n$6,354,150\n6.469\n6.469\n41,103,916\n2\n\n\nTV\n$41,593,933\n0.093\n0.093\n3,874,564\n4\n\n\nRadio\n$10,939,111\n0.610\n0.610\n6,668,239\n3\n\n\n\n\n\n\n\n\n8.1 What the Metrics Mean\n\nTotal Spend: the cumulative dollars invested in each channel over the modeled period.\nUnit Effect: the estimated increase in website traffic associated with one additional dollar spent in that channel, holding the other variables constant.\nTROMI: traffic return on marketing investment.\nEstimated Incremental Traffic: an approximate channel-level contribution obtained by multiplying total spend by the estimated unit effect.\nRank: a simple ordering of channels based on estimated traffic efficiency.\n\n\n\n8.2 Why Unit Effect Is the Same as TROMI\nIn this case, the dependent variable is traffic, and the predictor variables are marketing dollars. That means each estimated coefficient already tells us the amount of traffic returned per extra dollar spent. That is exactly what traffic return on marketing investment measures. So for this traffic model, unit effect = TROMI."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#final-takeaway",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#final-takeaway",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "9 Final Takeaway",
+    "text": "9 Final Takeaway\nThe FourTex results point to a clear conclusion: if management wants to maximize website traffic, the budget should lean more heavily toward Google Adwords and Facebook. TV and Radio may still matter for broader brand objectives, but they do not appear efficient as direct website traffic generators in this analysis."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html",
+    "title": "Capstone with Airquality Data",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(scales)\nlibrary(GGally)\nlibrary(lattice)"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.1.-rename-data-set",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.1.-rename-data-set",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.1. Rename Data set",
+    "text": "P1.1. Rename Data set\n\nGet a local copy of the dataset “airquality” and name it “df” so that you can use it.\nIdentify data type, Change it to tibble data type and make change to the df.\nConfirm the data type is tibble by printing df out.\n\n\ndf &lt;- airquality\nair_quality.tib &lt;- as_tibble(df)\n\n  print(air_quality.tib)\n\n# A tibble: 153 × 6\n   Ozone Solar.R  Wind  Temp Month   Day\n   &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1    41     190   7.4    67     5     1\n 2    36     118   8      72     5     2\n 3    12     149  12.6    74     5     3\n 4    18     313  11.5    62     5     4\n 5    NA      NA  14.3    56     5     5\n 6    28      NA  14.9    66     5     6\n 7    23     299   8.6    65     5     7\n 8    19      99  13.8    59     5     8\n 9     8      19  20.1    61     5     9\n10    NA     194   8.6    69     5    10\n# ℹ 143 more rows"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.2.-variable-definition-and-background-of-the-topic",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.2.-variable-definition-and-background-of-the-topic",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.2. Variable Definition and Background of the Topic",
+    "text": "P1.2. Variable Definition and Background of the Topic\n\nLook up the help to understand the definition of the variables.\n\n\n?airquality\n\n\nIn addition, loop Ozone and related variables on the internet. A quick search on Ozone leads me to https://www.epa.gov/ozone-pollution-and-your-patients-health/what-ozone. Read a bit to gain domain knowledge, which is needed when you analyze the data. It appears that Southern California has the highest concentration of Ozone.\nGiven the definition of the data and the knowledge you gained from your research, what would you think are potential dependent variables and independent variables? Can you form a hypothesis regarding the relationships among the variables?\nIt seems reasonable to treat Ozone as a dependent variable and Solar.R, Wind, and Temp. Also, the Ozone amount may be dependent on the Month such that Ozone amounts are highest during summer months.\n\nThus, I would form hypotheses as follows.\n\nH1: Ozone amount will be associated positively with Solar radiation amount (Solar.R)\nH2: Ozone amount will be associated negatively with Wind speed (Wind)\nH3: Ozone amount will be associated positively with Maximum daily temperature (Temp)\nH4: Ozone amount will be highest during summer months."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.3.-view-data",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.3.-view-data",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.3. View data",
+    "text": "P1.3. View data\n\nNext, show the first 7 rows of it. Pay attention to the names of the variables.\n\n\nhead(air_quality.tib, 7)\n\n# A tibble: 7 × 6\n  Ozone Solar.R  Wind  Temp Month   Day\n  &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    41     190   7.4    67     5     1\n2    36     118   8      72     5     2\n3    12     149  12.6    74     5     3\n4    18     313  11.5    62     5     4\n5    NA      NA  14.3    56     5     5\n6    28      NA  14.9    66     5     6\n7    23     299   8.6    65     5     7\n\n\n\nLook for unique values of categorical values (i.e., Month and Day variables). What did you find? Do you feel you should change the data type of the two variables? Why or why not?\nIt seems like Temp and wind have the biggest impact on the Ozone.\nThere are only five months in the data while there are 31 days. For now, let’s change the month data type from a number to a factor.\n\n\nair_quality.tib$Month&lt;-as.factor(air_quality.tib$Month)\n str(air_quality.tib)\n\ntibble [153 × 6] (S3: tbl_df/tbl/data.frame)\n $ Ozone  : int [1:153] 41 36 12 18 NA 28 23 19 8 NA ...\n $ Solar.R: int [1:153] 190 118 149 313 NA NA 299 99 19 194 ...\n $ Wind   : num [1:153] 7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...\n $ Temp   : int [1:153] 67 72 74 62 56 66 65 59 61 69 ...\n $ Month  : Factor w/ 5 levels \"5\",\"6\",\"7\",\"8\",..: 1 1 1 1 1 1 1 1 1 1 ...\n $ Day    : int [1:153] 1 2 3 4 5 6 7 8 9 10 ...\n\n\n\nWrite a code that reveals how many variables and observations are in the data set.\n\n\nprod(dim(air_quality.tib))\n\n[1] 918\n\nnrow(air_quality.tib)\n\n[1] 153"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.4.-simple-descriptive-statistics",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.4.-simple-descriptive-statistics",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.4. Simple Descriptive statistics",
+    "text": "P1.4. Simple Descriptive statistics\n\nAlso, write a code that gives you some basic descriptive statistics. You will notice that two variables have missing values.\n\n\nsummary(air_quality.tib)\n\n     Ozone           Solar.R           Wind             Temp       Month \n Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :56.00   5:31  \n 1st Qu.: 18.00   1st Qu.:115.8   1st Qu.: 7.400   1st Qu.:72.00   6:30  \n Median : 31.50   Median :205.0   Median : 9.700   Median :79.00   7:31  \n Mean   : 42.13   Mean   :185.9   Mean   : 9.958   Mean   :77.88   8:31  \n 3rd Qu.: 63.25   3rd Qu.:258.8   3rd Qu.:11.500   3rd Qu.:85.00   9:30  \n Max.   :168.00   Max.   :334.0   Max.   :20.700   Max.   :97.00         \n NA's   :37       NA's   :7                                              \n      Day      \n Min.   : 1.0  \n 1st Qu.: 8.0  \n Median :16.0  \n Mean   :15.8  \n 3rd Qu.:23.0  \n Max.   :31.0  \n               \n\n\n\nUse the glimpse() function from dplyr package and skim() function from skimr package to understand the data. Skim function shows mean, sd, percentiles, and histogram.\nLooking at the histogram, which variable is most skewed?\nIt looks like the day is the most skewed, it seems to have the biggest change out of the other ones.\n\nHint. you may need to use skimr::skim() to make the skim function work.\n\nlibrary(skimr)\nlibrary(dplyr)\nglimpse(air_quality.tib)\n\nRows: 153\nColumns: 6\n$ Ozone   &lt;int&gt; 41, 36, 12, 18, NA, 28, 23, 19, 8, NA, 7, 16, 11, 14, 18, 14, …\n$ Solar.R &lt;int&gt; 190, 118, 149, 313, NA, NA, 299, 99, 19, 194, NA, 256, 290, 27…\n$ Wind    &lt;dbl&gt; 7.4, 8.0, 12.6, 11.5, 14.3, 14.9, 8.6, 13.8, 20.1, 8.6, 6.9, 9…\n$ Temp    &lt;int&gt; 67, 72, 74, 62, 56, 66, 65, 59, 61, 69, 74, 69, 66, 68, 58, 64…\n$ Month   &lt;fct&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…\n$ Day     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…\n\nskimr::skim(air_quality.tib)\n\n\nData summary\n\n\nName\nair_quality.tib\n\n\nNumber of rows\n153\n\n\nNumber of columns\n6\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nfactor\n1\n\n\nnumeric\n5\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: factor\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nordered\nn_unique\ntop_counts\n\n\n\n\nMonth\n0\n1\nFALSE\n5\n5: 31, 7: 31, 8: 31, 6: 30\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nOzone\n37\n0.76\n42.13\n32.99\n1.0\n18.00\n31.5\n63.25\n168.0\n▇▃▂▁▁\n\n\nSolar.R\n7\n0.95\n185.93\n90.06\n7.0\n115.75\n205.0\n258.75\n334.0\n▅▃▅▇▅\n\n\nWind\n0\n1.00\n9.96\n3.52\n1.7\n7.40\n9.7\n11.50\n20.7\n▂▇▇▃▁\n\n\nTemp\n0\n1.00\n77.88\n9.47\n56.0\n72.00\n79.0\n85.00\n97.0\n▂▃▇▇▃\n\n\nDay\n0\n1.00\n15.80\n8.86\n1.0\n8.00\n16.0\n23.00\n31.0\n▇▇▇▇▆"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.1.-histograms",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.1.-histograms",
+    "title": "Capstone with Airquality Data",
+    "section": "P2.1. Histograms",
+    "text": "P2.1. Histograms\n\nVisualize numerical data with a histogram. Normality assumption is important when running a regression. If the data is severely skewed, change to a log-based scale to depict the variable on the chart.\n\n\nhist(df$Temp)"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.2.-ozone-by-continuous-variables",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.2.-ozone-by-continuous-variables",
+    "title": "Capstone with Airquality Data",
+    "section": "P2.2. Ozone by Continuous variables",
+    "text": "P2.2. Ozone by Continuous variables\n\nNow, let’s examine the relationship between each of the continuous variables and Ozone at one pair at a time. Which plot should you use and why? Also, add a regression line on the plot too.\n\n\nggpairs(df %&gt;% select(Ozone, Solar.R, Wind, Temp, Day))"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.3.-ozone-by-month-monthly-ozone-amount",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.3.-ozone-by-month-monthly-ozone-amount",
+    "title": "Capstone with Airquality Data",
+    "section": "P2.3. Ozone by Month (Monthly ozone amount)",
+    "text": "P2.3. Ozone by Month (Monthly ozone amount)\n\nThis time, draw a chart showing the impact of the categorical independent variables on the ozone amount.\n\n\n  df %&gt;% \n  ggplot(aes(Ozone, Month))+\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE) + #lm = linear model; se = standard error\n  geom_jitter()+\n  labs(title = \"Ozone Vs. Month\",\n       x = \"Ozone\",\n       y = \"Month\", \n       )"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.1.-correlation-with-raw-ozone",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.1.-correlation-with-raw-ozone",
+    "title": "Capstone with Airquality Data",
+    "section": "P7.1. Correlation with raw Ozone",
+    "text": "P7.1. Correlation with raw Ozone\n\nRun the correlation analysis you did in Problem 4 again. Compare the results of the correlations before and after missing value imputations. What can you tell about the strength of association between Ozone and the other three variables?\n\n\nggcorr(df.air %&gt;% select(!Ozone))"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.2.-correlations-with-logged-ozone",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.2.-correlations-with-logged-ozone",
+    "title": "Capstone with Airquality Data",
+    "section": "P7.2. Correlations with Logged Ozone",
+    "text": "P7.2. Correlations with Logged Ozone\n\nThis time, use create a new variable by taking the log of Ozone – log(Ozone) – as Ozone is severely skewed. Write the code to repeat (1) with the log-transformed form of Ozone. What can you tell about the strength of the association between Ozone and the other three variables?\n\n\n# Create a new variable: Log-transformed Ozone\ndf &lt;- df %&gt;%\n  mutate(Ozone_logged = log(Ozone))\n\n# Calculate correlations with logged Ozone\ncorrelation_matrix &lt;- df %&gt;%\n  select(Ozone_logged, Solar.R, Wind, Temp) %&gt;%\n  cor(use = \"complete.obs\")\n\n# Print the correlation matrix\nprint(correlation_matrix)\n\n             Ozone_logged    Solar.R       Wind       Temp\nOzone_logged    1.0000000  0.4561082 -0.5557003  0.7448232\nSolar.R         0.4561082  1.0000000 -0.1271835  0.2940876\nWind           -0.5557003 -0.1271835  1.0000000 -0.4971897\nTemp            0.7448232  0.2940876 -0.4971897  1.0000000"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.1-categorical-ozone",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.1-categorical-ozone",
+    "title": "Capstone with Airquality Data",
+    "section": "P10.1: categorical Ozone",
+    "text": "P10.1: categorical Ozone\nCreate a new column called “Ozone_cat.” If the Ozone of the imputed dataset is less than or equal to the 25th quantile of the Ozone amount in the data, put “Low” in the new column, if it is greater than 25th quantile and less than the 75th quantile, put “Middle,” and if it is greater than 75th quantile, put “high” in the new column (use the pipe operator).\nHint: You may use quantile() to find 25th and 75 quantile. You may also use case_when() from dplr.\n\n# Create Ozone_cat based on quantiles\ndf &lt;- df %&gt;%\n  mutate(Ozone_cat = case_when(\n    Ozone &lt;= quantile(Ozone, 0.25, na.rm = TRUE) ~ \"Low\",\n    Ozone &gt; quantile(Ozone, 0.25, na.rm = TRUE) & \n      Ozone &lt;= quantile(Ozone, 0.75, na.rm = TRUE) ~ \"Middle\",\n    Ozone &gt; quantile(Ozone, 0.75, na.rm = TRUE) ~ \"High\"\n  ))\n\n# Ensure Ozone_cat is a factor in the correct order\ndf &lt;- df %&gt;%\n  mutate(Ozone_cat = factor(Ozone_cat, levels = c(\"Low\", \"Middle\", \"High\")))"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.2-monthly-ozone-severity",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.2-monthly-ozone-severity",
+    "title": "Capstone with Airquality Data",
+    "section": "P10.2: Monthly Ozone Severity",
+    "text": "P10.2: Monthly Ozone Severity\nNow that you have created Ozone_cat, which is a factor, let’s draw a chart that shows monthly counts of each of the three levels of Ozone_cat – Low, Middle, and High in that order. Make the chart as professional as it can be.\nHints: When you created the Ozone_cat variable previously, you might have created the level in an order different than the low-middle-high order. If so, you can change the order of the level using a combination of mutate and fct_relevel() and manually type the order you like: “c(”Low”, “Middle”, “High”)“. To generate the count of Ozone_cat, you would like to use”group_by()” and “count().”\n\n# Count of Ozone_cat by Month\ndf %&gt;%\n  group_by(Month, Ozone_cat) %&gt;%\n  count() %&gt;%\n  ggplot(aes(x = Month, y = n, fill = Ozone_cat)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  scale_fill_manual(values = c(\"Low\" = \"red\", \"Middle\" = \"orange\", \"High\" = \"green\")) +\n  labs(title = \"Monthly Ozone Severity\", x = \"Month\", y = \"Count\", fill = \"Ozone Category\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.3-insights-from-the-chart",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.3-insights-from-the-chart",
+    "title": "Capstone with Airquality Data",
+    "section": "P10.3: Insights from the chart",
+    "text": "P10.3: Insights from the chart\nWhat can you tell about the monthly Ozone severity?\n\nMonthly trends: The chart shows how the proportion of Low, Middle, and High ozone levels varies by month.\nSummer months (e.g., June, July) may have more “High” ozone days due to increased sunlight and heat.\nColder months might show more “Low” ozone days due to reduced ozone formation.\nThis analysis helps in seasonal forecasting of ozone levels and can guide policy decisions on air quality management."
   }
 ]
