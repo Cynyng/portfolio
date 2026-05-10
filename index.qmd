@@ -19,7 +19,7 @@ I’m Lucynda Young, a Growth Marketing Manager with experience across eCommerce
 :::
 
 ::: {.headshot-wrap}
-![](headshot.png)
+![](https://raw.githubusercontent.com/Cynyng/portfolio/refs/heads/main/docs/headshot.png)
 :::
 :::
 
