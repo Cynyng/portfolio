@@ -19,7 +19,7 @@ I’m Lucynda Young, a Growth Marketing Manager and Digital Marketing Analytics 
 :::
 
 ::: {.headshot-wrap}
-![](headshot.png)
+![](https://raw.githubusercontent.com/Cynyng/portfolio/refs/heads/main/headshot.png)
 :::
 :::
 
