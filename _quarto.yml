@@ -9,18 +9,28 @@ website:
     logo: headshot.png
     pinned: true
     left:
+website:
+  title: "Lucynda Young"
+
+  navbar:
+    right:
       - text: "Home"
-        href: index.qmd
+        href: index.html
+
       - text: "Digital Marketing"
-        href: digital-marketing.qmd
+        href: digital-marketing.html
+
       - text: "Marketing Analytics"
-        href: marketing-analytics.qmd
+        href: marketing-analytics.html
+
       - text: "Interactive Presentation"
-        href: presentation.qmd
-      - text: "Website Analytics"
-        href: website-analytics.qmd
+        href: presentation.html
+
       - text: "Resume"
-        href: resume.qmd
+        href: resume.html
+
+      - text: "Website Analytics"
+        href: website-analytics.html
     right:
       - icon: github
         href: https://github.com/Cynyng/portfolio
