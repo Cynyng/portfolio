@@ -88,7 +88,9 @@ Supports stronger campaign planning by identifying which channels are most effec
 
 <div class="project-link">
 
-[View Full PDF Report](https://github.com/Cynyng/portfolio/blob/main/Digital_marketing_Projects/Project1_Information%20Technology.pdf)
+<a href="Digital_marketing_Projects/Project1_Information%20Technology.pdf" target="_blank">
+  View PDF Report
+</a>
 
 </div>
 
@@ -122,8 +124,15 @@ Engagement metric review, audience behavior analysis, content performance compar
 Helps improve customer communication by identifying what types of content and digital touchpoints create stronger engagement and more meaningful audience interaction.
 
 <div class="project-link">
-[View Project Full Report](https://github.com/Cynyng/portfolio/blob/main/Digital_marketing_Projects/Project_2_TRI/TRI-Written%20Report-Group%203.pdf)
-[View interactive Quiz]()
+<a href="Digital_marketing_Projects/Project_2_TRI/TRI-Written%20Report-Group%203.pdf" target="_blank">
+  View PDF Report
+</a>
+
+<br><br>
+
+<a href="Quiz/index.html" target="_blank">
+  View Interactive HTML Project
+</a>
 
 </div>
 
@@ -158,8 +167,9 @@ Supports stronger organic visibility, improved content planning, and better alig
 
 <div class="project-link">
 
-[View Project Full Report](https://github.com/Cynyng/portfolio/blob/main/Digital_marketing_Projects/Project3/young_lucynda_personaproject.pdf)
-
+<a href="Digital_marketing_Projects/Project3/young_lucynda_personaproject.pdf" target="_blank">
+  View PDF Report
+</a>
 </div>
 
 </div>
