@@ -38,7 +38,6 @@ Growth Marketing Manager with experience across ecommerce channels, digital mark
 
 </div>
 </div>
-:::
 
 ## Certifications
 
@@ -75,6 +74,8 @@ Growth Marketing Manager with experience across ecommerce channels, digital mark
 </div>
 
 </div>
+:::
+
 
 
 <!-- Google tag (gtag.js) -->
