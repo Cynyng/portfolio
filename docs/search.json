@@ -402,8 +402,8 @@
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#reflection-presentation",
     "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#reflection-presentation",
     "title": "Marketing Automation with Quarto",
-    "section": "",
-    "text": "Audience-centered reflection on dashboards, automation, dynamic reporting, and reproducible analytics.\n\nOpen by explaining that this presentation is designed as a true slide deck, not a written report. The prompts are included so the audience understands the purpose of each reflection."
+    "section": "Reflection Presentation",
+    "text": "Reflection Presentation\nAudience-centered reflection on dashboards, automation, dynamic reporting, and reproducible analytics.\n\nOpen by explaining that this presentation is designed as a true slide deck, not a written report. The prompts are included so the audience understands the purpose of each reflection."
   },
   {
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt",
@@ -424,7 +424,7 @@
     "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#quarto-vs.-traditional-dashboards",
     "title": "Marketing Automation with Quarto",
     "section": "Quarto vs. Traditional Dashboards",
-    "text": "Quarto vs. Traditional Dashboards\n\n\n\nTraditional Dashboard\n\n\nGood for monitoring\nOften KPI-heavy\nCan feel disconnected from the “why”\nUsually requires the viewer to interpret the story\n\n\n\n\n\nQuarto Dashboard\n\n\nGood for explaining\nCombines narrative with analysis\nEasier to reproduce and update\nHelps the viewer understand the business meaning"
+    "text": "Quarto vs. Traditional Dashboards\n\n\nTraditional Dashboard\n\n\nGood for monitoring\nOften KPI-heavy\nCan feel disconnected from the “why”\nUsually requires the viewer to interpret the story\n\n\n\nQuarto Dashboard\n\n\nGood for explaining\nCombines narrative with analysis\nEasier to reproduce and update\nHelps the viewer understand the business meaning"
   },
   {
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#why-it-matters-in-marketing",
@@ -459,7 +459,7 @@
     "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-it-works",
     "title": "Marketing Automation with Quarto",
     "section": "How It Works",
-    "text": "How It Works\n\n\n\nReport Template\n\nFixed structure\nReusable code\nConsistent visual design\nStandard business questions\n\n\n\n\nParameter Values\n\nFilter the data\nUpdate charts\nChange labels\nCustomize the final message"
+    "text": "How It Works\n\n\nReport Template\n\nFixed structure\nReusable code\nConsistent visual design\nStandard business questions\n\n\nParameter Values\n\nFilter the data\nUpdate charts\nChange labels\nCustomize the final message"
   },
   {
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#example-parameter-logic",
@@ -501,7 +501,7 @@
     "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#better-approach-dynamic-data-storytelling",
     "title": "Marketing Automation with Quarto",
     "section": "Better Approach: Dynamic Data Storytelling",
-    "text": "Better Approach: Dynamic Data Storytelling\n\n\n\nLess Effective\n\n\nMany metrics at once\nNo clear priority\nCharts without interpretation\nUsers must search for meaning\n\n\n\n\n\nMore Effective\n\n\nClear headline insight\nFocused visuals\nExplanation of what changed\nSuggested action or next step"
+    "text": "Better Approach: Dynamic Data Storytelling\n\n\nLess Effective\n\n\nMany metrics at once\nNo clear priority\nCharts without interpretation\nUsers must search for meaning\n\n\n\nMore Effective\n\n\nClear headline insight\nFocused visuals\nExplanation of what changed\nSuggested action or next step"
   },
   {
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-to-help-colleagues-pay-attention",
@@ -543,7 +543,7 @@
     "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-i-can-improve",
     "title": "Marketing Automation with Quarto",
     "section": "How I Can Improve",
-    "text": "How I Can Improve\n\n\n\nTechnical Habits\n\n\nUse organized project folders\nRender early and often\nSave reusable templates\nComment code clearly\n\n\n\n\n\nCommunication Habits\n\n\nStart with the audience\nReduce clutter\nExplain the “so what”\nMatch format to purpose"
+    "text": "How I Can Improve\n\n\nTechnical Habits\n\n\nUse organized project folders\nRender early and often\nSave reusable templates\nComment code clearly\n\n\n\nCommunication Habits\n\n\nStart with the audience\nReduce clutter\nExplain the “so what”\nMatch format to purpose"
   },
   {
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-4",
@@ -571,7 +571,7 @@
     "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#quarto-in-the-era-of-ai",
     "title": "Marketing Automation with Quarto",
     "section": "Quarto in the Era of AI",
-    "text": "Quarto in the Era of AI\n\n\n\nAI Can Help With\n\n\nDrafting code\nExplaining errors\nSummarizing results\nImproving wording\n\n\n\n\n\nQuarto Helps With\n\n\nVerification\nTransparency\nReproducibility\nProfessional delivery"
+    "text": "Quarto in the Era of AI\n\n\nAI Can Help With\n\n\nDrafting code\nExplaining errors\nSummarizing results\nImproving wording\n\n\n\nQuarto Helps With\n\n\nVerification\nTransparency\nReproducibility\nProfessional delivery"
   },
   {
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#my-plan",
@@ -585,7 +585,7 @@
     "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#key-takeaways",
     "title": "Marketing Automation with Quarto",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\n\n\nQuarto\nCombines code, visuals, and narrative in one professional workflow.\n\n\n\nAutomation\nReduces repetition through reusable templates and parameterized reports.\n\n\n\nStorytelling\nHelps people understand what changed and what action should come next."
+    "text": "Key Takeaways\n\n\nQuarto\nCombines code, visuals, and narrative in one professional workflow.\n\nAutomation\nReduces repetition through reusable templates and parameterized reports.\n\nStorytelling\nHelps people understand what changed and what action should come next."
   },
   {
     "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#closing-statement",

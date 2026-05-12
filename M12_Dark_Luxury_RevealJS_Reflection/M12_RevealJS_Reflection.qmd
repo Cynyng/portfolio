@@ -1,4 +1,5 @@
 ---
+ addded---
 title: "Marketing Automation with Quarto"
 subtitle: "Reflection on Dashboards, Automation, and Reproducible Reporting"
 author: "Lucynda Young"
@@ -70,7 +71,7 @@ Open by explaining that this presentation is designed as a true slide deck, not 
 
 ## What I Liked Most {data-transition="slide"}
 
-::: {.big-quote}
+::: big-quote
 Quarto turns a dashboard from a collection of charts into a reproducible communication product.
 :::
 
@@ -84,9 +85,8 @@ That makes it stronger than a dashboard that only displays metrics without conte
 
 ## Quarto vs. Traditional Dashboards {data-transition="fade"}
 
-:::: {.columns}
-
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ### Traditional Dashboard
 
 ::: {.fragment .fade-in}
@@ -95,9 +95,9 @@ That makes it stronger than a dashboard that only displays metrics without conte
 - Can feel disconnected from the “why”
 - Usually requires the viewer to interpret the story
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ### Quarto Dashboard
 
 ::: {.fragment .fade-in}
@@ -106,9 +106,8 @@ That makes it stronger than a dashboard that only displays metrics without conte
 - Easier to reproduce and update
 - Helps the viewer understand the business meaning
 :::
-:::
-
 ::::
+:::::::
 
 ## Why It Matters in Marketing {data-transition="zoom"}
 
@@ -151,7 +150,7 @@ Emphasize that Quarto is not just about the table or chart. The value is that th
 
 ## What Parameterized Reporting Means {data-transition="slide"}
 
-::: {.big-quote}
+::: big-quote
 Parameterized reporting means one report template can generate many customized reports.
 :::
 
@@ -165,8 +164,7 @@ Instead of copying the same report over and over, the analyst changes inputs suc
 
 ## How It Works {data-transition="fade"}
 
-:::: {.columns}
-
+::::: columns
 ::: {.column width="45%"}
 ### Report Template
 
@@ -184,8 +182,7 @@ Instead of copying the same report over and over, the analyst changes inputs suc
 - Change labels
 - Customize the final message
 :::
-
-::::
+:::::
 
 ## Example Parameter Logic {data-transition="zoom"}
 
@@ -255,7 +252,7 @@ It also lowers the risk of mistakes caused by copying, pasting, and reformatting
 
 ## The Problem {data-transition="zoom"}
 
-::: {.big-quote}
+::: big-quote
 Dashboard fatigue happens when users see too much data and not enough meaning.
 :::
 
@@ -269,9 +266,8 @@ The audience should not have to hunt for the insight.
 
 ## Better Approach: Dynamic Data Storytelling {data-transition="fade"}
 
-:::: {.columns}
-
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ### Less Effective
 
 ::: {.fragment .fade-in}
@@ -280,9 +276,9 @@ The audience should not have to hunt for the insight.
 - Charts without interpretation
 - Users must search for meaning
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ### More Effective
 
 ::: {.fragment .fade-in}
@@ -291,9 +287,8 @@ The audience should not have to hunt for the insight.
 - Explanation of what changed
 - Suggested action or next step
 :::
-:::
-
 ::::
+:::::::
 
 ## How to Help Colleagues Pay Attention {data-transition="slide"}
 
@@ -315,8 +310,8 @@ Use automation to send the right information at the right time.
 
 ## Dashboard Design Rule {data-transition="zoom"}
 
-::: {.big-quote}
-A good dashboard does not simply answer, “What happened?”  
+::: big-quote
+A good dashboard does not simply answer, “What happened?”\
 It helps the audience decide, “What should we do next?”
 :::
 
@@ -332,7 +327,7 @@ This is a strong transition point. Connect it to marketing teams where colleague
 
 ## Main Challenge {data-transition="fade"}
 
-::: {.big-quote}
+::: big-quote
 The tools are powerful because they connect many skills, but that also makes the learning curve steep.
 :::
 
@@ -364,9 +359,8 @@ Balancing code, design, and written explanation
 
 ## How I Can Improve {data-transition="zoom"}
 
-:::: {.columns}
-
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ### Technical Habits
 
 ::: {.fragment .fade-in}
@@ -375,9 +369,9 @@ Balancing code, design, and written explanation
 - Save reusable templates
 - Comment code clearly
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ### Communication Habits
 
 ::: {.fragment .fade-in}
@@ -386,9 +380,8 @@ Balancing code, design, and written explanation
 - Explain the “so what”
 - Match format to purpose
 :::
-:::
-
 ::::
+:::::::
 
 # 5 · Reproducibility and AI {data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 70%, #6f4e16 100%)"}
 
@@ -412,7 +405,7 @@ For analytics work, reproducibility builds trust.
 
 ## Why Reproducible Reports Matter {data-transition="slide"}
 
-::: {.big-quote}
+::: big-quote
 If a report cannot be recreated, it is harder to trust.
 :::
 
@@ -426,9 +419,8 @@ That is valuable when teams need to explain results to managers, clients, or sta
 
 ## Quarto in the Era of AI {data-transition="zoom"}
 
-:::: {.columns}
-
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 ### AI Can Help With
 
 ::: {.fragment .fade-in}
@@ -437,9 +429,9 @@ That is valuable when teams need to explain results to managers, clients, or sta
 - Summarizing results
 - Improving wording
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 ### Quarto Helps With
 
 ::: {.fragment .fade-in}
@@ -448,9 +440,8 @@ That is valuable when teams need to explain results to managers, clients, or sta
 - Reproducibility
 - Professional delivery
 :::
-:::
-
 ::::
+:::::::
 
 ## My Plan {data-transition="fade"}
 
@@ -470,8 +461,7 @@ Build reports that connect data, insight, and action.
 
 ## Key Takeaways
 
-:::: {.columns}
-
+:::::: columns
 ::: {.column width="33%"}
 ### Quarto
 
@@ -489,12 +479,11 @@ Reduces repetition through reusable templates and parameterized reports.
 
 Helps people understand what changed and what action should come next.
 :::
-
-::::
+::::::
 
 ## Closing Statement {data-transition="fade"}
 
-::: {.big-quote}
+::: big-quote
 Quarto helps turn raw data into communication that is easier to update, easier to trust, and easier to act on.
 :::
 
