@@ -21,10 +21,17 @@ Growth Marketing Manager with experience across ecommerce channels, digital mark
 </div>
 
 <div class="card">
-<h3>Resume File</h3>
-<p>Add your downloadable resume PDF to the repo root and rename it:</p>
-<p><code>Lucynda_Young_Resume.pdf</code></p>
-<p><a class="project-link" href="Lucynda_Young_Resume.pdf">Download resume →</a></p>
+<h3>Resume Files</h3>
+<p><strong>Cover Letter</p></strong>
+<p><<a href="Lucynda_Young_Resume.docx" target="_blank">
+</a></p>
+<p><strong>Resume</p></strong>
+<p><<a href="Lucynda_Young_Resume.docx" target="_blank">
+</a></p>
+<p><strong>References</p></strong>
+<p><<a href="Lucynda_Young_Resume.docx" target="_blank">
+</a></p>
+
 </div>
 </div>
 :::
