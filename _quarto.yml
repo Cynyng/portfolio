@@ -20,8 +20,6 @@ website:
         href: presentation.html
       - text: "Resume"
         href: resume.html
-      - text: "Website Analytics"
-        href: website-analytics.html
     right:
       - icon: github
         href: https://github.com/Cynyng/portfolio
