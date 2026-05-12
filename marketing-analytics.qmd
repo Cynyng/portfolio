@@ -96,13 +96,6 @@ Supports smarter budget allocation by identifying high-performing channels and a
 <a href="Marketing_Mix_Modeling_Assignment.html" target="_blank">
   View Marketing Mix Modeling Report
 </a>
-
-<br><br>
-
-<!-- RevealJS Presentation -->
-<a href="marketing_mix_modeling_revealjs_presentation.html" target="_blank">
-  View RevealJS Presentation
-</a>
 </div>
 </details>
 
