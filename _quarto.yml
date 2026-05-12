@@ -5,30 +5,21 @@ project:
 website:
   title: "Lucynda Young | Marketing Analytics Portfolio"
   site-url: "https://cynyng.github.io/portfolio/"
+
   navbar:
     logo: headshot.png
     pinned: true
     left:
-website:
-  title: "Lucynda Young"
-
-  navbar:
-    right:
       - text: "Home"
         href: index.html
-
       - text: "Digital Marketing"
         href: digital-marketing.html
-
       - text: "Marketing Analytics"
         href: marketing-analytics.html
-
       - text: "Interactive Presentation"
         href: presentation.html
-
       - text: "Resume"
         href: resume.html
-
       - text: "Website Analytics"
         href: website-analytics.html
     right:
@@ -36,6 +27,7 @@ website:
         href: https://github.com/Cynyng/portfolio
       - icon: linkedin
         href: https://www.linkedin.com/in/lucyndayoung/
+
   page-footer:
     left: "© 2026 Lucynda Young"
     right: "Built with Quarto | Marketing Analytics Portfolio"
