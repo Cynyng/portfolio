@@ -102,3 +102,35 @@ body { background: var(--bg); }
   .hero, .card-grid, .card-grid.two, .stat-strip { grid-template-columns: 1fr; }
   .hero { min-height: auto; }
 }
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cert-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.cert-card:hover {
+  background: var(--panel-strong);
+  transform: translateY(-3px);
+  border-color: var(--purple);
+}
+
+.cert-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.cert-title {
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.4;
+}

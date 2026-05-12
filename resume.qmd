@@ -40,6 +40,43 @@ Growth Marketing Manager with experience across ecommerce channels, digital mark
 </div>
 :::
 
+## Certifications
+
+<div class="cert-grid">
+
+<div class="cert-card">
+<div class="cert-icon">📊</div>
+<div class="cert-title">Google Analytics Certification</div>
+</div>
+
+<div class="cert-card">
+<div class="cert-icon">🔎</div>
+<div class="cert-title">Google Ads Search Certification</div>
+</div>
+
+<div class="cert-card">
+<div class="cert-icon">🛒</div>
+<div class="cert-title">Google Shopping Ads Certification</div>
+</div>
+
+<div class="cert-card">
+<div class="cert-icon">📣</div>
+<div class="cert-title">Google Ads Display Certification</div>
+</div>
+
+<div class="cert-card">
+<div class="cert-icon">📧</div>
+<div class="cert-title">HubSpot Email Marketing Certification</div>
+</div>
+
+<div class="cert-card">
+<div class="cert-icon">🎯</div>
+<div class="cert-title">HubSpot Digital Marketing Certification</div>
+</div>
+
+</div>
+
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1NTF68288"></script>
 <script>
