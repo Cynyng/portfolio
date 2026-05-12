@@ -5,7 +5,7 @@ project:
 website:
   title: "Lucynda Young | Marketing Analytics Portfolio"
   site-url: "https://cynyng.github.io/portfolio/"
-
+  google-analytics: "G-Z1NTF68288"
   navbar:
     logo: headshot.png
     pinned: true

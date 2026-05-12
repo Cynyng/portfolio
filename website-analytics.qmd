@@ -41,3 +41,12 @@ This page will analyze the traffic data collected from the portfolio website onc
 - LinkedIn / GitHub outbound clicks  
 - RevealJS presentation views
 :::
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1NTF68288"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z1NTF68288');
+</script>
