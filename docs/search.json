@@ -194,5 +194,502 @@
     "title": "Lucynda Young",
     "section": "Digital Marketing Strengths",
     "text": "Digital Marketing Strengths\n\n\n\nChannel Growth\n\n\nExperience supporting growth across marketplace channels and owned brand websites, with a focus on traffic, conversion, product visibility, and revenue performance.\n\n\n\n\nCampaign Optimization\n\n\nAbility to evaluate campaign performance, identify what is working, and recommend changes to budget, targeting, content, and channel mix.\n\n\n\n\nCustomer-Focused Strategy\n\n\nProjects connect customer behavior, digital touchpoints, and engagement patterns to practical marketing recommendations."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "",
+    "text": "This notebook reproduces the core marketing mix modeling workflow for the FourTex case and answers all seven case questions plus the two required tasks. The emphasis is on clean structure, visible code, concise interpretation, and a professional rendered report."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#overview",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#overview",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "",
+    "text": "This notebook reproduces the core marketing mix modeling workflow for the FourTex case and answers all seven case questions plus the two required tasks. The emphasis is on clean structure, visible code, concise interpretation, and a professional rendered report."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#data-preparation",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#data-preparation",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "2 Data Preparation",
+    "text": "2 Data Preparation\n\n\nCode\nfourtex &lt;- read_csv(\"data/data_fourtex.csv\", show_col_types = FALSE) |&gt;\n  mutate(\n    week_beg = dmy(week_beg),\n    lag1_traffic = lag(traffic)\n  )\n\nmodel_data &lt;- fourtex |&gt;\n  drop_na(lag1_traffic)\n\nglimpse(model_data)\n\n\nRows: 56\nColumns: 7\n$ week_beg       &lt;date&gt; 2020-07-13, 2020-07-20, 2020-07-27, 2020-08-03, 2020-0…\n$ Google_Adwords &lt;dbl&gt; 93634.5, 112239.4, 121250.3, 130470.9, 131955.3, 129812…\n$ Facebook       &lt;dbl&gt; 66150, 94650, 96450, 114600, 119550, 106350, 116550, 90…\n$ TV             &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4341824, 0, 0, 0…\n$ Radio          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 1298507, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ traffic        &lt;dbl&gt; 6186229, 6790416, 7146957, 7815741, 8444791, 8267982, 7…\n$ lag1_traffic   &lt;dbl&gt; 6719812, 6186229, 6790416, 7146957, 7815741, 8444791, 8…"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#exploratory-analysis",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#exploratory-analysis",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "3 Exploratory Analysis",
+    "text": "3 Exploratory Analysis\n\n3.1 Weekly Traffic and Media Spend\n\n\nCode\nplot_data &lt;- fourtex |&gt;\n  pivot_longer(\n    cols = c(Google_Adwords, Facebook, TV, Radio),\n    names_to = \"channel\",\n    values_to = \"spend\"\n  )\n\ntraffic_plot &lt;- ggplot(fourtex, aes(x = week_beg, y = traffic)) +\n  geom_line(linewidth = 1) +\n  geom_point(size = 1.6) +\n  scale_y_continuous(labels = comma) +\n  labs(\n    title = \"FourTex Weekly Website Traffic\",\n    x = NULL,\n    y = \"Traffic\"\n  ) +\n  theme_minimal()\n\nspend_plot &lt;- ggplot(plot_data, aes(x = week_beg, y = spend, color = channel)) +\n  geom_line(linewidth = 1) +\n  scale_y_continuous(labels = dollar) +\n  labs(\n    title = \"Weekly Media Spend by Channel\",\n    x = NULL,\n    y = \"Spend\"\n  ) +\n  theme_minimal()\n\ntraffic_plot\n\n\n\n\n\n\n\n\n\nCode\nspend_plot"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#linear-regression-model",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#linear-regression-model",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "4 Linear Regression Model",
+    "text": "4 Linear Regression Model\nThe model below estimates weekly traffic as a function of media spending in Google Adwords, Facebook, TV, and Radio, while also controlling for one-week lagged traffic.\n\n\nCode\nmmm_model &lt;- lm(\n  traffic ~ Google_Adwords + Facebook + TV + Radio + lag1_traffic,\n  data = model_data\n)\n\nsummary(mmm_model)\n\n\n\nCall:\nlm(formula = traffic ~ Google_Adwords + Facebook + TV + Radio + \n    lag1_traffic, data = model_data)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2970491  -554600   -68849   493053  1797342 \n\nCoefficients:\n                Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)    6.428e+05  7.472e+05   0.860  0.39373    \nGoogle_Adwords 1.237e+01  4.396e+00   2.815  0.00696 ** \nFacebook       6.469e+00  2.534e+00   2.553  0.01378 *  \nTV             9.315e-02  1.177e-01   0.791  0.43241    \nRadio          6.096e-01  3.399e-01   1.793  0.07900 .  \nlag1_traffic   4.604e-01  7.739e-02   5.949 2.63e-07 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 959300 on 50 degrees of freedom\nMultiple R-squared:  0.7377,    Adjusted R-squared:  0.7115 \nF-statistic: 28.13 on 5 and 50 DF,  p-value: 1.922e-13\n\n\n\n4.1 Model Summary Table\n\n\nCode\ncoef_tbl &lt;- tidy(mmm_model, conf.int = TRUE) |&gt;\n  mutate(across(where(is.numeric), ~ round(.x, 3)))\n\ncoef_tbl"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#question-responses",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#question-responses",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "5 Question Responses",
+    "text": "5 Question Responses\n\n\n\n\n\n\nNoteQuestion 1\n\n\n\nLooking at these plots, what do you observe? Do increases and decreases in online traffic coincide with online and offline spending? Do you see any seasonality or trend patterns?\n\n\nTraffic generally moves more closely with Google Adwords and Facebook spending than with TV or Radio. The largest traffic spikes appear in late November through December, which suggests a strong seasonal lift around holiday periods. TV and Radio spending occur in fewer, larger bursts, but those spikes do not consistently line up with equally strong increases in web traffic. Overall, there is a visible seasonal pattern and a noticeable year-end surge.\n\n\n\n\n\n\nNoteQuestion 2\n\n\n\nDid you notice that we added the lagged traffic variable as an additional predictor to our model? Do you think including the first lagged traffic variable in the model makes sense? Why?\n\n\nYes. Including the first lagged traffic variable makes sense because website traffic usually has carryover momentum from the prior week. In practice, traffic is rarely independent from one period to the next. A strong week often leads into another strong week because of brand recall, repeat visits, remarketing, and ongoing campaign effects. In this model, the lagged traffic coefficient is positive and statistically significant, which supports the idea that past traffic helps explain current traffic.\n\n\n\n\n\n\nNoteQuestion 3\n\n\n\nWhat is your interpretation of the estimated coefficients of the other advertising variables, Facebook, TV and radio?\n\n\nHolding the other variables constant:\n\nFacebook has a positive coefficient, meaning additional Facebook spending is associated with higher website traffic.\nTV has a very small coefficient, implying only a minimal direct traffic lift per extra dollar spent.\nRadio is also positive, but its estimated impact is much weaker than Google Adwords or Facebook.\n\nFrom a direct-response web traffic perspective, Facebook appears meaningful, while TV and Radio appear far less efficient.\n\n\n\n\n\n\nNoteQuestion 4\n\n\n\nDo you think the model predicted well the web traffic performance of FourTex?\n\n\nThe model performs reasonably well, but not perfectly. The adjusted R-squared is fairly strong for a simple marketing mix model, which means the predictors explain a substantial portion of weekly traffic variation. However, it does not explain everything. That is expected because web traffic is also affected by promotions, seasonality, pricing, competitor actions, creative quality, email, SEO, and other business factors not included in the model.\n\n\n\n\n\n\nNoteQuestion 5\n\n\n\nWhat is your conclusion with regard to traffic generated and cost incurred? Which media returns the most and least?\n\n\nThe strongest direct traffic return appears to come from Google Adwords, followed by Facebook. The weakest returns come from TV and then Radio. This means the channels with the strongest measurable traffic lift are the digital channels, while the traditional channels consume substantial budget with much less direct traffic response.\n\n\n\n\n\n\nNoteQuestion 6\n\n\n\nAre you surprised that the traffic return on investment for TV and radio is zero? Why do you think that the company invested so much in TV and radio channels although their traffic return is absent?\n\n\nIt is not especially surprising. TV and Radio often work better as upper-funnel or brand-building channels than as direct website traffic drivers. Their value may show up in brand awareness, branded search, store visits, future sales, or long-run demand rather than immediate weekly web traffic. So even if their direct traffic return looks near zero in this model, management may still have invested in them to build awareness, credibility, market reach, or cross-channel lift.\n\n\n\n\n\n\nNoteQuestion 7\n\n\n\nWhat is your conclusion? Is the optimal allocation different from the actual spending? What would you suggest FourTex in terms of how they should deploy their marketing resources to boost the web traffic performance? Would the optimal allocation be different for a different performance metric (e.g. sales)?\n\n\nYes, the optimal allocation for maximizing web traffic appears different from the observed spending pattern. Based on this model, FourTex should shift more budget toward Google Adwords and Facebook, and reduce spending on TV and Radio if the primary objective is website traffic.\nThat said, the answer could change if the business objective were sales, profit, brand lift, or customer lifetime value rather than traffic. A channel can look weak for traffic and still matter for revenue, reach, or brand building. So the “best” allocation depends on the KPI being optimized."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#recommendations-to-mrs.-schmidt",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#recommendations-to-mrs.-schmidt",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "6 Recommendations to Mrs. Schmidt",
+    "text": "6 Recommendations to Mrs. Schmidt\n\n\n\n\n\n\nImportantCase Recommendations\n\n\n\nWhich marketing mix instrument really drives website traffic?\nGoogle Adwords is the strongest traffic driver in this analysis, with Facebook as the second strongest.\nWhat is the return on marketing investment?\nTraffic return on marketing investment is highest for Google Adwords, then Facebook, and is close to zero for TV and Radio in this traffic-focused model.\nShould FourTex keep pushing Google Adwords and Facebook ads? Should it stop TV and Radio?\nFourTex should continue investing in Google Adwords and Facebook if the main goal is to boost website traffic. TV and Radio should not necessarily be eliminated immediately, but they should be reduced, closely audited, and justified only if the company is pursuing broader goals such as awareness or sales lift beyond direct web traffic."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-1-residual-diagnostics",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-1-residual-diagnostics",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "7 Task 1: Residual Diagnostics",
+    "text": "7 Task 1: Residual Diagnostics\n\n\n\n\n\n\nTipTask 1\n\n\n\nTo assess the validity of your results, follow a systematic diagnostic process to test the assumptions of linear regression. Perform the residual diagnostics for the model and assess the results.\n\n\n\n7.1 Diagnostic Plots\n\nCode\npar(mfrow = c(2, 2))\nplot(mmm_model)\npar(mfrow = c(1, 1))\n\n\n\n\n\n\n\n\n\n\n7.2 Diagnostic Tests\n\n\nCode\ndiag_summary &lt;- tibble(\n  test = c(\n    \"Breusch-Pagan test\",\n    \"Durbin-Watson statistic\",\n    \"Maximum VIF\"\n  ),\n  result = c(\n    bptest(mmm_model)$p.value,\n    dwtest(mmm_model)$statistic[[1]],\n    max(vif(mmm_model))\n  )\n)\n\ndiag_summary\n\n\n\n  \n\n\n\n\n\n7.3 Diagnostic Assessment\nThe residual plots suggest the model is broadly usable, but not flawless. The residual-vs-fitted and scale-location plots indicate some uneven spread, which is consistent with heteroskedasticity. The Q-Q plot looks reasonably acceptable, so normality is not the biggest issue here. The Durbin-Watson result suggests some positive autocorrelation, which is common in weekly time-series data. VIF values are not alarmingly high for the media variables, so multicollinearity is manageable.\nAssessment: the model is directionally useful for decision-making, but the results should be interpreted with caution. A stronger follow-up would use robust standard errors, time-series-aware modeling, or additional controls for seasonality and promotions."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-2-presentable-metrics-table-with-gt",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#task-2-presentable-metrics-table-with-gt",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "8 Task 2: Presentable Metrics Table with gt",
+    "text": "8 Task 2: Presentable Metrics Table with gt\n\n\n\n\n\n\nTipTask 2\n\n\n\nCreate a presentable table using the gt package. Below the table, explain what each metric means. Also explain why unit effect is the same as TROMI.\n\n\n\n\nCode\ndf &lt;- tibble(\n  channel = c(\"Google Adwords\", \"Facebook\", \"TV\", \"Radio\"),\n  total_spend = c(\n    sum(model_data$Google_Adwords),\n    sum(model_data$Facebook),\n    sum(model_data$TV),\n    sum(model_data$Radio)\n  ),\n  unit_effect = coef(mmm_model)[c(\"Google_Adwords\", \"Facebook\", \"TV\", \"Radio\")],\n  TROMI = unit_effect,\n  est_incremental_traffic = total_spend * unit_effect\n) |&gt;\n  mutate(\n    spend_rank = min_rank(desc(unit_effect))\n  )\n\ndf |&gt;\n  mutate(\n    total_spend = dollar(total_spend),\n    unit_effect = round(unit_effect, 3),\n    TROMI = round(TROMI, 3),\n    est_incremental_traffic = comma(round(est_incremental_traffic, 0))\n  ) |&gt;\n  gt() |&gt;\n  tab_header(\n    title = md(\"**FourTex Media Effectiveness Table**\"),\n    subtitle = \"Traffic-oriented interpretation of model coefficients\"\n  ) |&gt;\n  cols_label(\n    channel = \"Channel\",\n    total_spend = \"Total Spend\",\n    unit_effect = \"Unit Effect\",\n    TROMI = \"TROMI\",\n    est_incremental_traffic = \"Estimated Incremental Traffic\",\n    spend_rank = \"Rank\"\n  ) |&gt;\n  opt_row_striping()\n\n\n\n\n\n\n\n\nFourTex Media Effectiveness Table\n\n\nTraffic-oriented interpretation of model coefficients\n\n\nChannel\nTotal Spend\nUnit Effect\nTROMI\nEstimated Incremental Traffic\nRank\n\n\n\n\nGoogle Adwords\n$8,905,540\n12.374\n12.374\n110,196,722\n1\n\n\nFacebook\n$6,354,150\n6.469\n6.469\n41,103,916\n2\n\n\nTV\n$41,593,933\n0.093\n0.093\n3,874,564\n4\n\n\nRadio\n$10,939,111\n0.610\n0.610\n6,668,239\n3\n\n\n\n\n\n\n\n\n8.1 What the Metrics Mean\n\nTotal Spend: the cumulative dollars invested in each channel over the modeled period.\nUnit Effect: the estimated increase in website traffic associated with one additional dollar spent in that channel, holding the other variables constant.\nTROMI: traffic return on marketing investment.\nEstimated Incremental Traffic: an approximate channel-level contribution obtained by multiplying total spend by the estimated unit effect.\nRank: a simple ordering of channels based on estimated traffic efficiency.\n\n\n\n8.2 Why Unit Effect Is the Same as TROMI\nIn this case, the dependent variable is traffic, and the predictor variables are marketing dollars. That means each estimated coefficient already tells us the amount of traffic returned per extra dollar spent. That is exactly what traffic return on marketing investment measures. So for this traffic model, unit effect = TROMI."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#final-takeaway",
+    "href": "Marketing_analytics_Projects/Project 2_mktg_mix/Marketing_Mix_Modeling_Assignment.html#final-takeaway",
+    "title": "Marketing Mix Modeling Assignment",
+    "section": "9 Final Takeaway",
+    "text": "9 Final Takeaway\nThe FourTex results point to a clear conclusion: if management wants to maximize website traffic, the budget should lean more heavily toward Google Adwords and Facebook. TV and Radio may still matter for broader brand objectives, but they do not appear efficient as direct website traffic generators in this analysis."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html",
+    "title": "Attribution Modeling Assignment",
+    "section": "",
+    "text": "This notebook reconstructs the KNC attribution case study from the published HTML, reorganizes the code into a cleaner Quarto structure, fixes the errors noted in class, and answers all seven assignment questions. The analysis uses three perspectives:\n\nheuristic attribution: first touch and last touch\nprobabilistic attribution: Markov chain\nchannel-removal attribution: Shapley-value-based approach\n\n\n\n\n\n\n\nNoteSubmission note\n\n\n\nPlace this file in the same project folder as the data directory from the GitHub repo so the code can find data/knc_attribution.csv."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#overview",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#overview",
+    "title": "Attribution Modeling Assignment",
+    "section": "",
+    "text": "This notebook reconstructs the KNC attribution case study from the published HTML, reorganizes the code into a cleaner Quarto structure, fixes the errors noted in class, and answers all seven assignment questions. The analysis uses three perspectives:\n\nheuristic attribution: first touch and last touch\nprobabilistic attribution: Markov chain\nchannel-removal attribution: Shapley-value-based approach\n\n\n\n\n\n\n\nNoteSubmission note\n\n\n\nPlace this file in the same project folder as the data directory from the GitHub repo so the code can find data/knc_attribution.csv."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#kncs-three-questions",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#kncs-three-questions",
+    "title": "Attribution Modeling Assignment",
+    "section": "1.1 KNC’s three questions",
+    "text": "1.1 KNC’s three questions\nAfter reviewing the touchpoint data, the KNC team is trying to answer three questions from the case:\n\nWhich customer touchpoint contributes more or less to conversion?\nShould KNC reduce paid search and invest more in mobile?\nWhich attribution modeling approach should KNC use going forward?\n\nThese are the case questions stated in the published HTML, where the application is described as helping answer which touchpoints contribute to conversion, whether paid search should be deprioritized in favor of mobile, and which attribution approach KNC should adopt in the future. These questions are central because budget decisions depend on them. [Sources used in preparing this notebook: the case HTML, Google Ads help, ChannelAttribution documentation, and Shapley attribution research.]"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#attribution-methods-that-can-be-used",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#attribution-methods-that-can-be-used",
+    "title": "Attribution Modeling Assignment",
+    "section": "1.2 Attribution methods that can be used",
+    "text": "1.2 Attribution methods that can be used\n\n1.2.1 Heuristic-based methods\nFirst-touch attribution gives 100% of the credit to the first channel in the path. It is useful when the business wants to emphasize acquisition or awareness, but it ignores everything that happens after the first exposure.\nLast-touch attribution gives 100% of the credit to the final channel before conversion. It is simple and easy to explain, but it can over-credit closing channels and under-credit channels that assisted earlier in the journey.\nLinear attribution splits credit equally across all observed touchpoints. This is more balanced than first- or last-touch, but it assumes all touches are equally important.\nTime-decay attribution gives more credit to later touches than earlier ones. It can be useful when recency matters, though it still relies on a preset rule rather than observed incremental contribution.\nPosition-based attribution gives larger shares to the first and last interactions and splits the remainder across middle touches. It recognizes both discovery and conversion, but the weights are still chosen by rule.\n\n\n1.2.2 Probability-based or model-based methods\nMarkov chain attribution treats the customer journey as a sequence of transitions between states. It uses transition probabilities and channel-removal effects to estimate how much each touchpoint contributes to conversion across the whole journey.\nData-driven attribution in modern ad platforms uses observed conversion data to estimate fractional contribution rather than relying on fixed rules. Google notes that several older rule-based models were deprecated and replaced by data-driven attribution or last click in current products.\nShapley value attribution comes from cooperative game theory. It measures a channel’s average marginal contribution across all possible channel coalitions, which makes it useful for estimating the effect of channel removal and for fairly allocating contribution when channels work together.\n\n\n\n\n\n\nImportantTask 1 answer\n\n\n\nHeuristic methods are simple and easy to communicate, but they impose attribution rules in advance. Probability-based methods are more flexible because they infer contribution from the observed paths themselves. For KNC, first-touch and last-touch are helpful baselines, but Markov and Shapley are more appropriate for budget decisions because they better reflect multi-touch customer journeys."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#package-setup",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#package-setup",
+    "title": "Attribution Modeling Assignment",
+    "section": "2.1 Package setup",
+    "text": "2.1 Package setup\n\n\nShow / hide code\n# Load required packages without installing during render\npackages &lt;- c(\n  \"knitr\", \"kableExtra\", \"readr\", \"dplyr\", \"stringr\",\n  \"tidyr\", \"purrr\", \"ggplot2\", \"ggthemes\", \"ggrepel\",\n  \"RColorBrewer\", \"reshape2\", \"markovchain\", \"ChannelAttribution\"\n)\n\nmissing_packages &lt;- packages[!vapply(packages, requireNamespace, logical(1), quietly = TRUE)]\n\nif (length(missing_packages) &gt; 0) {\n  stop(\n    paste(\n      \"Install these packages before rendering:\",\n      paste(missing_packages, collapse = \", \")\n    )\n  )\n}\n\ninvisible(lapply(packages, library, character.only = TRUE))"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#load-the-knc-data",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#load-the-knc-data",
+    "title": "Attribution Modeling Assignment",
+    "section": "2.2 Load the KNC data",
+    "text": "2.2 Load the KNC data\n\n\nShow / hide code\n# Load data\nattribution &lt;- read_csv(\"data/knc_attribution.csv\", show_col_types = FALSE)\n\nglimpse(attribution)\n\n\nRows: 105\nColumns: 48\n$ users_id      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…\n$ channel1      &lt;chr&gt; \"mobile\", \"paid_search\", \"social_media\", \"mobile\", \"paid…\n$ channel2      &lt;chr&gt; \"paid_search\", \"mobile\", \"social_media\", \"affiliate\", \"p…\n$ channel3      &lt;chr&gt; \"paid_search\", \"mobile\", \"mobile\", \"mobile\", \"affiliate\"…\n$ channel4      &lt;chr&gt; \"paid_search\", \"paid_search\", \"affiliate\", \"social_media…\n$ channel5      &lt;chr&gt; \"affiliate\", \"affiliate\", \"social_media\", \"affiliate\", \"…\n$ channel6      &lt;chr&gt; \"mobile\", \"paid_search\", \"paid_search\", \"mobile\", \"paid_…\n$ channel7      &lt;chr&gt; \"paid_search\", \"mobile\", \"mobile\", \"social_media\", \"paid…\n$ channel8      &lt;chr&gt; \"paid_search\", \"paid_search\", \"mobile\", \"mobile\", \"affil…\n$ channel9      &lt;chr&gt; \"social_media\", \"mobile\", \"affiliate\", NA, \"mobile\", \"so…\n$ channel10     &lt;chr&gt; \"mobile\", \"mobile\", NA, NA, \"affiliate\", \"affiliate\", \"m…\n$ channel11     &lt;chr&gt; \"social_media\", \"paid_search\", NA, NA, \"paid_search\", \"a…\n$ channel12     &lt;chr&gt; \"paid_search\", \"affiliate\", NA, NA, \"affiliate\", \"mobile…\n$ channel13     &lt;chr&gt; \"social_media\", \"affiliate\", NA, NA, \"affiliate\", \"paid_…\n$ channel14     &lt;chr&gt; \"mobile\", \"affiliate\", NA, NA, \"affiliate\", \"mobile\", \"s…\n$ channel15     &lt;chr&gt; \"affiliate\", \"affiliate\", NA, NA, \"affiliate\", \"social_m…\n$ channel16     &lt;chr&gt; \"paid_search\", \"paid_search\", NA, NA, \"paid_search\", \"so…\n$ channel17     &lt;chr&gt; \"paid_search\", \"affiliate\", NA, NA, \"mobile\", \"social_me…\n$ channel18     &lt;chr&gt; NA, \"affiliate\", NA, NA, \"affiliate\", \"social_media\", NA…\n$ channel19     &lt;chr&gt; NA, \"affiliate\", NA, NA, \"paid_search\", \"affiliate\", NA,…\n$ channel20     &lt;chr&gt; NA, \"affiliate\", NA, NA, \"affiliate\", \"paid_search\", NA,…\n$ channel21     &lt;chr&gt; NA, \"affiliate\", NA, NA, \"mobile\", \"mobile\", NA, \"affili…\n$ channel22     &lt;chr&gt; NA, \"paid_search\", NA, NA, \"mobile\", \"affiliate\", NA, \"m…\n$ channel23     &lt;chr&gt; NA, \"affiliate\", NA, NA, \"paid_search\", \"paid_search\", N…\n$ channel24     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, \"paid_search\", \"social…\n$ channel25     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, \"paid_search\", \"social…\n$ channel26     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, \"paid_search\", \"mobile…\n$ channel27     &lt;chr&gt; NA, NA, NA, NA, NA, \"paid_search\", NA, \"social_media\", \"…\n$ channel28     &lt;chr&gt; NA, NA, NA, NA, NA, \"affiliate\", NA, \"mobile\", \"social_m…\n$ channel29     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, \"mobile\", \"mobile\", \"p…\n$ channel30     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, \"mobile\", \"affiliate\",…\n$ channel31     &lt;chr&gt; NA, NA, NA, NA, NA, \"paid_search\", NA, \"mobile\", \"affili…\n$ channel32     &lt;chr&gt; NA, NA, NA, NA, NA, \"affiliate\", NA, NA, \"mobile\", \"mobi…\n$ channel33     &lt;chr&gt; NA, NA, NA, NA, NA, \"social_media\", NA, NA, \"affiliate\",…\n$ channel34     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, NA, \"mobile\", \"affilia…\n$ channel35     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, NA, \"paid_search\", \"af…\n$ channel36     &lt;chr&gt; NA, NA, NA, NA, NA, \"affiliate\", NA, NA, \"social_media\",…\n$ channel37     &lt;chr&gt; NA, NA, NA, NA, NA, \"paid_search\", NA, NA, \"mobile\", \"pa…\n$ channel38     &lt;chr&gt; NA, NA, NA, NA, NA, \"affiliate\", NA, NA, \"mobile\", \"affi…\n$ channel39     &lt;chr&gt; NA, NA, NA, NA, NA, \"mobile\", NA, NA, \"paid_search\", \"pa…\n$ channel40     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"affiliate\", \"affiliate\"…\n$ channel41     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"social_media\", \"affilia…\n$ channel42     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"mobile\", NA, NA, NA, NA…\n$ channel43     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"social_media\", NA, NA, …\n$ channel44     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"social_media\", NA, NA, …\n$ channel45     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, \"mobile\", NA, NA, NA, NA…\n$ user_purchase &lt;dbl&gt; 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1,…\n$ null_purchase &lt;dbl&gt; 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0,…"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#data-description",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#data-description",
+    "title": "Attribution Modeling Assignment",
+    "section": "2.3 Data description",
+    "text": "2.3 Data description\nThe dataset contains a users_id, up to 45 ordered touchpoint columns (channel1 through channel45), a binary conversion variable user_purchase, and a binary non-conversion variable null_purchase. The case notes that there are 105 consumer journeys, of which 89 are conversions in the full dataset."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#data-preparation-corrected",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#data-preparation-corrected",
+    "title": "Attribution Modeling Assignment",
+    "section": "3.1 3.1 Data preparation — corrected",
+    "text": "3.1 3.1 Data preparation — corrected\nThe original HTML contains an error in the manual paste() used to build the path: channel8 and channel9 are repeated where channel18 and channel19 should appear. A cleaner fix is to avoid manually typing 45 column names at all.\n\n\nShow / hide code\n# Replace missing values in channel columns with blanks\nchannel_cols &lt;- paste0(\"channel\", 1:45)\n\nattribution &lt;- attribution %&gt;%\n  mutate(across(all_of(channel_cols), ~replace_na(., \"\")))\n\n# Build a robust path variable without manually typing 45 columns\nattribution &lt;- attribution %&gt;%\n  unite(\"path\", all_of(channel_cols), sep = \"&gt;\", remove = FALSE) %&gt;%\n  mutate(\n    path = str_replace_all(path, \"&gt;+\", \"&gt;\"),\n    cleaned_path = str_replace_all(path, \"(^&gt;|&gt;$)\", \"\")\n  )\n\n# Inspect first five paths\nattribution %&gt;%\n  slice(1:5) %&gt;%\n  select(users_id, cleaned_path) %&gt;%\n  kable() %&gt;%\n  kable_styling(full_width = FALSE)\n\n\n\n\n\nusers_id\ncleaned_path\n\n\n\n\n1\nmobile&gt;paid_search&gt;paid_search&gt;paid_search&gt;affiliate&gt;mobile&gt;paid_search&gt;paid_search&gt;social_media&gt;mobile&gt;social_media&gt;paid_search&gt;social_media&gt;mobile&gt;affiliate&gt;paid_search&gt;paid_search\n\n\n2\npaid_search&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;paid_search&gt;mobile&gt;paid_search&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;affiliate&gt;affiliate&gt;affiliate&gt;paid_search&gt;affiliate&gt;affiliate&gt;affiliate&gt;affiliate&gt;affiliate&gt;paid_search&gt;affiliate\n\n\n3\nsocial_media&gt;social_media&gt;mobile&gt;affiliate&gt;social_media&gt;paid_search&gt;mobile&gt;mobile&gt;affiliate\n\n\n4\nmobile&gt;affiliate&gt;mobile&gt;social_media&gt;affiliate&gt;mobile&gt;social_media&gt;mobile\n\n\n5\npaid_search&gt;paid_search&gt;affiliate&gt;paid_search&gt;mobile&gt;paid_search&gt;paid_search&gt;affiliate&gt;mobile&gt;affiliate&gt;paid_search&gt;affiliate&gt;affiliate&gt;affiliate&gt;affiliate&gt;paid_search&gt;mobile&gt;affiliate&gt;paid_search&gt;affiliate&gt;mobile&gt;mobile&gt;paid_search\n\n\n\n\n\n\n3.1.1 Why this fix matters\nThe corrected code avoids transcription mistakes, preserves the true sequence of touchpoints, and produces paths that are easier to inspect. It is also much more readable than a single very long paste() call."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#train-test-split-and-path-stack",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#train-test-split-and-path-stack",
+    "title": "Attribution Modeling Assignment",
+    "section": "3.2 Train-test split and path stack",
+    "text": "3.2 Train-test split and path stack\n\n\nShow / hide code\n# Training and testing split used in the case\nattribution_train &lt;- attribution[1:80, ]\nattribution_test  &lt;- attribution[81:105, ]\n\n# Aggregate paths into a channel stack\nchannel_stack &lt;- attribution_train %&gt;%\n  group_by(cleaned_path) %&gt;%\n  summarise(\n    conversion = sum(user_purchase),\n    non_conversion = sum(null_purchase),\n    .groups = \"drop\"\n  )\n\nchannel_stack %&gt;%\n  slice(1:10) %&gt;%\n  kable() %&gt;%\n  kable_styling(full_width = FALSE)\n\n\n\n\n\ncleaned_path\nconversion\nnon_conversion\n\n\n\n\naffiliate&gt;mobile&gt;affiliate&gt;social_media&gt;social_media&gt;mobile&gt;mobile&gt;mobile&gt;mobile\n1\n0\n\n\naffiliate&gt;paid_search&gt;affiliate&gt;paid_search&gt;affiliate&gt;affiliate&gt;affiliate&gt;affiliate&gt;affiliate&gt;mobile&gt;affiliate&gt;paid_search&gt;paid_search&gt;mobile&gt;paid_search&gt;paid_search&gt;affiliate&gt;paid_search&gt;affiliate&gt;paid_search&gt;affiliate&gt;mobile&gt;affiliate&gt;paid_search&gt;affiliate&gt;mobile&gt;affiliate&gt;affiliate&gt;paid_search&gt;paid_search&gt;paid_search&gt;mobile&gt;affiliate&gt;affiliate&gt;affiliate&gt;affiliate&gt;paid_search&gt;affiliate&gt;paid_search&gt;affiliate&gt;affiliate\n1\n0\n\n\naffiliate&gt;paid_search&gt;affiliate&gt;paid_search&gt;mobile&gt;mobile&gt;paid_search&gt;paid_search&gt;mobile&gt;affiliate&gt;affiliate&gt;paid_search&gt;mobile&gt;paid_search&gt;affiliate&gt;mobile&gt;paid_search&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;paid_search&gt;affiliate&gt;social_media&gt;paid_search&gt;mobile&gt;paid_search&gt;affiliate&gt;mobile&gt;affiliate&gt;affiliate&gt;mobile&gt;affiliate&gt;mobile&gt;paid_search&gt;mobile&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;affiliate&gt;mobile&gt;affiliate&gt;paid_search&gt;mobile\n1\n0\n\n\naffiliate&gt;paid_search&gt;affiliate&gt;paid_search&gt;social_media&gt;mobile&gt;social_media&gt;paid_search&gt;social_media&gt;affiliate&gt;social_media&gt;paid_search&gt;mobile&gt;paid_search&gt;social_media&gt;mobile&gt;paid_search&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;paid_search&gt;social_media&gt;social_media&gt;social_media&gt;mobile&gt;paid_search&gt;social_media&gt;mobile&gt;affiliate&gt;affiliate&gt;mobile&gt;affiliate&gt;mobile&gt;paid_search&gt;social_media&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;social_media&gt;mobile&gt;social_media&gt;social_media&gt;mobile\n4\n0\n\n\naffiliate&gt;paid_search&gt;affiliate&gt;social_media&gt;social_media&gt;mobile&gt;mobile&gt;paid_search&gt;mobile\n2\n2\n\n\naffiliate&gt;paid_search&gt;paid_search&gt;mobile&gt;affiliate&gt;social_media&gt;mobile&gt;paid_search&gt;social_media&gt;mobile&gt;paid_search&gt;mobile&gt;mobile&gt;affiliate&gt;social_media&gt;paid_search&gt;mobile&gt;mobile&gt;affiliate&gt;affiliate&gt;affiliate&gt;mobile&gt;mobile&gt;paid_search&gt;paid_search&gt;paid_search&gt;social_media&gt;mobile&gt;mobile&gt;mobile&gt;mobile\n5\n0\n\n\nmobile&gt;affiliate&gt;mobile&gt;social_media&gt;affiliate&gt;mobile&gt;social_media&gt;mobile\n2\n0\n\n\nmobile&gt;mobile&gt;affiliate&gt;paid_search&gt;affiliate&gt;mobile&gt;affiliate&gt;paid_search&gt;paid_search&gt;mobile\n1\n0\n\n\nmobile&gt;mobile&gt;social_media&gt;social_media&gt;affiliate&gt;affiliate&gt;paid_search&gt;mobile&gt;social_media&gt;affiliate&gt;affiliate&gt;mobile&gt;paid_search&gt;mobile&gt;social_media&gt;social_media&gt;social_media&gt;social_media&gt;affiliate&gt;paid_search&gt;mobile&gt;affiliate&gt;paid_search&gt;mobile&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;mobile&gt;mobile&gt;paid_search&gt;affiliate&gt;social_media&gt;mobile&gt;mobile&gt;affiliate&gt;paid_search&gt;affiliate&gt;mobile\n5\n0\n\n\nmobile&gt;paid_search&gt;affiliate&gt;paid_search&gt;mobile&gt;mobile&gt;affiliate&gt;paid_search&gt;paid_search&gt;mobile\n0\n1"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#markov-chain-modelling",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#markov-chain-modelling",
+    "title": "Attribution Modeling Assignment",
+    "section": "3.3 3.2 Markov chain modelling",
+    "text": "3.3 3.2 Markov chain modelling\n\n\nShow / hide code\n# Third-order Markov model as in the case\nmarkov &lt;- markov_model(channel_stack, \"cleaned_path\", \"conversion\", order = 3)\n\n\n\nNumber of simulations: 100000 - Convergence reached: 0.37% &lt; 5.00%\n\nPercentage of simulated paths that successfully end before maximum number of steps (44) is reached: 90.82%\n\n[1] \"*** Install ChannelAttribution Pro for free running install_pro(). Visit https://channelattribution.io for more info. Set flg_pro=FALSE to hide this message.\"\n\n\nShow / hide code\ntable_markov &lt;- data.frame(\n  channel = markov$channel_name,\n  total_conversions = round(markov$total_conversions),\n  percent = round(markov$total_conversions / sum(attribution_train$user_purchase), 3)\n)\n\ntable_markov %&gt;%\n  kable() %&gt;%\n  kable_styling(full_width = FALSE)\n\n\n\n\n\nchannel\ntotal_conversions\npercent\n\n\n\n\naffiliate\n16\n0.243\n\n\nmobile\n18\n0.263\n\n\nsocial_media\n16\n0.234\n\n\npaid_search\n17\n0.260\n\n\n\n\n\n\n3.3.1 Interpretation of the Markov results\nThe Markov model produces a much more balanced allocation than the touch-based heuristics. Instead of strongly favoring one channel, it suggests that all four channels contribute at fairly similar levels. In the case output, mobile and paid search are around 26%, while affiliate and social media are around 24%. That means KNC should be cautious about cutting paid search or over-weighting mobile based only on a last-touch view."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#transition-matrix-and-simple-path-probability",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#transition-matrix-and-simple-path-probability",
+    "title": "Attribution Modeling Assignment",
+    "section": "3.4 Transition matrix and simple path probability",
+    "text": "3.4 Transition matrix and simple path probability\n\n\nShow / hide code\n# Third-order transition matrix\ntrans_3rd_order &lt;- transition_matrix(\n  attribution_train,\n  var_path = \"cleaned_path\",\n  var_conv = \"user_purchase\",\n  var_null = \"null_purchase\",\n  order = 3,\n  sep = \"&gt;\",\n  flg_equal = TRUE\n)\n\n\n[1] \"*** Install ChannelAttribution Pro for free running install_pro(). Visit https://channelattribution.io for more info. Set flg_pro=FALSE to hide this message.\"\n\n\nShow / hide code\nhead(trans_3rd_order$transition_matrix) %&gt;%\n  kable() %&gt;%\n  kable_styling(full_width = FALSE)\n\n\n\n\n\nchannel_from\nchannel_to\ntransition_probability\n\n\n\n\n(start)\n1 2 2\n0.0750\n\n\n(start)\n2 1 1\n0.0750\n\n\n(start)\n4 4 1\n0.0750\n\n\n(start)\n1 3 1\n0.0250\n\n\n(start)\n2 2 3\n0.0750\n\n\n(start)\n1 1 4\n0.0625\n\n\n\n\n\n\n\n\n\n\n\nTipTask 3 answer: probability of purchase for start &gt; paid_search &gt; conversion\n\n\n\nUsing the first-order transition visualization in the case, the probability is:\n[ P( ) P( ) = 0.41 = 0.0123 ]\nSo the probability of purchase for that simple path is 0.0123, or 1.23%. The important correction is that this number comes from the first-order visualization, not the third-order model."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#visualisation-corrected",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#visualisation-corrected",
+    "title": "Attribution Modeling Assignment",
+    "section": "3.5 3.3 Visualisation — corrected",
+    "text": "3.5 3.3 Visualisation — corrected\nThe original visualization section mixes an explanatory graph based on a first-order chain with a third-order model discussion. That is not inherently wrong, but it should be labeled clearly. The heatmap code is also easier to read if we write it more cleanly.\n\n\nShow / hide code\n# First-order transition matrix for visualization only\ntrans_1st &lt;- transition_matrix(\n  attribution_train,\n  var_path = \"cleaned_path\",\n  var_conv = \"user_purchase\",\n  var_null = \"null_purchase\",\n  order = 1,\n  sep = \"&gt;\",\n  flg_equal = TRUE\n)\n\n\n[1] \"*** Install ChannelAttribution Pro for free running install_pro(). Visit https://channelattribution.io for more info. Set flg_pro=FALSE to hide this message.\"\n\n\nShow / hide code\n# Heatmap-ready data\nplot_trans &lt;- trans_1st$transition_matrix\nmax_prob &lt;- max(plot_trans$transition_probability, na.rm = TRUE)\n\nheat_cols &lt;- c(\n  \"#e7f0fa\", \"#c9e2f6\", \"#95cbee\", \"#0099dc\",\n  \"#4ab04a\", \"#ffd73e\", \"#eec73a\", \"#e29421\"\n)\n\nggplot(plot_trans, aes(x = channel_to, y = channel_from, fill = transition_probability)) +\n  geom_tile(color = \"white\", width = 0.9, height = 0.9) +\n  geom_text(aes(label = round(transition_probability, 2)), size = 4, fontface = \"bold\") +\n  scale_fill_gradientn(\n    colours = heat_cols,\n    limits = c(0, max_prob),\n    breaks = seq(0, max_prob, by = max_prob / 4)\n  ) +\n  labs(\n    title = \"First-Order Transition Probability Heatmap\",\n    x = \"Arriving state\",\n    y = \"Departing state\",\n    fill = \"Probability\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"bottom\",\n    panel.grid = element_blank(),\n    axis.text.x = element_text(angle = 45, hjust = 1)\n  )\n\n\n\n\n\n\n\n\n\n\n3.5.1 Why the original conclusions differ from last-touch\nLast-touch credits only the final channel before conversion, so it can make affiliate look more important if affiliate often appears near the end of a journey. The Markov model instead recognizes that social media may contribute earlier in the path by moving users into later converting sequences. In other words, social media may have strong assisting value even when it is not the final touchpoint.\n\n\n\n\n\n\nImportantTask 3 answer\n\n\n\nThe main fixes are:\n\nreplace the incorrect manual path construction in 3.1 Data preparation with a robust column-wise approach\nlabel the 3.3 Visualisation outputs correctly as first-order visualization tools rather than third-order outputs\nkeep the simple-path probability calculation, but explain that it is derived from the first-order graph"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#heuristic-models",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#heuristic-models",
+    "title": "Attribution Modeling Assignment",
+    "section": "4.1 Heuristic models",
+    "text": "4.1 Heuristic models\n\n\nShow / hide code\nheuristic_models(channel_stack, \"cleaned_path\", \"conversion\", NULL, sep = \"&gt;\")\n\n\n[1] \"*** Install ChannelAttribution Pro for free! Run install_pro(). Set flg_pro=FALSE to hide this message.\"\n\n\n  channel_name first_touch last_touch linear_touch\n1    affiliate          14         18     15.16286\n2       mobile          17         26     18.67456\n3 social_media           8          4     14.41242\n4  paid_search          28         19     18.75016\n\n\nShow / hide code\n# Summary table from the case output\ncomparison_tbl &lt;- data.frame(\n  Channel = c(\"Mobile\", \"Paid Search\", \"Affiliate\", \"Social Media\"),\n  First_Touch = c(0.254, 0.418, 0.209, 0.119),\n  Last_Touch  = c(0.388, 0.224, 0.269, 0.119),\n  Markov_Chain = c(0.260, 0.245, 0.238, 0.257)\n)\n\ncomparison_tbl %&gt;%\n  kable() %&gt;%\n  kable_styling(full_width = FALSE)\n\n\n\n\n\nChannel\nFirst_Touch\nLast_Touch\nMarkov_Chain\n\n\n\n\nMobile\n0.254\n0.388\n0.260\n\n\nPaid Search\n0.418\n0.224\n0.245\n\n\nAffiliate\n0.209\n0.269\n0.238\n\n\nSocial Media\n0.119\n0.119\n0.257"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#visualize-first-touch-last-touch-and-markov-attribution",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#visualize-first-touch-last-touch-and-markov-attribution",
+    "title": "Attribution Modeling Assignment",
+    "section": "4.2 Visualize first touch, last touch, and Markov attribution",
+    "text": "4.2 Visualize first touch, last touch, and Markov attribution\n\n\nShow / hide code\nplot_data &lt;- comparison_tbl %&gt;%\n  pivot_longer(\n    cols = c(First_Touch, Last_Touch, Markov_Chain),\n    names_to = \"Method\",\n    values_to = \"Attribution\"\n  )\n\nggplot(plot_data, aes(x = Channel, y = Attribution, fill = Method)) +\n  geom_col(position = \"dodge\") +\n  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +\n  labs(\n    title = \"Purchase Attribution by Method\",\n    x = \"Touchpoint\",\n    y = \"Attributed share\"\n  ) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#interpretation",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#interpretation",
+    "title": "Attribution Modeling Assignment",
+    "section": "4.3 Interpretation",
+    "text": "4.3 Interpretation\nFirst-touch says paid search is the strongest acquisition channel, because it receives the largest share at the beginning of journeys. Last-touch says mobile is strongest, because it most often appears near conversion. Markov smooths these extremes and shows that all channels matter in combination. That makes the Markov result more credible for budget planning in a multi-touch setting.\n\n\n\n\n\n\nImportantTask 4 answer\n\n\n\n\nFirst-touch: Paid search looks dominant because it often starts the path.\nLast-touch: Mobile looks dominant because it often closes the path.\nMarkov: All four channels are fairly close, suggesting that the journey is collaborative rather than winner-take-all.\n\nThe practical implication is that KNC should avoid making budget cuts based only on last-touch rankings."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#calculate-drop-in-conversion-probability",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#calculate-drop-in-conversion-probability",
+    "title": "Attribution Modeling Assignment",
+    "section": "5.1 Calculate drop in conversion probability",
+    "text": "5.1 Calculate drop in conversion probability\n\n\nShow / hide code\n# Channel presence flags\nchannel_stack &lt;- channel_stack %&gt;%\n  mutate(\n    with_mobile = str_detect(cleaned_path, \"mobile\"),\n    with_paid_search = str_detect(cleaned_path, \"paid_search\"),\n    with_affiliate = str_detect(cleaned_path, \"affiliate\"),\n    with_social_media = str_detect(cleaned_path, \"social_media\"),\n    no_mobile_conversion = ifelse(!with_mobile, conversion, 0),\n    no_mobile_count = ifelse(!with_mobile, conversion + non_conversion, 0),\n    no_paidsearch_conversion = ifelse(!with_paid_search, conversion, 0),\n    no_paidsearch_count = ifelse(!with_paid_search, conversion + non_conversion, 0),\n    no_affiliate_conversion = ifelse(!with_affiliate, conversion, 0),\n    no_affiliate_count = ifelse(!with_affiliate, conversion + non_conversion, 0),\n    no_social_media_conversion = ifelse(!with_social_media, conversion, 0),\n    no_social_media_count = ifelse(!with_social_media, conversion + non_conversion, 0)\n  )\n\n# Shapley-style removal effects from the case logic\nbase_rate &lt;- sum(channel_stack$conversion) / 105\n\nshapley_mobile &lt;- base_rate - (67 - sum(channel_stack$no_mobile_conversion)) / (105 - sum(channel_stack$no_mobile_count))\nshapley_paidsearch &lt;- base_rate - (67 - sum(channel_stack$no_paidsearch_conversion)) / (105 - sum(channel_stack$no_paidsearch_count))\nshapley_affiliate &lt;- base_rate - (67 - sum(channel_stack$no_affiliate_conversion)) / (105 - sum(channel_stack$no_affiliate_count))\nshapley_socialmedia &lt;- base_rate - (67 - sum(channel_stack$no_social_media_conversion)) / (105 - sum(channel_stack$no_social_media_count))\n\nshapley_tbl &lt;- data.frame(\n  Channel = c(\"Mobile\", \"Paid Search\", \"Affiliate\", \"Social Media\"),\n  Drop_in_Conversion_Probability = c(\n    shapley_mobile,\n    shapley_paidsearch,\n    shapley_affiliate,\n    shapley_socialmedia\n  ),\n  Share = c(\n    0.3238919,\n    0.3238919,\n    0.1058878,\n    0.2463284\n  )\n)\n\nshapley_tbl %&gt;%\n  mutate(\n    Drop_in_Conversion_Probability = round(Drop_in_Conversion_Probability, 4),\n    Share = round(Share, 4)\n  ) %&gt;%\n  kable() %&gt;%\n  kable_styling(full_width = FALSE)\n\n\n\n\n\nChannel\nDrop_in_Conversion_Probability\nShare\n\n\n\n\nMobile\n0.0106\n0.3239\n\n\nPaid Search\n0.0106\n0.3239\n\n\nAffiliate\n0.0035\n0.1059\n\n\nSocial Media\n0.0081\n0.2463"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#interpretation-1",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#interpretation-1",
+    "title": "Attribution Modeling Assignment",
+    "section": "5.2 Interpretation",
+    "text": "5.2 Interpretation\nThe largest estimated drops come from mobile and paid search, followed by social media, with affiliate lowest in this specific removal calculation. Interpreted substantively, KNC would expect the biggest damage to conversion probability if mobile or paid search were removed from the system.\n\n\n\n\n\n\nImportantTask 5 answer\n\n\n\nThe Shapley-style results suggest the approximate percentage shares below:\n\nMobile: 32.39%\nPaid Search: 32.39%\nSocial Media: 24.63%\nAffiliate: 10.59%\n\nThese values indicate which channels appear most important when we ask a channel-removal question rather than a pure path-credit question."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#compare-and-contrast-markov-and-shapley",
+    "href": "Marketing_analytics_Projects/Project 3_attribution-modeling/attribution_modeling_assignment.html#compare-and-contrast-markov-and-shapley",
+    "title": "Attribution Modeling Assignment",
+    "section": "6.1 Compare and contrast Markov and Shapley",
+    "text": "6.1 Compare and contrast Markov and Shapley\n\n6.1.1 Markov chain strengths\n\nuses the observed order of touchpoints\nreflects path dependency and interactions across steps\nprovides intuitive transition probabilities\nuseful for journey-based attribution and path diagnostics\n\n\n\n6.1.2 Markov chain weaknesses\n\nresults can be sensitive to sparse paths and model order\nhigher-order models can be harder to explain\nmay require many observations for stable estimation\n\n\n\n6.1.3 Shapley strengths\n\nrooted in cooperative game theory and marginal contribution\nuseful for channel-removal or incremental-value questions\nfair in the sense that it averages contribution across all channel coalitions\n\n\n\n6.1.4 Shapley weaknesses\n\ncomputationally expensive in large channel spaces\ndoes not preserve sequence as naturally as a Markov model\ndepends on how coalition value is defined\n\n\n\n\n\n\n\nImportantTask 6 answer\n\n\n\nMarkov is stronger when the analyst cares about customer-journey sequence. Shapley is stronger when the analyst cares about incremental contribution under channel removal. Markov answers, “How do customers move through the system?” Shapley answers, “How much value does a channel add on average across combinations?”"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html",
+    "title": "Marketing Automation with Quarto",
+    "section": "",
+    "text": "Audience-centered reflection on dashboards, automation, dynamic reporting, and reproducible analytics.\n\nOpen by explaining that this presentation is designed as a true slide deck, not a written report. The prompts are included so the audience understands the purpose of each reflection."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#reflection-presentation",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#reflection-presentation",
+    "title": "Marketing Automation with Quarto",
+    "section": "",
+    "text": "Audience-centered reflection on dashboards, automation, dynamic reporting, and reproducible analytics.\n\nOpen by explaining that this presentation is designed as a true slide deck, not a written report. The prompts are included so the audience understands the purpose of each reflection."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt",
+    "title": "Marketing Automation with Quarto",
+    "section": "Prompt",
+    "text": "Prompt\nIn Step 1, Dr. Albert Rapp showed you how to create an interactive dashboard with Quarto. What did you like about the Quarto-based interactive dashboard compared with other options introduced in this class previously?"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#what-i-liked-most",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#what-i-liked-most",
+    "title": "Marketing Automation with Quarto",
+    "section": "What I Liked Most",
+    "text": "What I Liked Most\n\nQuarto turns a dashboard from a collection of charts into a reproducible communication product.\n\n\nIt combines code, visuals, explanation, and publishing in one workflow.\n\n\nThat makes it stronger than a dashboard that only displays metrics without context."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#quarto-vs.-traditional-dashboards",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#quarto-vs.-traditional-dashboards",
+    "title": "Marketing Automation with Quarto",
+    "section": "Quarto vs. Traditional Dashboards",
+    "text": "Quarto vs. Traditional Dashboards\n\n\n\nTraditional Dashboard\n\n\nGood for monitoring\nOften KPI-heavy\nCan feel disconnected from the “why”\nUsually requires the viewer to interpret the story\n\n\n\n\n\nQuarto Dashboard\n\n\nGood for explaining\nCombines narrative with analysis\nEasier to reproduce and update\nHelps the viewer understand the business meaning"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#why-it-matters-in-marketing",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#why-it-matters-in-marketing",
+    "title": "Marketing Automation with Quarto",
+    "section": "Why It Matters in Marketing",
+    "text": "Why It Matters in Marketing\n\nMarketing data changes constantly: campaigns, channels, customers, costs, conversions, and engagement.\n\n\nA Quarto dashboard can be re-rendered when the data changes, instead of manually rebuilt.\n\n\nThat supports better decision-making because the report is both current and traceable."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#example-kpi-workflow",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#example-kpi-workflow",
+    "title": "Marketing Automation with Quarto",
+    "section": "Example: KPI Workflow",
+    "text": "Example: KPI Workflow\n\nlibrary(tidyverse)\n\nmarketing_kpis &lt;- tibble(\n  channel = c(\"Paid Search\", \"Email\", \"Organic Social\", \"Referral\"),\n  conversions = c(420, 310, 185, 125),\n  cost = c(12500, 3200, 2100, 900)\n) |&gt;\n  mutate(cpa = round(cost / conversions, 2))\n\nmarketing_kpis\n\n# A tibble: 4 × 4\n  channel        conversions  cost   cpa\n  &lt;chr&gt;                &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1 Paid Search            420 12500  29.8\n2 Email                  310  3200  10.3\n3 Organic Social         185  2100  11.4\n4 Referral               125   900   7.2\n\n\n\nEmphasize that Quarto is not just about the table or chart. The value is that the calculation, explanation, and output are connected."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-1",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-1",
+    "title": "Marketing Automation with Quarto",
+    "section": "Prompt",
+    "text": "Prompt\nIn Step 2, you learned how to set parameterized reporting in Quarto. Explain what parameterized reporting is and how it works. Do you see the application of it in your workflow in your current or past jobs, or future jobs?"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#what-parameterized-reporting-means",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#what-parameterized-reporting-means",
+    "title": "Marketing Automation with Quarto",
+    "section": "What Parameterized Reporting Means",
+    "text": "What Parameterized Reporting Means\n\nParameterized reporting means one report template can generate many customized reports.\n\n\nInstead of copying the same report over and over, the analyst changes inputs such as:\n\n\nRegion · Channel · Campaign · Date range · Product category · Marketplace"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-it-works",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-it-works",
+    "title": "Marketing Automation with Quarto",
+    "section": "How It Works",
+    "text": "How It Works\n\n\n\nReport Template\n\nFixed structure\nReusable code\nConsistent visual design\nStandard business questions\n\n\n\n\nParameter Values\n\nFilter the data\nUpdate charts\nChange labels\nCustomize the final message"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#example-parameter-logic",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#example-parameter-logic",
+    "title": "Marketing Automation with Quarto",
+    "section": "Example Parameter Logic",
+    "text": "Example Parameter Logic\n\nparams &lt;- list(\n  region = \"West\",\n  channel = \"Email\"\n)\n\ncampaign_data &lt;- tibble(\n  region = c(\"West\", \"West\", \"East\", \"East\"),\n  channel = c(\"Email\", \"Paid Search\", \"Email\", \"Paid Search\"),\n  conversions = c(310, 420, 260, 390)\n)\n\ncampaign_data |&gt;\n  filter(region == params$region, channel == params$channel)\n\n# A tibble: 1 × 3\n  region channel conversions\n  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;\n1 West   Email           310"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#workflow-application",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#workflow-application",
+    "title": "Marketing Automation with Quarto",
+    "section": "Workflow Application",
+    "text": "Workflow Application\nFor a digital marketing or eCommerce workflow, parameterized reporting could support recurring reports across:\n\nAmazon\n\n\nWalmart\n\n\neBay\n\n\nHouzz\n\n\nWayfair\n\n\nBrand website"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#why-it-saves-time",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#why-it-saves-time",
+    "title": "Marketing Automation with Quarto",
+    "section": "Why It Saves Time",
+    "text": "Why It Saves Time\n\nA single report template can produce multiple versions for different audiences.\n\n\nThis reduces manual editing and improves consistency.\n\n\nIt also lowers the risk of mistakes caused by copying, pasting, and reformatting old reports."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-2",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-2",
+    "title": "Marketing Automation with Quarto",
+    "section": "Prompt",
+    "text": "Prompt\nIn Step 3, Sean Nguyen talks about how to avoid dashboard fatigue for users in his talk, “Beyond Dashboards: Dynamic Data Storytelling with Python, R, and Quarto Emails.” What are his suggestions for ways in which you can make your dashboard effective and help your colleagues pay attention to your report?"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#the-problem",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#the-problem",
+    "title": "Marketing Automation with Quarto",
+    "section": "The Problem",
+    "text": "The Problem\n\nDashboard fatigue happens when users see too much data and not enough meaning.\n\n\nToo many charts can make people stop paying attention.\n\n\nThe audience should not have to hunt for the insight."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#better-approach-dynamic-data-storytelling",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#better-approach-dynamic-data-storytelling",
+    "title": "Marketing Automation with Quarto",
+    "section": "Better Approach: Dynamic Data Storytelling",
+    "text": "Better Approach: Dynamic Data Storytelling\n\n\n\nLess Effective\n\n\nMany metrics at once\nNo clear priority\nCharts without interpretation\nUsers must search for meaning\n\n\n\n\n\nMore Effective\n\n\nClear headline insight\nFocused visuals\nExplanation of what changed\nSuggested action or next step"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-to-help-colleagues-pay-attention",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-to-help-colleagues-pay-attention",
+    "title": "Marketing Automation with Quarto",
+    "section": "How to Help Colleagues Pay Attention",
+    "text": "How to Help Colleagues Pay Attention\n\nLead with the most important takeaway.\n\n\nUse plain business language, not just technical metrics.\n\n\nDeliver focused updates instead of expecting people to check dashboards constantly.\n\n\nUse automation to send the right information at the right time."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#dashboard-design-rule",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#dashboard-design-rule",
+    "title": "Marketing Automation with Quarto",
+    "section": "Dashboard Design Rule",
+    "text": "Dashboard Design Rule\n\nA good dashboard does not simply answer, “What happened?”\nIt helps the audience decide, “What should we do next?”\n\n\nThis is a strong transition point. Connect it to marketing teams where colleagues may not have time to explore dashboards but still need fast, confident decisions."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-3",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-3",
+    "title": "Marketing Automation with Quarto",
+    "section": "Prompt",
+    "text": "Prompt\nProgramming is all about increasing efficiency and reducing repetition. Share some of the challenges you might have in learning the various tools in the Module."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#main-challenge",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#main-challenge",
+    "title": "Marketing Automation with Quarto",
+    "section": "Main Challenge",
+    "text": "Main Challenge\n\nThe tools are powerful because they connect many skills, but that also makes the learning curve steep.\n\n\nQuarto requires attention to YAML, markdown, R code, file structure, rendering, HTML output, and design."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#specific-challenges",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#specific-challenges",
+    "title": "Marketing Automation with Quarto",
+    "section": "Specific Challenges",
+    "text": "Specific Challenges\n\nYAML indentation and formatting errors\n\n\nPackage installation and library conflicts\n\n\nWorking directory and file path issues\n\n\nChoosing the right output format\n\n\nBalancing code, design, and written explanation"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-i-can-improve",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#how-i-can-improve",
+    "title": "Marketing Automation with Quarto",
+    "section": "How I Can Improve",
+    "text": "How I Can Improve\n\n\n\nTechnical Habits\n\n\nUse organized project folders\nRender early and often\nSave reusable templates\nComment code clearly\n\n\n\n\n\nCommunication Habits\n\n\nStart with the audience\nReduce clutter\nExplain the “so what”\nMatch format to purpose"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-4",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#prompt-4",
+    "title": "Marketing Automation with Quarto",
+    "section": "Prompt",
+    "text": "Prompt\nShare your thoughts about the learning experience you have had about Quarto, literate programming, and reproducible reports. Also, share your plan, if any, for using the knowledge in the era of AI."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#what-i-learned",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#what-i-learned",
+    "title": "Marketing Automation with Quarto",
+    "section": "What I Learned",
+    "text": "What I Learned\n\nLiterate programming connects the analysis and the explanation.\n\n\nThis makes the report easier to understand, check, and update.\n\n\nFor analytics work, reproducibility builds trust."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#why-reproducible-reports-matter",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#why-reproducible-reports-matter",
+    "title": "Marketing Automation with Quarto",
+    "section": "Why Reproducible Reports Matter",
+    "text": "Why Reproducible Reports Matter\n\nIf a report cannot be recreated, it is harder to trust.\n\n\nQuarto documents the path from data to decision.\n\n\nThat is valuable when teams need to explain results to managers, clients, or stakeholders."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#quarto-in-the-era-of-ai",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#quarto-in-the-era-of-ai",
+    "title": "Marketing Automation with Quarto",
+    "section": "Quarto in the Era of AI",
+    "text": "Quarto in the Era of AI\n\n\n\nAI Can Help With\n\n\nDrafting code\nExplaining errors\nSummarizing results\nImproving wording\n\n\n\n\n\nQuarto Helps With\n\n\nVerification\nTransparency\nReproducibility\nProfessional delivery"
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#my-plan",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#my-plan",
+    "title": "Marketing Automation with Quarto",
+    "section": "My Plan",
+    "text": "My Plan\n\nUse Quarto templates for recurring marketing reports.\n\n\nUse AI for support, but verify outputs through reproducible workflows.\n\n\nBuild reports that connect data, insight, and action."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#key-takeaways",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#key-takeaways",
+    "title": "Marketing Automation with Quarto",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\n\n\nQuarto\nCombines code, visuals, and narrative in one professional workflow.\n\n\n\nAutomation\nReduces repetition through reusable templates and parameterized reports.\n\n\n\nStorytelling\nHelps people understand what changed and what action should come next."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#closing-statement",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#closing-statement",
+    "title": "Marketing Automation with Quarto",
+    "section": "Closing Statement",
+    "text": "Closing Statement\n\nQuarto helps turn raw data into communication that is easier to update, easier to trust, and easier to act on."
+  },
+  {
+    "objectID": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#references",
+    "href": "M12_Dark_Luxury_RevealJS_Reflection/M12_RevealJS_Reflection.html#references",
+    "title": "Marketing Automation with Quarto",
+    "section": "References",
+    "text": "References\n\nRapp, A. Interactive dashboard instruction in the Quarto module.\nNguyen, S. Beyond Dashboards: Dynamic Data Storytelling with Python, R, and Quarto Emails.\nCourse module materials: Marketing Automation with Quarto.\n\n\nEnd by emphasizing that the strongest reports are both technical and human-centered: accurate, reproducible, and easy for the audience to use."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html",
+    "title": "Capstone with Airquality Data",
+    "section": "",
+    "text": "library(tidyverse)\nlibrary(tibble)\nlibrary(ggplot2)\nlibrary(scales)\nlibrary(GGally)\nlibrary(lattice)"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.1.-rename-data-set",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.1.-rename-data-set",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.1. Rename Data set",
+    "text": "P1.1. Rename Data set\n\nGet a local copy of the dataset “airquality” and name it “df” so that you can use it.\nIdentify data type, Change it to tibble data type and make change to the df.\nConfirm the data type is tibble by printing df out.\n\n\ndf &lt;- airquality\nair_quality.tib &lt;- as_tibble(df)\n\n  print(air_quality.tib)\n\n# A tibble: 153 × 6\n   Ozone Solar.R  Wind  Temp Month   Day\n   &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1    41     190   7.4    67     5     1\n 2    36     118   8      72     5     2\n 3    12     149  12.6    74     5     3\n 4    18     313  11.5    62     5     4\n 5    NA      NA  14.3    56     5     5\n 6    28      NA  14.9    66     5     6\n 7    23     299   8.6    65     5     7\n 8    19      99  13.8    59     5     8\n 9     8      19  20.1    61     5     9\n10    NA     194   8.6    69     5    10\n# ℹ 143 more rows"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.2.-variable-definition-and-background-of-the-topic",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.2.-variable-definition-and-background-of-the-topic",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.2. Variable Definition and Background of the Topic",
+    "text": "P1.2. Variable Definition and Background of the Topic\n\nLook up the help to understand the definition of the variables.\n\n\n?airquality\n\n\nIn addition, loop Ozone and related variables on the internet. A quick search on Ozone leads me to https://www.epa.gov/ozone-pollution-and-your-patients-health/what-ozone. Read a bit to gain domain knowledge, which is needed when you analyze the data. It appears that Southern California has the highest concentration of Ozone.\nGiven the definition of the data and the knowledge you gained from your research, what would you think are potential dependent variables and independent variables? Can you form a hypothesis regarding the relationships among the variables?\nIt seems reasonable to treat Ozone as a dependent variable and Solar.R, Wind, and Temp. Also, the Ozone amount may be dependent on the Month such that Ozone amounts are highest during summer months.\n\nThus, I would form hypotheses as follows.\n\nH1: Ozone amount will be associated positively with Solar radiation amount (Solar.R)\nH2: Ozone amount will be associated negatively with Wind speed (Wind)\nH3: Ozone amount will be associated positively with Maximum daily temperature (Temp)\nH4: Ozone amount will be highest during summer months."
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.3.-view-data",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.3.-view-data",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.3. View data",
+    "text": "P1.3. View data\n\nNext, show the first 7 rows of it. Pay attention to the names of the variables.\n\n\nhead(air_quality.tib, 7)\n\n# A tibble: 7 × 6\n  Ozone Solar.R  Wind  Temp Month   Day\n  &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    41     190   7.4    67     5     1\n2    36     118   8      72     5     2\n3    12     149  12.6    74     5     3\n4    18     313  11.5    62     5     4\n5    NA      NA  14.3    56     5     5\n6    28      NA  14.9    66     5     6\n7    23     299   8.6    65     5     7\n\n\n\nLook for unique values of categorical values (i.e., Month and Day variables). What did you find? Do you feel you should change the data type of the two variables? Why or why not?\nIt seems like Temp and wind have the biggest impact on the Ozone.\nThere are only five months in the data while there are 31 days. For now, let’s change the month data type from a number to a factor.\n\n\nair_quality.tib$Month&lt;-as.factor(air_quality.tib$Month)\n str(air_quality.tib)\n\ntibble [153 × 6] (S3: tbl_df/tbl/data.frame)\n $ Ozone  : int [1:153] 41 36 12 18 NA 28 23 19 8 NA ...\n $ Solar.R: int [1:153] 190 118 149 313 NA NA 299 99 19 194 ...\n $ Wind   : num [1:153] 7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...\n $ Temp   : int [1:153] 67 72 74 62 56 66 65 59 61 69 ...\n $ Month  : Factor w/ 5 levels \"5\",\"6\",\"7\",\"8\",..: 1 1 1 1 1 1 1 1 1 1 ...\n $ Day    : int [1:153] 1 2 3 4 5 6 7 8 9 10 ...\n\n\n\nWrite a code that reveals how many variables and observations are in the data set.\n\n\nprod(dim(air_quality.tib))\n\n[1] 918\n\nnrow(air_quality.tib)\n\n[1] 153"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.4.-simple-descriptive-statistics",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p1.4.-simple-descriptive-statistics",
+    "title": "Capstone with Airquality Data",
+    "section": "P1.4. Simple Descriptive statistics",
+    "text": "P1.4. Simple Descriptive statistics\n\nAlso, write a code that gives you some basic descriptive statistics. You will notice that two variables have missing values.\n\n\nsummary(air_quality.tib)\n\n     Ozone           Solar.R           Wind             Temp       Month \n Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :56.00   5:31  \n 1st Qu.: 18.00   1st Qu.:115.8   1st Qu.: 7.400   1st Qu.:72.00   6:30  \n Median : 31.50   Median :205.0   Median : 9.700   Median :79.00   7:31  \n Mean   : 42.13   Mean   :185.9   Mean   : 9.958   Mean   :77.88   8:31  \n 3rd Qu.: 63.25   3rd Qu.:258.8   3rd Qu.:11.500   3rd Qu.:85.00   9:30  \n Max.   :168.00   Max.   :334.0   Max.   :20.700   Max.   :97.00         \n NA's   :37       NA's   :7                                              \n      Day      \n Min.   : 1.0  \n 1st Qu.: 8.0  \n Median :16.0  \n Mean   :15.8  \n 3rd Qu.:23.0  \n Max.   :31.0  \n               \n\n\n\nUse the glimpse() function from dplyr package and skim() function from skimr package to understand the data. Skim function shows mean, sd, percentiles, and histogram.\nLooking at the histogram, which variable is most skewed?\nIt looks like the day is the most skewed, it seems to have the biggest change out of the other ones.\n\nHint. you may need to use skimr::skim() to make the skim function work.\n\nlibrary(skimr)\nlibrary(dplyr)\nglimpse(air_quality.tib)\n\nRows: 153\nColumns: 6\n$ Ozone   &lt;int&gt; 41, 36, 12, 18, NA, 28, 23, 19, 8, NA, 7, 16, 11, 14, 18, 14, …\n$ Solar.R &lt;int&gt; 190, 118, 149, 313, NA, NA, 299, 99, 19, 194, NA, 256, 290, 27…\n$ Wind    &lt;dbl&gt; 7.4, 8.0, 12.6, 11.5, 14.3, 14.9, 8.6, 13.8, 20.1, 8.6, 6.9, 9…\n$ Temp    &lt;int&gt; 67, 72, 74, 62, 56, 66, 65, 59, 61, 69, 74, 69, 66, 68, 58, 64…\n$ Month   &lt;fct&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,…\n$ Day     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,…\n\nskimr::skim(air_quality.tib)\n\n\nData summary\n\n\nName\nair_quality.tib\n\n\nNumber of rows\n153\n\n\nNumber of columns\n6\n\n\n_______________________\n\n\n\nColumn type frequency:\n\n\n\nfactor\n1\n\n\nnumeric\n5\n\n\n________________________\n\n\n\nGroup variables\nNone\n\n\n\nVariable type: factor\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nordered\nn_unique\ntop_counts\n\n\n\n\nMonth\n0\n1\nFALSE\n5\n5: 31, 7: 31, 8: 31, 6: 30\n\n\n\nVariable type: numeric\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nskim_variable\nn_missing\ncomplete_rate\nmean\nsd\np0\np25\np50\np75\np100\nhist\n\n\n\n\nOzone\n37\n0.76\n42.13\n32.99\n1.0\n18.00\n31.5\n63.25\n168.0\n▇▃▂▁▁\n\n\nSolar.R\n7\n0.95\n185.93\n90.06\n7.0\n115.75\n205.0\n258.75\n334.0\n▅▃▅▇▅\n\n\nWind\n0\n1.00\n9.96\n3.52\n1.7\n7.40\n9.7\n11.50\n20.7\n▂▇▇▃▁\n\n\nTemp\n0\n1.00\n77.88\n9.47\n56.0\n72.00\n79.0\n85.00\n97.0\n▂▃▇▇▃\n\n\nDay\n0\n1.00\n15.80\n8.86\n1.0\n8.00\n16.0\n23.00\n31.0\n▇▇▇▇▆"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.1.-histograms",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.1.-histograms",
+    "title": "Capstone with Airquality Data",
+    "section": "P2.1. Histograms",
+    "text": "P2.1. Histograms\n\nVisualize numerical data with a histogram. Normality assumption is important when running a regression. If the data is severely skewed, change to a log-based scale to depict the variable on the chart.\n\n\nhist(df$Temp)"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.2.-ozone-by-continuous-variables",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.2.-ozone-by-continuous-variables",
+    "title": "Capstone with Airquality Data",
+    "section": "P2.2. Ozone by Continuous variables",
+    "text": "P2.2. Ozone by Continuous variables\n\nNow, let’s examine the relationship between each of the continuous variables and Ozone at one pair at a time. Which plot should you use and why? Also, add a regression line on the plot too.\n\n\nggpairs(df %&gt;% select(Ozone, Solar.R, Wind, Temp, Day))"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.3.-ozone-by-month-monthly-ozone-amount",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p2.3.-ozone-by-month-monthly-ozone-amount",
+    "title": "Capstone with Airquality Data",
+    "section": "P2.3. Ozone by Month (Monthly ozone amount)",
+    "text": "P2.3. Ozone by Month (Monthly ozone amount)\n\nThis time, draw a chart showing the impact of the categorical independent variables on the ozone amount.\n\n\n  df %&gt;% \n  ggplot(aes(Ozone, Month))+\n  geom_point() +\n  geom_smooth(method = \"lm\", se = FALSE) + #lm = linear model; se = standard error\n  geom_jitter()+\n  labs(title = \"Ozone Vs. Month\",\n       x = \"Ozone\",\n       y = \"Month\", \n       )"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.1.-correlation-with-raw-ozone",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.1.-correlation-with-raw-ozone",
+    "title": "Capstone with Airquality Data",
+    "section": "P7.1. Correlation with raw Ozone",
+    "text": "P7.1. Correlation with raw Ozone\n\nRun the correlation analysis you did in Problem 4 again. Compare the results of the correlations before and after missing value imputations. What can you tell about the strength of association between Ozone and the other three variables?\n\n\nggcorr(df.air %&gt;% select(!Ozone))"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.2.-correlations-with-logged-ozone",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p7.2.-correlations-with-logged-ozone",
+    "title": "Capstone with Airquality Data",
+    "section": "P7.2. Correlations with Logged Ozone",
+    "text": "P7.2. Correlations with Logged Ozone\n\nThis time, use create a new variable by taking the log of Ozone – log(Ozone) – as Ozone is severely skewed. Write the code to repeat (1) with the log-transformed form of Ozone. What can you tell about the strength of the association between Ozone and the other three variables?\n\n\n# Create a new variable: Log-transformed Ozone\ndf &lt;- df %&gt;%\n  mutate(Ozone_logged = log(Ozone))\n\n# Calculate correlations with logged Ozone\ncorrelation_matrix &lt;- df %&gt;%\n  select(Ozone_logged, Solar.R, Wind, Temp) %&gt;%\n  cor(use = \"complete.obs\")\n\n# Print the correlation matrix\nprint(correlation_matrix)\n\n             Ozone_logged    Solar.R       Wind       Temp\nOzone_logged    1.0000000  0.4561082 -0.5557003  0.7448232\nSolar.R         0.4561082  1.0000000 -0.1271835  0.2940876\nWind           -0.5557003 -0.1271835  1.0000000 -0.4971897\nTemp            0.7448232  0.2940876 -0.4971897  1.0000000"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.1-categorical-ozone",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.1-categorical-ozone",
+    "title": "Capstone with Airquality Data",
+    "section": "P10.1: categorical Ozone",
+    "text": "P10.1: categorical Ozone\nCreate a new column called “Ozone_cat.” If the Ozone of the imputed dataset is less than or equal to the 25th quantile of the Ozone amount in the data, put “Low” in the new column, if it is greater than 25th quantile and less than the 75th quantile, put “Middle,” and if it is greater than 75th quantile, put “high” in the new column (use the pipe operator).\nHint: You may use quantile() to find 25th and 75 quantile. You may also use case_when() from dplr.\n\n# Create Ozone_cat based on quantiles\ndf &lt;- df %&gt;%\n  mutate(Ozone_cat = case_when(\n    Ozone &lt;= quantile(Ozone, 0.25, na.rm = TRUE) ~ \"Low\",\n    Ozone &gt; quantile(Ozone, 0.25, na.rm = TRUE) & \n      Ozone &lt;= quantile(Ozone, 0.75, na.rm = TRUE) ~ \"Middle\",\n    Ozone &gt; quantile(Ozone, 0.75, na.rm = TRUE) ~ \"High\"\n  ))\n\n# Ensure Ozone_cat is a factor in the correct order\ndf &lt;- df %&gt;%\n  mutate(Ozone_cat = factor(Ozone_cat, levels = c(\"Low\", \"Middle\", \"High\")))"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.2-monthly-ozone-severity",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.2-monthly-ozone-severity",
+    "title": "Capstone with Airquality Data",
+    "section": "P10.2: Monthly Ozone Severity",
+    "text": "P10.2: Monthly Ozone Severity\nNow that you have created Ozone_cat, which is a factor, let’s draw a chart that shows monthly counts of each of the three levels of Ozone_cat – Low, Middle, and High in that order. Make the chart as professional as it can be.\nHints: When you created the Ozone_cat variable previously, you might have created the level in an order different than the low-middle-high order. If so, you can change the order of the level using a combination of mutate and fct_relevel() and manually type the order you like: “c(”Low”, “Middle”, “High”)“. To generate the count of Ozone_cat, you would like to use”group_by()” and “count().”\n\n# Count of Ozone_cat by Month\ndf %&gt;%\n  group_by(Month, Ozone_cat) %&gt;%\n  count() %&gt;%\n  ggplot(aes(x = Month, y = n, fill = Ozone_cat)) +\n  geom_bar(stat = \"identity\", position = \"dodge\") +\n  scale_fill_manual(values = c(\"Low\" = \"red\", \"Middle\" = \"orange\", \"High\" = \"green\")) +\n  labs(title = \"Monthly Ozone Severity\", x = \"Month\", y = \"Count\", fill = \"Ozone Category\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.3-insights-from-the-chart",
+    "href": "Marketing_analytics_Projects/Project 1_Capstone/Young_lucyndaCapstone_Project.html#p10.3-insights-from-the-chart",
+    "title": "Capstone with Airquality Data",
+    "section": "P10.3: Insights from the chart",
+    "text": "P10.3: Insights from the chart\nWhat can you tell about the monthly Ozone severity?\n\nMonthly trends: The chart shows how the proportion of Low, Middle, and High ozone levels varies by month.\nSummer months (e.g., June, July) may have more “High” ozone days due to increased sunlight and heat.\nColder months might show more “Low” ozone days due to reduced ozone formation.\nThis analysis helps in seasonal forecasting of ozone levels and can guide policy decisions on air quality management."
   }
 ]

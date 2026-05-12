@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Lucynda Young">
+<meta name="dcterms.date" content="2026-05-09">
+
+<title>Marketing Automation with Quarto – Lucynda Young | Marketing Analytics Portfolio</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-302cfb20809370e74bf8219e126c572e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../headshot.png" alt="" class="navbar-logo light-content">
+    <img src="../headshot.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Lucynda Young | Marketing Analytics Portfolio</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../digital-marketing.html"> 
+<span class="menu-text">Digital Marketing</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../marketing-analytics.html"> 
+<span class="menu-text">Marketing Analytics</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../presentation.html"> 
+<span class="menu-text">Interactive Presentation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../website-analytics.html"> 
+<span class="menu-text">Website Analytics</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/Cynyng/portfolio"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/lucyndayoung/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="M12_RevealJS_Reflection.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Marketing Automation with Quarto</h1>
+<p class="subtitle lead">Reflection on Dashboards, Automation, and Reproducible Reporting</p>
+</div>
+
+
+<div class="quarto-title-meta-author column-page-left">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Lucynda Young </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Cal Poly Pomona
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta column-page-left">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 9, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="marketing-automation-with-quarto" class="level1 title-slide" data-transition="zoom" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 55%, #6f4e16 100%)">
+<h1 class="title-slide" data-transition="zoom" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 55%, #6f4e16 100%)">Marketing Automation with Quarto</h1>
+<section id="reflection-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="reflection-presentation">Reflection Presentation</h2>
+<p><strong>Audience-centered reflection on dashboards, automation, dynamic reporting, and reproducible analytics.</strong></p>
+<div class="notes">
+<p>Open by explaining that this presentation is designed as a true slide deck, not a written report. The prompts are included so the audience understands the purpose of each reflection.</p>
+</div>
+</section>
+</section>
+<section id="presentation-roadmap" class="level1" data-transition="fade">
+<h1 data-transition="fade">Presentation Roadmap</h1>
+<div class="fragment fade-in">
+<p><strong>1.</strong> Quarto-based interactive dashboards</p>
+</div>
+<div class="fragment fade-in">
+<p><strong>2.</strong> Parameterized reporting</p>
+</div>
+<div class="fragment fade-in">
+<p><strong>3.</strong> Avoiding dashboard fatigue</p>
+</div>
+<div class="fragment fade-in">
+<p><strong>4.</strong> Challenges learning the tools</p>
+</div>
+<div class="fragment fade-in">
+<p><strong>5.</strong> Quarto, reproducibility, and AI</p>
+</div>
+</section>
+<section id="interactive-dashboards" class="level1" data-transition="convex" data-background-gradient="linear-gradient(135deg, #090909 0%, #17120a 70%, #49340e 100%)">
+<h1 data-transition="convex" data-background-gradient="linear-gradient(135deg, #090909 0%, #17120a 70%, #49340e 100%)">1 · Interactive Dashboards</h1>
+<section id="prompt" class="level2">
+<h2 class="anchored" data-anchor-id="prompt">Prompt</h2>
+<p><strong>In Step 1, Dr.&nbsp;Albert Rapp showed you how to create an interactive dashboard with Quarto. What did you like about the Quarto-based interactive dashboard compared with other options introduced in this class previously?</strong></p>
+</section>
+<section id="what-i-liked-most" class="level2" data-transition="slide">
+<h2 data-transition="slide" class="anchored" data-anchor-id="what-i-liked-most">What I Liked Most</h2>
+<div class="big-quote">
+<p>Quarto turns a dashboard from a collection of charts into a reproducible communication product.</p>
+</div>
+<div class="fragment fade-up">
+<p>It combines <strong>code, visuals, explanation, and publishing</strong> in one workflow.</p>
+</div>
+<div class="fragment fade-up">
+<p>That makes it stronger than a dashboard that only displays metrics without context.</p>
+</div>
+</section>
+<section id="quarto-vs.-traditional-dashboards" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="quarto-vs.-traditional-dashboards">Quarto vs.&nbsp;Traditional Dashboards</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="traditional-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="traditional-dashboard">Traditional Dashboard</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Good for monitoring</li>
+<li>Often KPI-heavy</li>
+<li>Can feel disconnected from the “why”</li>
+<li>Usually requires the viewer to interpret the story</li>
+</ul>
+</div>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="quarto-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-dashboard">Quarto Dashboard</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Good for explaining</li>
+<li>Combines narrative with analysis</li>
+<li>Easier to reproduce and update</li>
+<li>Helps the viewer understand the business meaning</li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+</section>
+<section id="why-it-matters-in-marketing" class="level2" data-transition="zoom">
+<h2 data-transition="zoom" class="anchored" data-anchor-id="why-it-matters-in-marketing">Why It Matters in Marketing</h2>
+<div class="fragment fade-up">
+<p>Marketing data changes constantly: campaigns, channels, customers, costs, conversions, and engagement.</p>
+</div>
+<div class="fragment fade-up">
+<p>A Quarto dashboard can be re-rendered when the data changes, instead of manually rebuilt.</p>
+</div>
+<div class="fragment fade-up">
+<p>That supports better decision-making because the report is both <strong>current</strong> and <strong>traceable</strong>.</p>
+</div>
+</section>
+<section id="example-kpi-workflow" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="example-kpi-workflow">Example: KPI Workflow</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>marketing_kpis <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">channel =</span> <span class="fu">c</span>(<span class="st">"Paid Search"</span>, <span class="st">"Email"</span>, <span class="st">"Organic Social"</span>, <span class="st">"Referral"</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">conversions =</span> <span class="fu">c</span>(<span class="dv">420</span>, <span class="dv">310</span>, <span class="dv">185</span>, <span class="dv">125</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cost =</span> <span class="fu">c</span>(<span class="dv">12500</span>, <span class="dv">3200</span>, <span class="dv">2100</span>, <span class="dv">900</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cpa =</span> <span class="fu">round</span>(cost <span class="sc">/</span> conversions, <span class="dv">2</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>marketing_kpis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  channel        conversions  cost   cpa
+  &lt;chr&gt;                &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 Paid Search            420 12500  29.8
+2 Email                  310  3200  10.3
+3 Organic Social         185  2100  11.4
+4 Referral               125   900   7.2</code></pre>
+</div>
+</div>
+<div class="notes">
+<p>Emphasize that Quarto is not just about the table or chart. The value is that the calculation, explanation, and output are connected.</p>
+</div>
+</section>
+</section>
+<section id="parameterized-reporting" class="level1" data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #181410 60%, #4d1f13 100%)">
+<h1 data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #181410 60%, #4d1f13 100%)">2 · Parameterized Reporting</h1>
+<section id="prompt-1" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-1">Prompt</h2>
+<p><strong>In Step 2, you learned how to set parameterized reporting in Quarto. Explain what parameterized reporting is and how it works. Do you see the application of it in your workflow in your current or past jobs, or future jobs?</strong></p>
+</section>
+<section id="what-parameterized-reporting-means" class="level2" data-transition="slide">
+<h2 data-transition="slide" class="anchored" data-anchor-id="what-parameterized-reporting-means">What Parameterized Reporting Means</h2>
+<div class="big-quote">
+<p>Parameterized reporting means one report template can generate many customized reports.</p>
+</div>
+<div class="fragment fade-up">
+<p>Instead of copying the same report over and over, the analyst changes inputs such as:</p>
+</div>
+<div class="fragment fade-up">
+<p><strong>Region · Channel · Campaign · Date range · Product category · Marketplace</strong></p>
+</div>
+</section>
+<section id="how-it-works" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="how-it-works">How It Works</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<section id="report-template" class="level3">
+<h3 class="anchored" data-anchor-id="report-template">Report Template</h3>
+<ul>
+<li>Fixed structure</li>
+<li>Reusable code</li>
+<li>Consistent visual design</li>
+<li>Standard business questions</li>
+</ul>
+</section>
+</div><div class="column" style="width:55%;">
+<section id="parameter-values" class="level3">
+<h3 class="anchored" data-anchor-id="parameter-values">Parameter Values</h3>
+<ul>
+<li>Filter the data</li>
+<li>Update charts</li>
+<li>Change labels</li>
+<li>Customize the final message</li>
+</ul>
+</section>
+</div>
+</div>
+</section>
+<section id="example-parameter-logic" class="level2" data-transition="zoom">
+<h2 data-transition="zoom" class="anchored" data-anchor-id="example-parameter-logic">Example Parameter Logic</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="st">"West"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">channel =</span> <span class="st">"Email"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>campaign_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">region =</span> <span class="fu">c</span>(<span class="st">"West"</span>, <span class="st">"West"</span>, <span class="st">"East"</span>, <span class="st">"East"</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">channel =</span> <span class="fu">c</span>(<span class="st">"Email"</span>, <span class="st">"Paid Search"</span>, <span class="st">"Email"</span>, <span class="st">"Paid Search"</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">conversions =</span> <span class="fu">c</span>(<span class="dv">310</span>, <span class="dv">420</span>, <span class="dv">260</span>, <span class="dv">390</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>campaign_data <span class="sc">|&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">==</span> params<span class="sc">$</span>region, channel <span class="sc">==</span> params<span class="sc">$</span>channel)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  region channel conversions
+  &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;
+1 West   Email           310</code></pre>
+</div>
+</div>
+</section>
+<section id="workflow-application" class="level2" data-transition="slide">
+<h2 data-transition="slide" class="anchored" data-anchor-id="workflow-application">Workflow Application</h2>
+<p>For a digital marketing or eCommerce workflow, parameterized reporting could support recurring reports across:</p>
+<div class="fragment fade-in">
+<p><strong>Amazon</strong></p>
+</div>
+<div class="fragment fade-in">
+<p><strong>Walmart</strong></p>
+</div>
+<div class="fragment fade-in">
+<p><strong>eBay</strong></p>
+</div>
+<div class="fragment fade-in">
+<p><strong>Houzz</strong></p>
+</div>
+<div class="fragment fade-in">
+<p><strong>Wayfair</strong></p>
+</div>
+<div class="fragment fade-in">
+<p><strong>Brand website</strong></p>
+</div>
+</section>
+<section id="why-it-saves-time" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="why-it-saves-time">Why It Saves Time</h2>
+<div class="fragment fade-up">
+<p>A single report template can produce multiple versions for different audiences.</p>
+</div>
+<div class="fragment fade-up">
+<p>This reduces manual editing and improves consistency.</p>
+</div>
+<div class="fragment fade-up">
+<p>It also lowers the risk of mistakes caused by copying, pasting, and reformatting old reports.</p>
+</div>
+</section>
+</section>
+<section id="avoiding-dashboard-fatigue" class="level1" data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 65%, #3d2c10 100%)">
+<h1 data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 65%, #3d2c10 100%)">3 · Avoiding Dashboard Fatigue</h1>
+<section id="prompt-2" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-2">Prompt</h2>
+<p><strong>In Step 3, Sean Nguyen talks about how to avoid dashboard fatigue for users in his talk, “Beyond Dashboards: Dynamic Data Storytelling with Python, R, and Quarto Emails.” What are his suggestions for ways in which you can make your dashboard effective and help your colleagues pay attention to your report?</strong></p>
+</section>
+<section id="the-problem" class="level2" data-transition="zoom">
+<h2 data-transition="zoom" class="anchored" data-anchor-id="the-problem">The Problem</h2>
+<div class="big-quote">
+<p>Dashboard fatigue happens when users see too much data and not enough meaning.</p>
+</div>
+<div class="fragment fade-up">
+<p>Too many charts can make people stop paying attention.</p>
+</div>
+<div class="fragment fade-up">
+<p>The audience should not have to hunt for the insight.</p>
+</div>
+</section>
+<section id="better-approach-dynamic-data-storytelling" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="better-approach-dynamic-data-storytelling">Better Approach: Dynamic Data Storytelling</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="less-effective" class="level3">
+<h3 class="anchored" data-anchor-id="less-effective">Less Effective</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Many metrics at once</li>
+<li>No clear priority</li>
+<li>Charts without interpretation</li>
+<li>Users must search for meaning</li>
+</ul>
+</div>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="more-effective" class="level3">
+<h3 class="anchored" data-anchor-id="more-effective">More Effective</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Clear headline insight</li>
+<li>Focused visuals</li>
+<li>Explanation of what changed</li>
+<li>Suggested action or next step</li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+</section>
+<section id="how-to-help-colleagues-pay-attention" class="level2" data-transition="slide">
+<h2 data-transition="slide" class="anchored" data-anchor-id="how-to-help-colleagues-pay-attention">How to Help Colleagues Pay Attention</h2>
+<div class="fragment fade-up">
+<p>Lead with the most important takeaway.</p>
+</div>
+<div class="fragment fade-up">
+<p>Use plain business language, not just technical metrics.</p>
+</div>
+<div class="fragment fade-up">
+<p>Deliver focused updates instead of expecting people to check dashboards constantly.</p>
+</div>
+<div class="fragment fade-up">
+<p>Use automation to send the right information at the right time.</p>
+</div>
+</section>
+<section id="dashboard-design-rule" class="level2" data-transition="zoom">
+<h2 data-transition="zoom" class="anchored" data-anchor-id="dashboard-design-rule">Dashboard Design Rule</h2>
+<div class="big-quote">
+<p>A good dashboard does not simply answer, “What happened?”<br>
+It helps the audience decide, “What should we do next?”</p>
+</div>
+<div class="notes">
+<p>This is a strong transition point. Connect it to marketing teams where colleagues may not have time to explore dashboards but still need fast, confident decisions.</p>
+</div>
+</section>
+</section>
+<section id="challenges-learning-the-tools" class="level1" data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #111111 60%, #5a3b11 100%)">
+<h1 data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #111111 60%, #5a3b11 100%)">4 · Challenges Learning the Tools</h1>
+<section id="prompt-3" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-3">Prompt</h2>
+<p><strong>Programming is all about increasing efficiency and reducing repetition. Share some of the challenges you might have in learning the various tools in the Module.</strong></p>
+</section>
+<section id="main-challenge" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="main-challenge">Main Challenge</h2>
+<div class="big-quote">
+<p>The tools are powerful because they connect many skills, but that also makes the learning curve steep.</p>
+</div>
+<div class="fragment fade-up">
+<p>Quarto requires attention to <strong>YAML, markdown, R code, file structure, rendering, HTML output, and design</strong>.</p>
+</div>
+</section>
+<section id="specific-challenges" class="level2" data-transition="slide">
+<h2 data-transition="slide" class="anchored" data-anchor-id="specific-challenges">Specific Challenges</h2>
+<div class="fragment fade-in">
+<p>YAML indentation and formatting errors</p>
+</div>
+<div class="fragment fade-in">
+<p>Package installation and library conflicts</p>
+</div>
+<div class="fragment fade-in">
+<p>Working directory and file path issues</p>
+</div>
+<div class="fragment fade-in">
+<p>Choosing the right output format</p>
+</div>
+<div class="fragment fade-in">
+<p>Balancing code, design, and written explanation</p>
+</div>
+</section>
+<section id="how-i-can-improve" class="level2" data-transition="zoom">
+<h2 data-transition="zoom" class="anchored" data-anchor-id="how-i-can-improve">How I Can Improve</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="technical-habits" class="level3">
+<h3 class="anchored" data-anchor-id="technical-habits">Technical Habits</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Use organized project folders</li>
+<li>Render early and often</li>
+<li>Save reusable templates</li>
+<li>Comment code clearly</li>
+</ul>
+</div>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="communication-habits" class="level3">
+<h3 class="anchored" data-anchor-id="communication-habits">Communication Habits</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Start with the audience</li>
+<li>Reduce clutter</li>
+<li>Explain the “so what”</li>
+<li>Match format to purpose</li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+</section>
+</section>
+<section id="reproducibility-and-ai" class="level1" data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 70%, #6f4e16 100%)">
+<h1 data-transition="convex" data-background-gradient="linear-gradient(135deg, #050505 0%, #15110a 70%, #6f4e16 100%)">5 · Reproducibility and AI</h1>
+<section id="prompt-4" class="level2">
+<h2 class="anchored" data-anchor-id="prompt-4">Prompt</h2>
+<p><strong>Share your thoughts about the learning experience you have had about Quarto, literate programming, and reproducible reports. Also, share your plan, if any, for using the knowledge in the era of AI.</strong></p>
+</section>
+<section id="what-i-learned" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="what-i-learned">What I Learned</h2>
+<div class="fragment fade-up">
+<p>Literate programming connects the analysis and the explanation.</p>
+</div>
+<div class="fragment fade-up">
+<p>This makes the report easier to understand, check, and update.</p>
+</div>
+<div class="fragment fade-up">
+<p>For analytics work, reproducibility builds trust.</p>
+</div>
+</section>
+<section id="why-reproducible-reports-matter" class="level2" data-transition="slide">
+<h2 data-transition="slide" class="anchored" data-anchor-id="why-reproducible-reports-matter">Why Reproducible Reports Matter</h2>
+<div class="big-quote">
+<p>If a report cannot be recreated, it is harder to trust.</p>
+</div>
+<div class="fragment fade-up">
+<p>Quarto documents the path from data to decision.</p>
+</div>
+<div class="fragment fade-up">
+<p>That is valuable when teams need to explain results to managers, clients, or stakeholders.</p>
+</div>
+</section>
+<section id="quarto-in-the-era-of-ai" class="level2" data-transition="zoom">
+<h2 data-transition="zoom" class="anchored" data-anchor-id="quarto-in-the-era-of-ai">Quarto in the Era of AI</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="ai-can-help-with" class="level3">
+<h3 class="anchored" data-anchor-id="ai-can-help-with">AI Can Help With</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Drafting code</li>
+<li>Explaining errors</li>
+<li>Summarizing results</li>
+<li>Improving wording</li>
+</ul>
+</div>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="quarto-helps-with" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-helps-with">Quarto Helps With</h3>
+<div class="fragment fade-in">
+<ul>
+<li>Verification</li>
+<li>Transparency</li>
+<li>Reproducibility</li>
+<li>Professional delivery</li>
+</ul>
+</div>
+</section>
+</div>
+</div>
+</section>
+<section id="my-plan" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="my-plan">My Plan</h2>
+<div class="fragment fade-up">
+<p>Use Quarto templates for recurring marketing reports.</p>
+</div>
+<div class="fragment fade-up">
+<p>Use AI for support, but verify outputs through reproducible workflows.</p>
+</div>
+<div class="fragment fade-up">
+<p>Build reports that connect data, insight, and action.</p>
+</div>
+</section>
+</section>
+<section id="final-reflection" class="level1" data-transition="zoom" data-background-gradient="linear-gradient(135deg, #050505 0%, #17120a 55%, #6f4e16 100%)">
+<h1 data-transition="zoom" data-background-gradient="linear-gradient(135deg, #050505 0%, #17120a 55%, #6f4e16 100%)">Final Reflection</h1>
+<section id="key-takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<section id="quarto" class="level3">
+<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
+<p>Combines code, visuals, and narrative in one professional workflow.</p>
+</section>
+</div><div class="column" style="width:33%;">
+<section id="automation" class="level3">
+<h3 class="anchored" data-anchor-id="automation">Automation</h3>
+<p>Reduces repetition through reusable templates and parameterized reports.</p>
+</section>
+</div><div class="column" style="width:33%;">
+<section id="storytelling" class="level3">
+<h3 class="anchored" data-anchor-id="storytelling">Storytelling</h3>
+<p>Helps people understand what changed and what action should come next.</p>
+</section>
+</div>
+</div>
+</section>
+<section id="closing-statement" class="level2" data-transition="fade">
+<h2 data-transition="fade" class="anchored" data-anchor-id="closing-statement">Closing Statement</h2>
+<div class="big-quote">
+<p>Quarto helps turn raw data into communication that is easier to update, easier to trust, and easier to act on.</p>
+</div>
+</section>
+<section id="references" class="level2" data-transition="slide">
+<h2 data-transition="slide" class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Rapp, A. Interactive dashboard instruction in the Quarto module.</li>
+<li>Nguyen, S. <em>Beyond Dashboards: Dynamic Data Storytelling with Python, R, and Quarto Emails</em>.</li>
+<li>Course module materials: Marketing Automation with Quarto.</li>
+</ul>
+<div class="notes">
+<p>End by emphasizing that the strongest reports are both technical and human-centered: accurate, reproducible, and easy for the audience to use.</p>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/cynyng\.github\.io\/portfolio\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Lucynda Young</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Built with Quarto | Marketing Analytics Portfolio</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
