@@ -23,13 +23,15 @@ Growth Marketing Manager with experience across ecommerce channels, digital mark
 <div class="card">
 <h3>Resume Files</h3>
 <p><strong>Cover Letter</p></strong>
-<p><<a href="Lucynda_Young_Resume.docx" target="_blank">
+<p><a href="Lucynda_Young_Updated_Cover_Letter.docx" target="_blank">
+  View Cover Letter
 </a></p>
 <p><strong>Resume</p></strong>
-<p><<a href="Lucynda_Young_Resume.docx" target="_blank">
+<p><a href="Lucynda_Young_Resume.docx" target="_blank">
 </a></p>
 <p><strong>References</p></strong>
-<p><<a href="Lucynda_Young_Resume.docx" target="_blank">
+<p><a href="recletters%202.pdf" target="_blank">
+  View Recommendation Letter
 </a></p>
 
 </div>
