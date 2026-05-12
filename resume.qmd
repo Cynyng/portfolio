@@ -29,8 +29,3 @@ Growth Marketing Manager with experience across ecommerce channels, digital mark
 </div>
 :::
 
-::: {.section}
-## Portfolio Fit
-
-This resume page supports the rest of the website by connecting my project work to my professional experience in growth marketing, ecommerce, and analytics.
-:::
